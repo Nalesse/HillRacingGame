@@ -28,7 +28,7 @@ public class LevelGenerator : MonoBehaviour
     public void SpawnTile()
     {
         spawnedTile = Instantiate(roadTile, nextSpawnPoint, Quaternion.identity);
-        col = spawnedTile.GetComponent<BoxCollider>();
+        col = spawnedTile.GetComponentInChildren<BoxCollider>();
         nextSpawnPoint = CalculateNextSpawnPoint();
     }
 
