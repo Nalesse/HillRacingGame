@@ -13,9 +13,84 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Controls"",
-    ""maps"": [],
+    ""maps"": [
+        {
+            ""name"": ""Racing"",
+            ""id"": ""a71f568d-2c96-47a2-a4ab-0403db228625"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""029383d2-408a-4baf-b172-087d66fbc4cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""78c2e5aa-1429-46ba-a82b-83f8e1f290c1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ea47d951-62bf-4dc0-bca8-1cb3b39d35a2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3dba681c-b74b-4c42-adb0-9782da21dad3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""78f3ad69-e56d-4472-89ba-aa5e4c195cd1"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3c849643-d0d8-408b-83b9-6f6c2e73f151"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        }
+    ],
     ""controlSchemes"": []
 }");
+        // Racing
+        m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
+        m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -60,5 +135,42 @@ public class @Controls : IInputActionCollection, IDisposable
     public void Disable()
     {
         asset.Disable();
+    }
+
+    // Racing
+    private readonly InputActionMap m_Racing;
+    private IRacingActions m_RacingActionsCallbackInterface;
+    private readonly InputAction m_Racing_Move;
+    public struct RacingActions
+    {
+        private @Controls m_Wrapper;
+        public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Racing_Move;
+        public InputActionMap Get() { return m_Wrapper.m_Racing; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RacingActions set) { return set.Get(); }
+        public void SetCallbacks(IRacingActions instance)
+        {
+            if (m_Wrapper.m_RacingActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+            }
+            m_Wrapper.m_RacingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+            }
+        }
+    }
+    public RacingActions @Racing => new RacingActions(this);
+    public interface IRacingActions
+    {
+        void OnMove(InputAction.CallbackContext context);
     }
 }
