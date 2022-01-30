@@ -27,16 +27,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * Time.fixedDeltaTime * speed);
+        //Moves player forward
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
+        //right
         if (controllerInput.x >= 0.2f)
         {
-            transform.Translate(Vector2.right * Time.fixedDeltaTime * turnSpeed);
+            transform.Translate(Vector2.right * Time.deltaTime * turnSpeed);
         }
 
+        //left
         if (controllerInput.x <= -0.2f)
         {
-            transform.Translate(Vector2.left * Time.fixedDeltaTime * turnSpeed);
+            transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
         }
     }
 
