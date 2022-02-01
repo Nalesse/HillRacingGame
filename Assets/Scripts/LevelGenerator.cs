@@ -81,7 +81,5 @@ public class LevelGenerator : MonoBehaviour
     private void SetRotation(GameObject objectToRotate, float angle, Vector3 direction)
     {
         objectToRotate.transform.rotation = Quaternion.AngleAxis(angle, direction);
-        
-
     }
 }
