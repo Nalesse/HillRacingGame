@@ -15,16 +15,7 @@ public class RoadTile : MonoBehaviour
 
     private void Start()
     {
-        /*float random = Random.Range(0f, 1f);
-        
-        var format = string.Format("0.0", random);
-        random = float.Parse(format);
-
-        if (random < 0.2)
-        {
-            SpawnObjects();
-        }*/
-        
+       //SpawnObjects();
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,9 +30,10 @@ public class RoadTile : MonoBehaviour
 
     private void SpawnObjects()
     {
+        //TODO: fix scaling issues 
         int spawnIndex = Random.Range(0, objectsToSpawn.Length);
         var tileTransform = transform;
-        Instantiate(objectsToSpawn[spawnIndex], tileTransform.position, objectsToSpawn[spawnIndex].transform.localRotation,
-            tileTransform);
+        var spawnedObject = Instantiate(objectsToSpawn[spawnIndex], tileTransform, false);
+        spawnedObject.transform.position = tileTransform.position;
     }
 }
