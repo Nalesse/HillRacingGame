@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     public float currentVelocity;
 
+    private bool doLerp;
+
     private void Awake()
     {
         controls = new Controls();
@@ -51,6 +53,34 @@ public class Player : MonoBehaviour
             //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
         }
+    }
+
+    private void Update()
+    {
+        //Lerp speed test
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            doLerp = true;
+        }
+
+        if (doLerp)
+        {
+            speed = LerpSpeed(speed, 15);
+        }
+    }
+
+    private float LerpSpeed(float currentSpeed,float desiredSpeed)
+    {
+        float newSpeed;
+        float t = 0f;
+        float duration = 2f;
+
+        t += Time.deltaTime / duration;
+
+        newSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, t);
+
+        return newSpeed;
+
     }
 
     private void OnEnable()
