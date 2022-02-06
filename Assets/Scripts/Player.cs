@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
 
         if (doLerp)
         {
-            speed = LerpSpeed(speed, 15);
+            speed = LerpSpeed(speed, 15, 1f);
         }
     }
 
@@ -75,20 +75,20 @@ public class Player : MonoBehaviour
     /// the speed will slowly get closer to the desired speed each time this function is called 
     /// </summary>
     /// <param name="currentSpeed">
-    /// The starting speed for the lerp
+    /// The starting value for the lerp
     /// </param>
     /// <param name="desiredSpeed">
-    /// The ending speed for the lerp
+    /// The ending value for the lerp
+    /// </param>
+    /// <param name="lerpSpeed">
+    /// The rate at which currentSpeed will approach desiredSpeed
     /// </param>
     /// <returns></returns>
-    private float LerpSpeed(float currentSpeed,float desiredSpeed)
+    private float LerpSpeed(float currentSpeed,float desiredSpeed, float lerpSpeed)
     {
-        float duration = 2f;
-        
-        currentSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, Time.deltaTime * duration);
+        currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeed, lerpSpeed * Time.deltaTime);
 
         return currentSpeed;
-
     }
 
     private void OnEnable()
