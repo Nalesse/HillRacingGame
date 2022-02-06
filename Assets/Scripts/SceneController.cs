@@ -3,37 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneControl : MonoBehaviour
+public class SceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void LoadScene(string sceneName)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void BeginGame();
-    {
-        SceneManagement.LoadScene("Kcamp");
-    }
-
-    public void GoToSceneB();
-    {
-        SceneManagement.LoadScene(SceneB);
-    }
-
-    public void GoToSceneC();
-    {
-        SceneManagement.LoadScene(SceneC);
-    }
-
-    public void ReturnToMenu();
-    {
-        SceneManagement.LoadScene(SceneA);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }

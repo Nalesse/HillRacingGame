@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     public float currentVelocity;
 
+    private bool doLerp;
+
     private void Awake()
     {
         controls = new Controls();
@@ -51,6 +53,42 @@ public class Player : MonoBehaviour
             //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
         }
+    }
+
+    private void Update()
+    {
+        // This is just code to test that the lerp works, feel free to replace this with the new input system. or implement the LerpSpeed() function
+        // in anyway you see fit.
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            doLerp = true;
+        }
+
+        if (doLerp)
+        {
+            speed = LerpSpeed(speed, 15);
+        }
+    }
+
+    /// <summary>
+    /// Lerps between the current speed to the desired speed.
+    /// the speed will slowly get closer to the desired speed each time this function is called 
+    /// </summary>
+    /// <param name="currentSpeed">
+    /// The starting speed for the lerp
+    /// </param>
+    /// <param name="desiredSpeed">
+    /// The ending speed for the lerp
+    /// </param>
+    /// <returns></returns>
+    private float LerpSpeed(float currentSpeed,float desiredSpeed)
+    {
+        float duration = 2f;
+        
+        currentSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, Time.deltaTime * duration);
+
+        return currentSpeed;
+
     }
 
     private void OnEnable()
