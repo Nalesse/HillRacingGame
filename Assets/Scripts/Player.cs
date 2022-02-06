@@ -57,7 +57,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //Lerp speed test
+        // This is just code to test that the lerp works, feel free to replace this with the new input system. or implement the LerpSpeed() function
+        // in anyway you see fit.
         if (Input.GetKeyDown(KeyCode.L))
         {
             doLerp = true;
@@ -69,17 +70,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lerps between the current speed to the desired speed.
+    /// the speed will slowly get closer to the desired speed each time this function is called 
+    /// </summary>
+    /// <param name="currentSpeed">
+    /// The starting speed for the lerp
+    /// </param>
+    /// <param name="desiredSpeed">
+    /// The ending speed for the lerp
+    /// </param>
+    /// <returns></returns>
     private float LerpSpeed(float currentSpeed,float desiredSpeed)
     {
-        float newSpeed;
-        float t = 0f;
         float duration = 2f;
+        
+        currentSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, Time.deltaTime * duration);
 
-        t += Time.deltaTime / duration;
-
-        newSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, t);
-
-        return newSpeed;
+        return currentSpeed;
 
     }
 
