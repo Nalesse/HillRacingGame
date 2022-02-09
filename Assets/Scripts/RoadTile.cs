@@ -15,7 +15,12 @@ public class RoadTile : MonoBehaviour
 
     private void Start()
     {
-       //SpawnObjects();
+        // gives a percent chance to run function. The formula to determine the percent is 1 - percent.
+        // For example to give a 30% chance you would do 1 - 0.3 which is 0.7
+        if (Random.value > 0.7)
+        {
+            SpawnObjects();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,9 +36,20 @@ public class RoadTile : MonoBehaviour
     private void SpawnObjects()
     {
         //TODO: fix scaling issues 
-        int spawnIndex = Random.Range(0, objectsToSpawn.Length);
+        var spawnIndex = Random.Range(0, objectsToSpawn.Length);
         var tileTransform = transform;
-        var spawnedObject = Instantiate(objectsToSpawn[spawnIndex], tileTransform, false);
-        spawnedObject.transform.position = tileTransform.position;
+
+        var spawnedObject = Instantiate(objectsToSpawn[spawnIndex], tileTransform.position, objectsToSpawn[spawnIndex].transform.rotation);
+        
+        // Fixes Scale
+        // var originalScale = tileTransform.localScale;
+        spawnedObject.transform.SetParent(tileTransform,true);
+        // spawnedObject.transform.localScale = originalScale;
+        
+        // Adjust object position
+        var spawnedObjectPosition = spawnedObject.transform.position;
+        var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
+        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y + 0.59f;
+        spawnedObject.transform.position = spawnedObjectPosition;
     }
 }

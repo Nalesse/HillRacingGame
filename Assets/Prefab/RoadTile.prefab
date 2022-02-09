@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5486770347452415622}
   - component: {fileID: 4774864422891347619}
   - component: {fileID: 1926718871263306053}
-  - component: {fileID: 3522916406507588279}
   - component: {fileID: 4999659303296483916}
   - component: {fileID: 8480799625461282638}
   - component: {fileID: 1064329471973994300}
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 124680698462120214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 0.15, z: 20}
   m_Children: []
   m_Father: {fileID: 1253682736924406502}
   m_RootOrder: 0
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3522916406507588279
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124680698462120214}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &4999659303296483916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253682736924406502}
   - component: {fileID: 1253682736924406503}
-  - component: {fileID: 7764522869061715011}
+  - component: {fileID: 62618130672813476}
   m_Layer: 0
   m_Name: RoadTile
   m_TagString: Untagged
@@ -163,8 +149,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253682736924406498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -1.0646726, z: 1.99}
-  m_LocalScale: {x: 20, y: 0.15, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5486770347452415622}
   m_Father: {fileID: 0}
@@ -183,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 6645512315010454479, guid: 947f019bb9f1a694ca76fd91e743f2d6, type: 3}
---- !u!65 &7764522869061715011
+  - {fileID: 8468794168959760222, guid: 947f019bb9f1a694ca76fd91e743f2d6, type: 3}
+--- !u!65 &62618130672813476
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,5 +181,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 116.93209, z: 1}
-  m_Center: {x: 0, y: 3.776865, z: 0}
+  m_Size: {x: 20, y: 37.389595, z: 20}
+  m_Center: {x: 0, y: 3.7397738, z: 0}
