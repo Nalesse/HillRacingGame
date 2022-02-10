@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 11400000, guid: 466033a9bd7ecef42af1c5bd79129955, type: 2}
+  - {fileID: 11400000, guid: 5081eea0ff784864ba6880f43a19f9a3, type: 2}
 --- !u!65 &62618130672813476
 BoxCollider:
   m_ObjectHideFlags: 0
