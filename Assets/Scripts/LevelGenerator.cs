@@ -23,8 +23,15 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] private GameObject roadTile;
     [SerializeField] private int tilesToPreSpawn;
-    [SerializeField] private float roadSlopeAngle;
+     
     #endregion
+
+    #region MyRegion
+    // Please do not touch this unless it is absolutely necessary. if this value is changed then the position offsets
+    // and rotations for all the spawnable objects will need to be readjusted  
+    private float roadSlopeAngle = 10;
+    #endregion
+    
 
     
     
