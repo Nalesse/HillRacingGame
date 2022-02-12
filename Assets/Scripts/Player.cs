@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
     public float currentVelocity;
 
     private bool doLerp;
+    
+    [Header("Lerp Debug")]
+    // Lerp variables
+    [SerializeField] private float speedToLerpTo;
+    [SerializeField] private float lerpSpeed;
 
     private void Awake()
     {
@@ -66,7 +71,7 @@ public class Player : MonoBehaviour
 
         if (doLerp)
         {
-            speed = LerpSpeed(speed, 15, 1f);
+            speed = LerpSpeed(speed, speedToLerpTo, lerpSpeed);
         }
     }
 

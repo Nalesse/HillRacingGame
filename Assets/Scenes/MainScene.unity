@@ -293,6 +293,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 507538283314026264, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 507538283314026264, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_Constraints
       value: 96
       objectReference: {fileID: 0}
@@ -437,6 +441,14 @@ PrefabInstance:
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -12.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833877569114, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_FocalLength
+      value: 20.78461
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
