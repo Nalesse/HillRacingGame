@@ -27,7 +27,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Tricky"",
+                    ""name"": ""NorthTrick"",
                     ""type"": ""Button"",
                     ""id"": ""2b1633d0-7e7a-4c51-934b-195bc7d3feae"",
                     ""expectedControlType"": ""Button"",
@@ -208,40 +208,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Tricky"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dd6f0e60-82b6-470b-b9c3-4adde8004197"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tricky"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fa0f4280-7500-4bbf-8c5d-c60ca23f07cb"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tricky"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6ada4ca5-4dad-4078-b155-908b3b10994a"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tricky"",
+                    ""action"": ""NorthTrick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -253,7 +220,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // Racing
         m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
         m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
-        m_Racing_Tricky = m_Racing.FindAction("Tricky", throwIfNotFound: true);
+        m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,13 +271,13 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Racing;
     private IRacingActions m_RacingActionsCallbackInterface;
     private readonly InputAction m_Racing_Move;
-    private readonly InputAction m_Racing_Tricky;
+    private readonly InputAction m_Racing_NorthTrick;
     public struct RacingActions
     {
         private @Controls m_Wrapper;
         public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Racing_Move;
-        public InputAction @Tricky => m_Wrapper.m_Racing_Tricky;
+        public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -323,9 +290,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                @Tricky.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnTricky;
-                @Tricky.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnTricky;
-                @Tricky.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnTricky;
+                @NorthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                @NorthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                @NorthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -333,9 +300,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Tricky.started += instance.OnTricky;
-                @Tricky.performed += instance.OnTricky;
-                @Tricky.canceled += instance.OnTricky;
+                @NorthTrick.started += instance.OnNorthTrick;
+                @NorthTrick.performed += instance.OnNorthTrick;
+                @NorthTrick.canceled += instance.OnNorthTrick;
             }
         }
     }
@@ -343,6 +310,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IRacingActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnTricky(InputAction.CallbackContext context);
+        void OnNorthTrick(InputAction.CallbackContext context);
     }
 }
