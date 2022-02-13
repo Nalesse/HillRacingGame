@@ -79,7 +79,8 @@ public class LevelGenerator : MonoBehaviour
     {
         // localPosition is used so that the tiles position is local to that of the container
         Vector3 currentTilePosition = spawnedTile.transform.localPosition;
-        
+
+        nextSpawnPoint.y = currentTilePosition.y - 0.02f;
         nextSpawnPoint.z = currentTilePosition.z + col.bounds.size.z;
 
         return nextSpawnPoint;
