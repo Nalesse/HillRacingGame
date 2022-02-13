@@ -16,6 +16,12 @@ public class Player : MonoBehaviour
     public float currentVelocity;
 
     private bool doLerp;
+
+    public bool isGrounded;
+
+    //Tricks
+    public bool isTrick;
+    public bool northTrick;
     
     [Header("Lerp Debug")]
     // Lerp variables
@@ -29,6 +35,8 @@ public class Player : MonoBehaviour
         controls.Racing.Move.performed += ctx => controllerInput = ctx.ReadValue<Vector2>();
         controls.Racing.Move.canceled += ctx => controllerInput = Vector2.zero;
 
+        controls.Racing.NorthTrick.performed += ctx => NorthTrick();
+        controls.Racing.NorthTrick.canceled += ctx => NorthTrickCancelled();
     }
     // Start is called before the first frame update
     void Start()
@@ -96,6 +104,31 @@ public class Player : MonoBehaviour
         return currentSpeed;
     }
 
+    void NorthTrick()
+    {
+        isTrick = true;
+        northTrick = true;
+    }
+
+    void NorthTrickCancelled()
+    {
+        StartCoroutine(NorthTrickCooldown());
+    }
+
+    IEnumerator NorthTrickCooldown()
+    {
+        northTrick = false;
+        Debug.Log("start cooldown");
+
+        yield return new WaitForSeconds(1.5f);
+
+        Debug.Log("Trickcooled");
+        isTrick = true;
+
+        yield return null;
+
+    }
+        
     private void OnEnable()
     {
         controls.Racing.Enable();
