@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3492745, g: 0.5908927, b: 0.7608514, a: 1}
+  m_IndirectSpecularColor: {r: 0.3492493, g: 0.59077203, b: 0.76075727, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -284,21 +284,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 507538283314026260, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: cb757a169fc08ae458487f0c6a1b0c13, type: 2}
     - target: {fileID: 507538283314026261, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026264, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026264, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: m_Constraints
-      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 507538283314026265, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_RootOrder
@@ -306,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 507538283314026265, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000007946775
+      value: -0.000000077206
       objectReference: {fileID: 0}
     - target: {fileID: 507538283314026265, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_LocalPosition.y
@@ -343,14 +331,6 @@ PrefabInstance:
     - target: {fileID: 507538283314026265, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: speed
-      value: 2500
-      objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: turnSpeed
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private bool doLerp;
 
     public bool isGrounded;
+    public Transform groundCheck;
+    public LayerMask ground;
 
     //Tricks
     public bool isTrick;
@@ -27,6 +29,8 @@ public class Player : MonoBehaviour
     // Lerp variables
     [SerializeField] private float speedToLerpTo;
     [SerializeField] private float lerpSpeed;
+
+    
 
     private void Awake()
     {
@@ -70,6 +74,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
+
         // This is just code to test that the lerp works, feel free to replace this with the new input system. or implement the LerpSpeed() function
         // in anyway you see fit.
         if (Input.GetKeyDown(KeyCode.L))
@@ -80,6 +86,19 @@ public class Player : MonoBehaviour
         if (doLerp)
         {
             speed = LerpSpeed(speed, speedToLerpTo, lerpSpeed);
+        }
+
+        //checks to see if player Wipesout, and resets trick bools
+        if (isTrick && isGrounded)
+        {
+            Debug.Log("Wipeout");
+            isTrick = false;
+            northTrick = false;
+
+            //Decrease hp by one here:
+
+
+
         }
     }
 
@@ -104,10 +123,16 @@ public class Player : MonoBehaviour
         return currentSpeed;
     }
 
+
+    //All code Refering to north button trick
     void NorthTrick()
     {
-        isTrick = true;
-        northTrick = true;
+        if (!isGrounded)
+        {
+            isTrick = true;
+            northTrick = true;
+        }
+       
     }
 
     void NorthTrickCancelled()
@@ -117,15 +142,20 @@ public class Player : MonoBehaviour
 
     IEnumerator NorthTrickCooldown()
     {
-        northTrick = false;
-        Debug.Log("start cooldown");
+        if (!isGrounded)
+        {
+            northTrick = false;
+            Debug.Log("start cooldown");
 
-        yield return new WaitForSeconds(1.5f);
+            //this is cooldown time for trick
+            yield return new WaitForSeconds(.7f);
 
-        Debug.Log("Trickcooled");
-        isTrick = true;
+            Debug.Log("Trickcooled");
+            isTrick = false;
 
-        yield return null;
+            yield return null;
+        }
+       
 
     }
         
