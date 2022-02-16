@@ -118,6 +118,7 @@ MonoBehaviour:
   northTrick: 0
   speedToLerpTo: 900
   lerpSpeed: 7
+  xLimit: 8
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0
