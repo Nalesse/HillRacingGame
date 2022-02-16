@@ -5,30 +5,35 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Controls controls;
-
+    
+    [Header("Movement")]
     public float speed;
     public float turnSpeed;
-
     public Vector2 controllerInput;
-
     public Rigidbody playerRB;
-
     public float currentVelocity;
 
-    private bool doLerp;
-
+    
+    [Header("Ground collision")]
     public bool isGrounded;
     public Transform groundCheck;
     public LayerMask ground;
 
     //Tricks
+    [Header("Tricks")]
     public bool isTrick;
     public bool northTrick;
     
-    [Header("Lerp Debug")]
+    
     // Lerp variables
+    private bool doLerp;
+    [Header("Lerp Debug")]
     [SerializeField] private float speedToLerpTo;
     [SerializeField] private float lerpSpeed;
+    
+    //Player Boundaries
+    [Header("Player Bounds")]
+    [SerializeField] private float xLimit;
 
     
 
@@ -70,10 +75,14 @@ public class Player : MonoBehaviour
             //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
         }
+        
+        KeepInBounds();
     }
 
     private void Update()
     {
+        
+        
         isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
 
         // This is just code to test that the lerp works, feel free to replace this with the new input system. or implement the LerpSpeed() function
@@ -112,13 +121,13 @@ public class Player : MonoBehaviour
     /// <param name="desiredSpeed">
     /// The ending value for the lerp
     /// </param>
-    /// <param name="lerpSpeed">
+    /// <param name="_lerpSpeed">
     /// The rate at which currentSpeed will approach desiredSpeed
     /// </param>
     /// <returns></returns>
-    private float LerpSpeed(float currentSpeed,float desiredSpeed, float lerpSpeed)
+    private float LerpSpeed(float currentSpeed,float desiredSpeed, float _lerpSpeed)
     {
-        currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeed, lerpSpeed * Time.deltaTime);
+        currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeed, _lerpSpeed * Time.deltaTime);
 
         return currentSpeed;
     }
@@ -152,11 +161,29 @@ public class Player : MonoBehaviour
 
             Debug.Log("Trickcooled");
             isTrick = false;
-
-            yield return null;
         }
        
 
+    }
+
+    /// <summary>
+    /// Keeps the player in the play area by limiting how far thy can move on the x
+    /// </summary>
+    private void KeepInBounds()
+    {
+        
+        // Calculates what the position will be at the end of the current FixedUpdate frame based on the current
+        // position and velocity of the rigid body. 
+        var positionAtEndOfFrame = playerRB.position + playerRB.velocity * Time.deltaTime;
+        
+        // Adjusts the calculated position to be within the allowed x range.
+        //TODO: if we want to limit the y range at some point it might be difficult because the road is sloped, meaning the min and max y wont be consistent. 
+        positionAtEndOfFrame.x = Mathf.Clamp(positionAtEndOfFrame.x, -xLimit, xLimit);
+        // Calculates a new velocity that will take the player to the adjusted position which is inside the x range.
+        var clampedVelocity = (positionAtEndOfFrame - playerRB.position) / Time.deltaTime;
+        // Sets the velocity to the new velocity
+        playerRB.velocity = clampedVelocity;
+        
     }
         
     private void OnEnable()
