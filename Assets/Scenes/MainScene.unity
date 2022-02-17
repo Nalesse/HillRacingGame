@@ -123,9 +123,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &232980943 stripped
+--- !u!4 &34765459 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8354512960200303591, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5711130708061718224, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
   m_PrefabInstance: {fileID: 1545998781}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
@@ -344,7 +344,11 @@ PrefabInstance:
     - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 232980943}
+      objectReference: {fileID: 34765459}
+    - target: {fileID: 686030514481657349, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
+      propertyPath: m_Name
+      value: MaxSpeedThrone
+      objectReference: {fileID: 0}
     - target: {fileID: 8354512960200303591, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.101
