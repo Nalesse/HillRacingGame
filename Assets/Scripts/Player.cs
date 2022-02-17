@@ -75,6 +75,8 @@ public class Player : MonoBehaviour
             //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
         }
+
+        
         
         KeepInBounds();
     }
@@ -140,6 +142,7 @@ public class Player : MonoBehaviour
         {
             isTrick = true;
             northTrick = true;
+            turnSpeed = turnSpeed/1.5f;
         }
        
     }
@@ -155,11 +158,13 @@ public class Player : MonoBehaviour
         {
             northTrick = false;
             Debug.Log("start cooldown");
+            
 
             //this is cooldown time for trick
             yield return new WaitForSeconds(.7f);
 
             Debug.Log("Trickcooled");
+            turnSpeed = turnSpeed * 1.5f;
             isTrick = false;
         }
        

@@ -211,6 +211,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""NorthTrick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a90d0f06-7415-408c-8204-09d9182a07ef"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthTrick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
