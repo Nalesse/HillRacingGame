@@ -18,17 +18,19 @@ public class RoadTile : MonoBehaviour
     #region Privite
     private GameObject spawnedObject;
     private int spawnIndex;
+    private Spawnable objectData;
     #endregion
     
 
     private void Start()
     {
         spawnIndex = Random.Range(0, objectsToSpawn.Length);
+        objectData = objectsToSpawn[spawnIndex];
         
         //The formula to determine the percent is 1 - percent,
         //For example to give a 30% chance you would do 1 - 0.3 which is 0.7
         // This action is done automatically because it is a bit weird to have to put 0.7 for 30% in the inspector 
-        var chanceToSpawn = 1 - objectsToSpawn[spawnIndex].chanceToSpawn;
+        var chanceToSpawn = 1 - objectData.chanceToSpawn;
         
         // gives a percent chance to run function. The percent is stored in the scriptable object 
         if (Random.value > chanceToSpawn)
@@ -50,9 +52,9 @@ public class RoadTile : MonoBehaviour
     private void SpawnObjects()
     {
         var tileTransform = transform;
-        
-        spawnedObject = Instantiate(objectsToSpawn[spawnIndex].prefab, tileTransform.position, 
-            objectsToSpawn[spawnIndex].prefab.transform.rotation);
+        //var randomXPos = Random.Range()
+
+        spawnedObject = Instantiate(objectData.prefab, tileTransform.position, objectData.prefab.transform.rotation);
         
         // Fixes Scale
         // var originalScale = tileTransform.localScale;
@@ -66,7 +68,7 @@ public class RoadTile : MonoBehaviour
     {
         var spawnedObjectPosition = spawnedObject.transform.position;
         var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
-        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y + objectsToSpawn[spawnIndex].positionOffset;
+        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y + objectData.positionOffset;
         spawnedObject.transform.position = spawnedObjectPosition;
     }
 
