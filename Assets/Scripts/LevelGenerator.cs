@@ -40,7 +40,7 @@ public class LevelGenerator : MonoBehaviour
         //Spawns a tile and sets the parent to the container. Then preforms setup for the next tile to be spawned
         spawnedTile = Instantiate(roadTile, nextSpawnPoint, Quaternion.identity);
         spawnedTile.transform.SetParent(roadTileContainer.transform, false);
-        col = spawnedTile.GetComponentInChildren<BoxCollider>();
+        col = spawnedTile.transform.GetChild(0).GetComponent<BoxCollider>();
         nextSpawnPoint = CalculateNextSpawnPoint();
     }
     
@@ -80,7 +80,7 @@ public class LevelGenerator : MonoBehaviour
         // localPosition is used so that the tiles position is local to that of the container
         Vector3 currentTilePosition = spawnedTile.transform.localPosition;
 
-        nextSpawnPoint.y = currentTilePosition.y - 0.02f;
+        nextSpawnPoint.y = currentTilePosition.y- 0.02f;
         nextSpawnPoint.z = currentTilePosition.z + col.bounds.size.z;
 
         return nextSpawnPoint;
