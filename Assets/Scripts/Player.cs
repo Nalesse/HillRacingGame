@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
     //Player Boundaries
     [Header("Player Bounds")]
     [SerializeField] private float xLimit;
+    // Slow down Vars
+    [SerializeField] private float xSlowDownRange;
+    [SerializeField] private float slowDownSpeed;
+   
 
     
 
@@ -111,6 +115,8 @@ public class Player : MonoBehaviour
 
 
         }
+
+        PlayerSlowDown();
     }
 
     /// <summary>
@@ -188,6 +194,21 @@ public class Player : MonoBehaviour
         var clampedVelocity = (positionAtEndOfFrame - playerRB.position) / Time.deltaTime;
         // Sets the velocity to the new velocity
         playerRB.velocity = clampedVelocity;
+        
+    }
+
+    private void PlayerSlowDown()
+    {
+        var player = transform.position;
+
+        if(player.x <= -xSlowDownRange)
+        {
+            playerRB.velocity = new Vector3(playerRB.velocity.x * slowDownSpeed, playerRB.velocity.y, playerRB.velocity.z * slowDownSpeed);
+        }
+        else
+        {
+            
+        }
         
     }
         
