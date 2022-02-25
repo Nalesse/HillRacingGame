@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     [Header("Player Bounds")]
     [SerializeField] private float xLimit;
     // Slow down Vars
+    [Header("Slowdown Vars")]
     [SerializeField] private float xSlowDownRange;
     [SerializeField] private float slowDownSpeed;
     private float oldSpeed;
@@ -201,6 +203,9 @@ public class Player : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Reduces the players speed when they enter the slowdown range
+    /// </summary>
     private void PlayerSlowDown()
     {
         var player = transform.position;
