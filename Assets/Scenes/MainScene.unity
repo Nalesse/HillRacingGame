@@ -216,6 +216,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1336728052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8993535832652988841, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+  m_PrefabInstance: {fileID: 1952244444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1379699313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1379699313, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
@@ -338,12 +349,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: slowDownSpeed
-      value: 0.3
-      objectReference: {fileID: 0}
+      propertyPath: vCam
+      value: 
+      objectReference: {fileID: 1336728052}
     - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: xSlowDownRange
-      value: 7.5
+      propertyPath: lerpSpeed
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
@@ -367,6 +378,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1379699313}
+    - target: {fileID: 8993535832652988841, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_Transitions.m_InheritPosition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000000077206
@@ -377,27 +392,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.62
+      value: -17.619999
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99211127
+      value: 0.9990938
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12536052
+      value: 0.04256395
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.588304e-10
+      value: -0.000000017000744
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.0069382e-11
+      value: 7.2427514e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833525314541, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_CenterOnActivate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833525314541, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_TrackedObjectOffset.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833525314542, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_ZDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833525314542, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: m_BindingMode
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833525314542, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_FollowOffset.y
@@ -405,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833525314542, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -0
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833749808896, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_Name
@@ -465,27 +496,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.62
+      value: -17.619999
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99211127
+      value: 0.9990938
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12536052
+      value: 0.04256395
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.588304e-10
+      value: -0.000000017000744
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.0069382e-11
+      value: 7.2427514e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 23.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993535833877569114, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569114, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_FocalLength

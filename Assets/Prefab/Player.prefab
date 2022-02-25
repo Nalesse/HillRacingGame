@@ -215,7 +215,8 @@ MonoBehaviour:
   speedToLerpTo: 900
   lerpSpeed: 7
   xLimit: 14
-  xSlowDownRange: 0
+  xSlowDownRange: 7.5
+  slowDownSpeed: 500
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0
