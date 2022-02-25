@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Player : MonoBehaviour
     public Rigidbody playerRB;
     public float currentVelocity;
 
-    
+
     [Header("Ground collision")]
     public bool isGrounded;
     public Transform groundCheck;
@@ -37,9 +38,10 @@ public class Player : MonoBehaviour
     // Slow down Vars
     [SerializeField] private float xSlowDownRange;
     [SerializeField] private float slowDownSpeed;
-   
+    private float oldSpeed;
 
-    
+
+
 
     private void Awake()
     {
@@ -50,11 +52,13 @@ public class Player : MonoBehaviour
 
         controls.Racing.NorthTrick.performed += ctx => NorthTrick();
         controls.Racing.NorthTrick.canceled += ctx => NorthTrickCancelled();
+
     }
     // Start is called before the first frame update
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody>();
+        oldSpeed = speed;
     }
 
     // Update is called once per frame
@@ -201,15 +205,17 @@ public class Player : MonoBehaviour
     {
         var player = transform.position;
 
-        if(player.x <= -xSlowDownRange)
+        // slows the player down if the are within the positive or negative x slow down range
+        if (player.x <= -xSlowDownRange || player.x >= xSlowDownRange)
         {
-            playerRB.velocity = new Vector3(playerRB.velocity.x * slowDownSpeed, playerRB.velocity.y, playerRB.velocity.z * slowDownSpeed);
+            speed = LerpSpeed(speed, slowDownSpeed, lerpSpeed);
+
         }
         else
         {
-            
+            speed = LerpSpeed(speed, oldSpeed, lerpSpeed);
         }
-        
+
     }
         
     private void OnEnable()
