@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a9145a24c8e1a46ba742a059c017d7, type: 3}
   m_Name: Ramp
   m_EditorClassIdentifier: 
-  positionOffset: 0.58
+  positionOffset: 1
   prefab: {fileID: 8468794168959760222, guid: 947f019bb9f1a694ca76fd91e743f2d6, type: 3}
   chanceToSpawn: 0.15
