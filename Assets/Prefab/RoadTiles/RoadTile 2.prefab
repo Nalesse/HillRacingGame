@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowDownArea
       objectReference: {fileID: 0}
+    - target: {fileID: 3506876639757672102, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ac4be096e3c57545a77cd39cb33682d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
 --- !u!4 &4081583512548141737 stripped
@@ -1083,6 +1087,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowDownArea (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3506876639757672102, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32d00723cf0f2e441846f5d440464537, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
 --- !u!4 &985025830293666231 stripped
