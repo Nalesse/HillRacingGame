@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
             Debug.Log("Wipeout");
             isTrick = false;
             northTrick = false;
+            turnSpeed = turnSpeed * 1.5f;
 
             //Decrease hp by one here:
 
