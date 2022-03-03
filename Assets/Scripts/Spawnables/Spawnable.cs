@@ -9,7 +9,7 @@ namespace Spawnables
     public class Spawnable : ScriptableObject
     {
         #region Public
-        public float positionOffset;
+        public Vector3 positionOffset;
         public GameObject prefab;
         public float chanceToSpawn;
         #endregion

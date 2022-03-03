@@ -74,7 +74,8 @@ public class RoadTile : MonoBehaviour
     {
         var spawnedObjectPosition = spawnedObject.transform.position;
         var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
-        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y + objectData.positionOffset;
+        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
+        spawnedObjectPosition += objectData.positionOffset;
         spawnedObject.transform.position = spawnedObjectPosition;
     }
 

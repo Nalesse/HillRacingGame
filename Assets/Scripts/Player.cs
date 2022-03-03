@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     
     [Header("Movement")]
     public float speed;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float lerpSpeed;
     public float turnSpeed;
     public Vector2 controllerInput;
     public Rigidbody playerRB;
@@ -26,13 +28,6 @@ public class Player : MonoBehaviour
     public bool isTrick;
     public bool northTrick;
     
-    
-    // Lerp variables
-    private bool doLerp;
-    [Header("Lerp Debug")]
-    [SerializeField] private float speedToLerpTo;
-    [SerializeField] private float lerpSpeed;
-    
     //Player Boundaries
     [Header("Player Bounds")]
     [SerializeField] private float xLimit;
@@ -40,11 +35,9 @@ public class Player : MonoBehaviour
     [Header("Slowdown Vars")]
     [SerializeField] private float xSlowDownRange;
     [SerializeField] private float slowDownSpeed;
-    private float oldSpeed;
-
-
-
-
+    [SerializeField] private float slowDownLerpSpeed;
+    private bool slowDownIsActive;
+    
     private void Awake()
     {
         controls = new Controls();
@@ -60,7 +53,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody>();
-        oldSpeed = speed;
     }
 
     // Update is called once per frame
@@ -85,28 +77,17 @@ public class Player : MonoBehaviour
             //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
         }
-
-        
         
         KeepInBounds();
     }
 
     private void Update()
     {
-        
-        
         isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
 
-        // This is just code to test that the lerp works, feel free to replace this with the new input system. or implement the LerpSpeed() function
-        // in anyway you see fit.
-        if (Input.GetKeyDown(KeyCode.L))
+        if (!slowDownIsActive)
         {
-            doLerp = true;
-        }
-
-        if (doLerp)
-        {
-            speed = LerpSpeed(speed, speedToLerpTo, lerpSpeed);
+            speed = LerpSpeed(speed, maxSpeed, lerpSpeed);
         }
 
         //checks to see if player Wipesout, and resets trick bools
@@ -189,13 +170,11 @@ public class Player : MonoBehaviour
     /// </summary>
     private void KeepInBounds()
     {
-        
         // Calculates what the position will be at the end of the current FixedUpdate frame based on the current
         // position and velocity of the rigid body. 
         var positionAtEndOfFrame = playerRB.position + playerRB.velocity * Time.deltaTime;
         
         // Adjusts the calculated position to be within the allowed x range.
-        //TODO: if we want to limit the y range at some point it might be difficult because the road is sloped, meaning the min and max y wont be consistent. 
         positionAtEndOfFrame.x = Mathf.Clamp(positionAtEndOfFrame.x, -xLimit, xLimit);
         // Calculates a new velocity that will take the player to the adjusted position which is inside the x range.
         var clampedVelocity = (positionAtEndOfFrame - playerRB.position) / Time.deltaTime;
@@ -210,16 +189,15 @@ public class Player : MonoBehaviour
     private void PlayerSlowDown()
     {
         var player = transform.position;
-
-        // slows the player down if the are within the positive or negative x slow down range
+        
         if (player.x <= -xSlowDownRange || player.x >= xSlowDownRange)
         {
-            speed = LerpSpeed(speed, slowDownSpeed, lerpSpeed);
-
+            slowDownIsActive = true;
+            speed = LerpSpeed(speed, slowDownSpeed, slowDownLerpSpeed);
         }
         else
         {
-            speed = LerpSpeed(speed, oldSpeed, lerpSpeed);
+            slowDownIsActive = false;
         }
 
     }
