@@ -3,36 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 10;
-    public bool timerIsRunning = false;
-    public TextMeshProUGUI timeValue;
-    private void Start()
-    {
-        // Starts the timer automatically
-        timerIsRunning = true;
-    }
+    public float timeLeft = 60.0f;
+    public TextMeshProUGUI timeValue; // used for showing countdown from 3, 2, 1 
+
     void Update()
     {
-        if (timerIsRunning)
+        timeLeft -= Time.deltaTime;
+        timeValue.text = (timeLeft).ToString("0");
+        if (timeLeft < 0)
         {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
+            //Do something useful or Load a new game scene depending on your use-case
         }
-    }
-    void DisplayTime(float timeToDisplay)
-    {
-        timeToDisplay += 1;
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timeValue.text = string.Format("{1:00}", seconds);
     }
 }
