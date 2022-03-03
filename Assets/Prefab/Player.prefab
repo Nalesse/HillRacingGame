@@ -200,8 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e234eb72b1dde540919fb6437ef6f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2500
-  turnSpeed: 300
+  speed: 3200
+  maxSpeed: 3500
+  lerpSpeed: 50
+  turnSpeed: 425
   controllerInput: {x: 0, y: 0}
   playerRB: {fileID: 0}
   currentVelocity: 0
@@ -212,11 +214,10 @@ MonoBehaviour:
     m_Bits: 8
   isTrick: 0
   northTrick: 0
-  speedToLerpTo: 900
-  lerpSpeed: 7
-  xLimit: 14
-  xSlowDownRange: 7.5
-  slowDownSpeed: 500
+  xLimit: 16.6
+  xSlowDownRange: 9.8
+  slowDownSpeed: 1900
+  slowDownLerpSpeed: 300
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0
