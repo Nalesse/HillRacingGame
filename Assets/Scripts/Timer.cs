@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 60;
+    public float timeRemaining = 10;
     public bool timerIsRunning = false;
-    public Text timeText;
+    public TextMeshProUGUI timeValue;
     private void Start()
     {
         // Starts the timer automatically
@@ -32,7 +33,6 @@ public class Timer : MonoBehaviour
     {
         timeToDisplay += 1;
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        float milliSeconds = (timeToDisplay % 1) * 1000;
-        timeText.text = string.Format("{0:00}:{1:0}", seconds, milliSeconds);
+        timeValue.text = string.Format("{1:00}", seconds);
     }
 }
