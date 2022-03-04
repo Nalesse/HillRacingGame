@@ -2,37 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 60;
-    public bool timerIsRunning = false;
-    public Text timeText;
-    private void Start()
+    public float timeLeft = 60.0f;
+    public TextMeshProUGUI timeValue; // used for showing countdown from 3, 2, 1 
+    public static bool gamePaused;
+    public GameObject pauseMenu;
+    void Start()
     {
-        // Starts the timer automatically
-        timerIsRunning = true;
+
     }
     void Update()
     {
-        if (timerIsRunning)
+        timeLeft -= Time.deltaTime;
+        timeValue.text = (timeLeft).ToString("0");
+        if (timeLeft < 0)
         {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
+            Time.timeScale = 0f;
         }
+       // if (Input.GetKeyDown(KeyCode.P)) <-Pause function; work in progress.
+        //{
+           // gamePaused = !gamePaused;
+           // PauseGame();
+        //}
     }
-    void DisplayTime(float timeToDisplay)
-    {
-        timeToDisplay += 1;
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        float milliSeconds = (timeToDisplay % 1) * 1000;
-        timeText.text = string.Format("{0:00}:{1:0}", seconds, milliSeconds);
-    }
+
 }
