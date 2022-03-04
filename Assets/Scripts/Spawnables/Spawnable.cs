@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // ReSharper disable IdentifierTypo
 namespace Spawnables 
@@ -14,20 +15,23 @@ namespace Spawnables
         public float chanceToSpawn;
 
         [Header("Randomness")]
-        public float minX, maxX;
-        public float minY, maxY;
-        public float minZ, maxZ;
+        public float minX;
+        public float maxX;
+        // public float minZ, maxZ;
         #endregion
 
         public Vector3 GenerateRandomPosition()
         {
-            var randomPos = new Vector3();
-
-            randomPos.x = UnityEngine.Random.Range(minX, minX);
-            randomPos.y = UnityEngine.Random.Range(minY, maxY);
-            randomPos.z = UnityEngine.Random.Range(minZ, maxZ);
+            var randomPos = new Vector3
+            {
+                x = Random.Range(minX, maxX),
+                //Can't use z until I find a way to make the object match the slope angel in every situation 
+                // z = Random.Range(minZ, maxZ)
+            };
 
             return randomPos;
         }
     }
+
+    
 }
