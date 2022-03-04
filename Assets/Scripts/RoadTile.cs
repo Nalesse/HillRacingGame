@@ -52,13 +52,7 @@ public class RoadTile : MonoBehaviour
     private void SpawnObjects()
     {
         var tileTransform = transform;
-        // Rand pos vars
-        var col = transform.GetChild(0).GetComponent<BoxCollider>();
-        var bounds = col.bounds;
-        var randomXPos = Random.Range(bounds.min.x, bounds.max.x);
-        var randomPos = tileTransform.position;
-        //TODO: Decrease x range to not be on the sides of the road that slow the player
-        randomPos.x = randomXPos;
+        var randomPos = tileTransform.position + objectData.GenerateRandomPosition();
 
         spawnedObject = Instantiate(objectData.prefab, randomPos, objectData.prefab.transform.rotation);
         
