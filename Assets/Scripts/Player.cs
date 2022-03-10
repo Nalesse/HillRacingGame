@@ -37,6 +37,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float slowDownSpeed;
     [SerializeField] private float slowDownLerpSpeed;
     private bool slowDownIsActive;
+
+    //Animation stuff
+    public Animator animator;
+
     
     private void Awake()
     {
@@ -58,6 +62,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //checks to see if turning
+        int turning = 0;
+
         currentVelocity = playerRB.velocity.y; //makes the player fall normally
         //Moves player forward
 
@@ -69,6 +76,7 @@ public class Player : MonoBehaviour
         {
             //transform.Translate(Vector2.right * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
+            turning = 1;
         }
 
         //left
@@ -76,7 +84,10 @@ public class Player : MonoBehaviour
         {
             //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
             playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
+            turning = -1;
         }
+
+        animator.SetInteger("Turn", turning);
         
         KeepInBounds();
     }
