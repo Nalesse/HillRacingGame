@@ -20,8 +20,13 @@ public class Timer : MonoBehaviour
         timeValue.text = (timeLeft).ToString("0");
         if (timeLeft < 0)
         {
-            Time.timeScale = 0f;
+
+            timeLeft = 60f;
+
+            //pauses game
+            //Time.timeScale = 0f;
         }
+
        // if (Input.GetKeyDown(KeyCode.P)) <-Pause function; work in progress.
         //{
            // gamePaused = !gamePaused;
