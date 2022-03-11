@@ -221,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowDownArea
       objectReference: {fileID: 0}
+    - target: {fileID: 3506876639757672101, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3506876639757672102, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -242,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 4353434832208333892, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_Name
       value: tmp_ground (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353434832208333892, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4353434832208333892, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_IsActive
@@ -362,6 +370,10 @@ PrefabInstance:
       value: TallBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 5023731759123956837, guid: 12295703edd6246488a8c90beb420390, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023731759123956837, guid: 12295703edd6246488a8c90beb420390, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -428,6 +440,10 @@ PrefabInstance:
       value: SmallBuilding (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4157659835136858639, guid: dda8d27532af05341a3e0c35093bd4e0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157659835136858639, guid: dda8d27532af05341a3e0c35093bd4e0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -448,6 +464,10 @@ PrefabInstance:
     - target: {fileID: 4353434832208333892, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_Name
       value: tmp_ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353434832208333892, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4353434832208333892, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_IsActive
@@ -570,6 +590,10 @@ PrefabInstance:
     - target: {fileID: 3506876639757672101, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
       propertyPath: m_Name
       value: SlowDownArea (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506876639757672101, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3506876639757672101, guid: 6977d872e40e7bb4794840a14fc4d34c, type: 3}
       propertyPath: m_StaticEditorFlags
