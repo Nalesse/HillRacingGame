@@ -15,3 +15,5 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 1, z: 0}
   prefab: {fileID: 8468794168959760222, guid: 947f019bb9f1a694ca76fd91e743f2d6, type: 3}
   chanceToSpawn: 0.15
+  minX: -8.02
+  maxX: 8.02
