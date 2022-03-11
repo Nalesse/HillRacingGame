@@ -199,6 +199,9 @@ public class Player : MonoBehaviour
     /// </summary>
     private void PlayerSlowDown()
     {
+        // does not run the rest of the code if the player is in the air
+        if (!isGrounded) {return;}
+        
         var player = transform.position;
         
         if (player.x <= -xSlowDownRange || player.x >= xSlowDownRange)
