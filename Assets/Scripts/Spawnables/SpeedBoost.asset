@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a9145a24c8e1a46ba742a059c017d7, type: 3}
   m_Name: SpeedBoost
   m_EditorClassIdentifier: 
-  positionOffset: {x: 0, y: -0.9, z: 0}
+  positionOffset: {x: 0, y: 0, z: 0}
   prefab: {fileID: 8969806817061777670, guid: 5aa3497de69eebf4da040193337a8567, type: 3}
   chanceToSpawn: 0.2
+  minX: -7.51
+  maxX: 7.51
