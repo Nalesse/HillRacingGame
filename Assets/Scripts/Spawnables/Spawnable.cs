@@ -18,15 +18,16 @@ namespace Spawnables
         public float minX;
         public float maxX;
         // public float minZ, maxZ;
+
+        [SerializeField] private float[] xPositions;
         #endregion
 
         public Vector3 GenerateRandomPosition()
         {
+            int index = Random.Range(0, xPositions.Length);
             var randomPos = new Vector3
             {
-                x = Random.Range(minX, maxX),
-                //Can't use z until I find a way to make the object match the slope angel in every situation 
-                // z = Random.Range(minZ, maxZ)
+                x = xPositions[index]
             };
 
             return randomPos;

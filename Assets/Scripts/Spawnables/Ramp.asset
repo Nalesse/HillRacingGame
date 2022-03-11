@@ -17,3 +17,10 @@ MonoBehaviour:
   chanceToSpawn: 0.15
   minX: -8.02
   maxX: 8.02
+  xPositions:
+  - -8.02
+  - 8.02
+  - 4.83
+  - 3.14
+  - -4.83
+  - -3.14
