@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float speed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float lerpSpeed;
-    public float turnSpeed;
+    public float turnSpeed = 420f;
     public Vector2 controllerInput;
     public Rigidbody playerRB;
     public float currentVelocity;
@@ -95,10 +95,27 @@ public class Player : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
+        if (!isGrounded)
+        {
+            animator.SetBool("isGrounded",false);
+        }
+        else
+        {
+            animator.SetBool("isGrounded", true);
+        }
 
         if (!slowDownIsActive)
         {
             speed = LerpSpeed(speed, maxSpeed, lerpSpeed);
+        }
+
+        if (isTrick)
+        {
+            turnSpeed = 210f;
+        }
+        else
+        {
+            turnSpeed = 420;
         }
 
         //checks to see if player Wipesout, and resets trick bools
@@ -107,12 +124,9 @@ public class Player : MonoBehaviour
             Debug.Log("Wipeout");
             isTrick = false;
             northTrick = false;
-            turnSpeed = turnSpeed * 1.5f;
+            
 
             //Decrease hp by one here:
-
-
-
         }
 
         PlayerSlowDown();
@@ -147,7 +161,9 @@ public class Player : MonoBehaviour
         {
             isTrick = true;
             northTrick = true;
-            turnSpeed = turnSpeed/1.5f;
+            animator.SetBool("Ntrick", true);
+            
+
         }
        
     }
@@ -162,6 +178,7 @@ public class Player : MonoBehaviour
         if (!isGrounded)
         {
             northTrick = false;
+            animator.SetBool("Ntrick", false);
             Debug.Log("start cooldown");
             
 
@@ -169,7 +186,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(.7f);
 
             Debug.Log("Trickcooled");
-            turnSpeed = turnSpeed * 1.5f;
+            
             isTrick = false;
         }
        
