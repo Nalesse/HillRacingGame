@@ -53,7 +53,7 @@ public class RoadTile : MonoBehaviour
 
         spawnedObject = Instantiate(spawnableObjectData.prefab, randomPos, spawnableObjectData.prefab.transform.rotation);
         
-        spawnedObject.transform.SetParent(tileTransform,false);
+        spawnedObject.transform.SetParent(tileTransform,true);
 
         AdjustPosition(spawnableObjectData);
     }

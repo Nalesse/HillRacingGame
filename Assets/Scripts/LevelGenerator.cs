@@ -68,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
 
         //Spawns a tile and sets the parent to the container. Then preforms setup for the next tile to be spawned
         spawnedTile = Instantiate(roadTiles[spawnIndex], nextSpawnPoint, Quaternion.identity);
-        spawnedTile.transform.SetParent(roadTileContainer.transform, true);
+        spawnedTile.transform.SetParent(roadTileContainer.transform, false);
         col = spawnedTile.transform.GetChild(0).GetComponent<BoxCollider>();
         if (Random.value > chanceToSpawn)
         {
