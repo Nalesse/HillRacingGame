@@ -17,26 +17,23 @@ public class RoadTile : MonoBehaviour
 
     #region Privite
     private GameObject spawnedObject;
-    private int spawnIndex;
-    private Spawnable objectData;
     #endregion
     
 
     private void Start()
     {
-        spawnIndex = Random.Range(0, objectsToSpawn.Length);
-        objectData = objectsToSpawn[spawnIndex];
+        
         
         //The formula to determine the percent is 1 - percent,
         //For example to give a 30% chance you would do 1 - 0.3 which is 0.7
         // This action is done automatically because it is a bit weird to have to put 0.7 for 30% in the inspector 
-        var chanceToSpawn = 1 - objectData.chanceToSpawn;
+        //var chanceToSpawn = 1 - objectData.chanceToSpawn;
         
         // gives a percent chance to run function. The percent is stored in the scriptable object 
-        if (Random.value > chanceToSpawn)
-        {
-            SpawnObjects();
-        }
+        // if (Random.value > chanceToSpawn)
+        // {
+        //     SpawnObjects();
+        // }
     }
 
     private void OnTriggerExit(Collider other)
@@ -44,33 +41,31 @@ public class RoadTile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LevelGenerator.Instance.SpawnTile();
-            Destroy(gameObject, 2);
+            //Destroy(gameObject, 2);
         }
         
     }
 
-    private void SpawnObjects()
+    public void SpawnObjects(SpawnableObject spawnableObjectData)
     {
         var tileTransform = transform;
-        var randomPos = tileTransform.position + objectData.GenerateRandomPosition();
+        var randomPos = tileTransform.position + spawnableObjectData.GenerateRandomPosition();
 
-        spawnedObject = Instantiate(objectData.prefab, randomPos, objectData.prefab.transform.rotation);
+        spawnedObject = Instantiate(spawnableObjectData.prefab, randomPos, spawnableObjectData.prefab.transform.rotation);
         
-        // Fixes Scale
-        // var originalScale = tileTransform.localScale;
-        spawnedObject.transform.SetParent(tileTransform,true);
-        // spawnedObject.transform.localScale = originalScale;
-        
-        AdjustPosition();
+        spawnedObject.transform.SetParent(tileTransform,false);
+
+        AdjustPosition(spawnableObjectData);
     }
 
-    private void AdjustPosition()
+    private void AdjustPosition(SpawnableObject spawnableObjectData)
     {
-        var spawnedObjectPosition = spawnedObject.transform.position;
         var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
-        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
-        spawnedObjectPosition += objectData.positionOffset;
-        spawnedObject.transform.position = spawnedObjectPosition;
+        // spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
+        // spawnedObjectPosition += spawnableObjectData.Offset;
+        var spawnedObjectPosition = transform.localPosition;
+        spawnedObjectPosition += spawnableObjectData.Offset;
+        spawnedObject.transform.localPosition = spawnedObjectPosition;
     }
 
     

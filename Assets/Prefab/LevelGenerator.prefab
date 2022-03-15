@@ -44,7 +44,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadTiles:
-  - {fileID: 1253682736924406498, guid: 9d314353d5e1bc0438aa699e6404a342, type: 3}
+  - {fileID: 1253682736924406498, guid: f42795f7e10ecbd489611e8a24798735, type: 3}
   - {fileID: 1253682736924406498, guid: b49c2ae4e3413274a99dce9e82726f3b, type: 3}
   - {fileID: 1253682736924406498, guid: 6adcf7f88fd15d84da45b01653fc9f0c, type: 3}
-  tilesToPreSpawn: 5
+  tilesToPreSpawn: 15
+  SpawnableObjects:
+  - prefab: {fileID: 8468794168959760222, guid: 947f019bb9f1a694ca76fd91e743f2d6, type: 3}
+    Offset: {x: 0, y: 1, z: 0}
+    chanceToSpawn: 0.4
+    xPositions:
+    - -8.02
+    - 8.02
+    - 4.83
+    - 3.14
+    - -4.83
+    - -3.14
+  - prefab: {fileID: 8969806817061777670, guid: 5aa3497de69eebf4da040193337a8567, type: 3}
+    Offset: {x: 0, y: 0.9, z: 0}
+    chanceToSpawn: 0.4
+    xPositions:
+    - -7.51
+    - 7.51
+    - -5.45
+    - 5.45
+    - -3.31
+    - 3.31
