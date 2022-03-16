@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Spawnables;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -34,10 +33,9 @@ public class RoadTile : MonoBehaviour
     public void SpawnObjects(SpawnableObject spawnableObjectData)
     {
         var tileTransform = transform;
-        var randomPos = tileTransform.position + spawnableObjectData.GenerateRandomPosition();
+        var randomPos = tileTransform.position;
 
         spawnedObject = Instantiate(spawnableObjectData.prefab, randomPos, spawnableObjectData.prefab.transform.rotation);
-        
         spawnedObject.transform.SetParent(tileTransform,true);
 
         AdjustPosition(spawnableObjectData);
@@ -45,9 +43,13 @@ public class RoadTile : MonoBehaviour
 
     private void AdjustPosition(SpawnableObject spawnableObjectData)
     {
-        var spawnedObjectPosition = transform.position + spawnableObjectData.Offset;
-        spawnedObject.transform.position = spawnedObjectPosition;
+        // Makes sure object is positioned correctly at the center of the road  
+        var objectPosition = transform.position + spawnableObjectData.Offset;
 
+        //Once object is positioned object is given random position on road
+        var randomPos = objectPosition + spawnableObjectData.GenerateRandomPosition();
+        objectPosition = randomPos;
+        spawnedObject.transform.position = objectPosition;
     }
 
     
