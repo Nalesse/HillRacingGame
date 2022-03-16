@@ -60,7 +60,7 @@ MonoBehaviour:
     - -4.83
     - -3.14
   - prefab: {fileID: 8969806817061777670, guid: 5aa3497de69eebf4da040193337a8567, type: 3}
-    Offset: {x: 0, y: 0.9, z: 0}
+    Offset: {x: 0, y: 0, z: 0}
     chanceToSpawn: 0.4
     xPositions:
     - -7.51

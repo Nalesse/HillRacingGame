@@ -11,7 +11,7 @@ public class RoadTile : MonoBehaviour
     #region Inspector Fields
     // Each object is a scriptable object so that the object specific data is not bound to this script
     // The reason for this is so that I don't have to write an if statement for every object that we might want to spawn.
-    [SerializeField] private Spawnable[] objectsToSpawn;
+    //[SerializeField] private Spawnable[] objectsToSpawn;
 
     #endregion
 
@@ -41,7 +41,7 @@ public class RoadTile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LevelGenerator.Instance.SpawnTile();
-            //Destroy(gameObject, 2);
+            Destroy(gameObject, 2);
         }
         
     }
@@ -60,18 +60,17 @@ public class RoadTile : MonoBehaviour
 
     private void AdjustPosition(SpawnableObject spawnableObjectData)
     {
-        // var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
-        // // spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
-        // // spawnedObjectPosition += spawnableObjectData.Offset;
-        // var spawnedObjectPosition = transform.localPosition;
-        // spawnedObjectPosition += spawnableObjectData.Offset;
-        // spawnedObject.transform.localPosition = spawnedObjectPosition;
-        
         var spawnedObjectPosition = spawnedObject.transform.position;
         var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
-        spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
-        spawnedObjectPosition += spawnableObjectData.Offset;
+        
+        // spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
+        // spawnedObjectPosition += spawnableObjectData.Offset;
+
+        spawnedObjectPosition = transform.position + spawnableObjectData.Offset;
+
         spawnedObject.transform.position = spawnedObjectPosition;
+
+
     }
 
     
