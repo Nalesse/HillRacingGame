@@ -13,14 +13,14 @@ public class Score : MonoBehaviour
     public float pointsIncreasing;
     void Start()
     {
-        score = 000000f;
+        score = 0f;
         pointsIncreasing = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreValue.text = "" + (int)score;
+        scoreValue.text = "" + $"{(int)score:00000}";
         if (Input.GetKey(KeyCode.RightBracket))
             score += pointsIncreasing = 100 * Time.deltaTime;
         if (Input.GetKey(KeyCode.LeftBracket))

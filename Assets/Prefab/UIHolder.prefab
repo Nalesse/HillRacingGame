@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000000
+  m_text: 00000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0792333cbf8b9814481161442b294b40, type: 2}
   m_sharedMaterial: {fileID: -9182870121955077282, guid: 0792333cbf8b9814481161442b294b40, type: 2}
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   scoreValue: {fileID: 3938421975345508499}
-  scoreTimer: 0
+  pointsIncreasing: 0
 --- !u!1 &3938421976050910882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000000
+  m_text: 00000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0792333cbf8b9814481161442b294b40, type: 2}
   m_sharedMaterial: {fileID: -9182870121955077282, guid: 0792333cbf8b9814481161442b294b40, type: 2}
