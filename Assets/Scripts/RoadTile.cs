@@ -19,22 +19,7 @@ public class RoadTile : MonoBehaviour
     private GameObject spawnedObject;
     #endregion
     
-
-    private void Start()
-    {
-        
-        
-        //The formula to determine the percent is 1 - percent,
-        //For example to give a 30% chance you would do 1 - 0.3 which is 0.7
-        // This action is done automatically because it is a bit weird to have to put 0.7 for 30% in the inspector 
-        //var chanceToSpawn = 1 - objectData.chanceToSpawn;
-        
-        // gives a percent chance to run function. The percent is stored in the scriptable object 
-        // if (Random.value > chanceToSpawn)
-        // {
-        //     SpawnObjects();
-        // }
-    }
+    
 
     private void OnTriggerExit(Collider other)
     {
@@ -60,16 +45,8 @@ public class RoadTile : MonoBehaviour
 
     private void AdjustPosition(SpawnableObject spawnableObjectData)
     {
-        var spawnedObjectPosition = spawnedObject.transform.position;
-        var spawnedObjectCol = spawnedObject.GetComponent<BoxCollider>();
-        
-        // spawnedObjectPosition.y += spawnedObjectCol.bounds.size.y;
-        // spawnedObjectPosition += spawnableObjectData.Offset;
-
-        spawnedObjectPosition = transform.position + spawnableObjectData.Offset;
-
+        var spawnedObjectPosition = transform.position + spawnableObjectData.Offset;
         spawnedObject.transform.position = spawnedObjectPosition;
-
 
     }
 

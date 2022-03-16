@@ -40,7 +40,7 @@ public class LevelGenerator : MonoBehaviour
     private GameObject roadTileContainer;
     // Please do not touch this unless it is absolutely necessary. if this value is changed then the position offsets
     // and rotations for all the spawnable objects will need to be readjusted  
-    private float roadSlopeAngle = 10;
+    private float roadSlopeAngle = 0;
     private SpawnableObject spawnedObjectData;
     private int objectDataIndex;
     #endregion
