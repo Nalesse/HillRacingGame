@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,18 +13,52 @@ public struct SpawnableObject
     public Vector3 Offset;
     [Range(0.0f, 1.0f)]
     public float chanceToSpawn;
-    public float[] xPositions;
+    [Header("Randomness")]
+    [Range(-8.609f, -2.08f)]
+    public float xMin;
+    [Range(2.08f, 8.609f)]
+    public float xMax;
+    [Space]
+    [Range(-66.65f, 0)]
+    public float zMin;
+    [Range(0,66.65f)]
+    public float zMax;
+    
+    [Header("Disallowed Spawn Range")]
+    [Range(-1.92f, -1.38f)]
+    public float disallowedXMin;
+    [Range(1.38f, 1.92f)]
+    public float disallowedXMax;
     
     public Vector3 GenerateRandomPosition()
     {
-        int index = Random.Range(0, xPositions.Length);
-        var randomPos = new Vector3
+        // Generates a random position to start with
+        var randomPos = GetRandomVector3(xMin, xMax, zMin, zMax);
+
+        // if the random position is in the disallowed spawn range then a new position is generated until it is
+        // no longer is within the spawn range
+        while (randomPos.x >= disallowedXMin && randomPos.x <= disallowedXMax)
         {
-            x = xPositions[index]
-        };
+            randomPos = GetRandomVector3(xMin, xMax, zMin, zMax);
+        }
 
         return randomPos;
+
     }
+
+    // Helper function to avoid repeated code
+    private Vector3 GetRandomVector3(float _xMin, float _xMax, float _zMin, float _zMax)
+    {
+        var randomVector3 = new Vector3
+        {
+            x = Random.Range(_xMin, _xMax),
+            z = Random.Range(_zMin, _zMax)
+        };
+
+        return randomVector3;
+    }
+
+    
 }
 
 public class LevelGenerator : MonoBehaviour
