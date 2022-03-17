@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "EastTrick",
+                    "type": "Button",
+                    "id": "db49c426-e5ae-4975-b55f-dd6a11f4911c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -207,6 +215,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "NorthTrick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72db2ee2-326f-4544-bef0-c231c129c813",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EastTrick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbfa8df4-380d-45a5-a51a-113bc73e48fd",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EastTrick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
