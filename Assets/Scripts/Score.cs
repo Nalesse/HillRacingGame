@@ -21,9 +21,13 @@ public class Score : MonoBehaviour
     void Update()
     {
         scoreValue.text = "" + $"{(int)score:00000}";
-        if (Input.GetKey(KeyCode.RightBracket))
+        if (Player.Instance.isTrick || Input.GetKey(KeyCode.RightBracket))
+        {
             score += pointsIncreasing = 100 * Time.deltaTime;
+        }
         if (Input.GetKey(KeyCode.LeftBracket))
+        {
             score += pointsIncreasing = -100 * Time.deltaTime;
+        }
     }
 }
