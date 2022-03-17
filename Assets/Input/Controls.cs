@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""EastTrick"",
+                    ""type"": ""Button"",
+                    ""id"": ""db49c426-e5ae-4975-b55f-dd6a11f4911c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -222,6 +230,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""NorthTrick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72db2ee2-326f-4544-bef0-c231c129c813"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastTrick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbfa8df4-380d-45a5-a51a-113bc73e48fd"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastTrick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -232,6 +262,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
         m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
         m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
+        m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -283,12 +314,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IRacingActions m_RacingActionsCallbackInterface;
     private readonly InputAction m_Racing_Move;
     private readonly InputAction m_Racing_NorthTrick;
+    private readonly InputAction m_Racing_EastTrick;
     public struct RacingActions
     {
         private @Controls m_Wrapper;
         public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Racing_Move;
         public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
+        public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -304,6 +337,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @NorthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
                 @NorthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
                 @NorthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -314,6 +350,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @NorthTrick.started += instance.OnNorthTrick;
                 @NorthTrick.performed += instance.OnNorthTrick;
                 @NorthTrick.canceled += instance.OnNorthTrick;
+                @EastTrick.started += instance.OnEastTrick;
+                @EastTrick.performed += instance.OnEastTrick;
+                @EastTrick.canceled += instance.OnEastTrick;
             }
         }
     }
@@ -322,5 +361,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnNorthTrick(InputAction.CallbackContext context);
+        void OnEastTrick(InputAction.CallbackContext context);
     }
 }
