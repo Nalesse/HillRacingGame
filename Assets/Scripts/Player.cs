@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("Tricks")]
     public bool isTrick;
     public bool northTrick;
+    public bool eastTrick;
     
     //Player Boundaries
     [Header("Player Bounds")]
@@ -55,6 +56,9 @@ public class Player : MonoBehaviour
 
         controls.Racing.NorthTrick.performed += ctx => NorthTrick();
         controls.Racing.NorthTrick.canceled += ctx => NorthTrickCancelled();
+
+        controls.Racing.EastTrick.performed += ctx => EastTrick();
+        controls.Racing.EastTrick.canceled += ctx => EastTrickCancelled();
 
         // Singleton setup
         if (_instance != null && _instance != this)
@@ -139,7 +143,7 @@ public class Player : MonoBehaviour
             Debug.Log("Wipeout");
             isTrick = false;
             northTrick = false;
-            
+            eastTrick = false;
 
             //Decrease hp by one here:
         }
@@ -172,7 +176,7 @@ public class Player : MonoBehaviour
     //All code Refering to north button trick
     void NorthTrick()
     {
-        if (!isGrounded)
+        if (!isGrounded && !isTrick)
         {
             isTrick = true;
             northTrick = true;
@@ -207,6 +211,43 @@ public class Player : MonoBehaviour
        
 
     }
+
+    void EastTrick()
+    {
+        if (!isGrounded && !isTrick)
+        {
+            isTrick = true;
+            eastTrick = true;
+            animator.SetBool("Etrick", true);
+        }
+        
+    }
+
+    void EastTrickCancelled()
+    {
+        StartCoroutine(EastTrickCooldown());
+    }
+
+    IEnumerator EastTrickCooldown()
+    {
+        if (!isGrounded)
+        {
+            eastTrick = false;
+            animator.SetBool("Etrick", false);
+            Debug.Log("start cooldown");
+
+
+            //this is cooldown time for trick
+            yield return new WaitForSeconds(.7f);
+
+            Debug.Log("Trickcooled");
+
+            isTrick = false;
+        }
+
+
+    }
+
 
     /// <summary>
     /// Keeps the player in the play area by limiting how far thy can move on the x
