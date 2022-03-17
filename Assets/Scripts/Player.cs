@@ -41,6 +41,10 @@ public class Player : MonoBehaviour
     //Animation stuff
     public Animator animator;
 
+    //singleton
+    private static Player _instance;
+    public static Player Instance { get { return _instance; } }
+
     
     private void Awake()
     {
@@ -51,6 +55,17 @@ public class Player : MonoBehaviour
 
         controls.Racing.NorthTrick.performed += ctx => NorthTrick();
         controls.Racing.NorthTrick.canceled += ctx => NorthTrickCancelled();
+
+        // Singleton setup
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        else
+        {
+            _instance = this;
+        }
 
     }
     // Start is called before the first frame update
