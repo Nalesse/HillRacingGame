@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     //Animation stuff
     public Animator animator;
 
+    //Debug Tools
+    public float jumpForce;
+
     //singleton
     private static Player _instance;
     public static Player Instance { get { return _instance; } }
@@ -53,6 +56,8 @@ public class Player : MonoBehaviour
 
         controls.Racing.Move.performed += ctx => controllerInput = ctx.ReadValue<Vector2>();
         controls.Racing.Move.canceled += ctx => controllerInput = Vector2.zero;
+
+        controls.Racing.DebugJump.performed += ctx => Jump();
 
         controls.Racing.NorthTrick.performed += ctx => NorthTrick();
         controls.Racing.NorthTrick.canceled += ctx => NorthTrickCancelled();
@@ -138,7 +143,7 @@ public class Player : MonoBehaviour
         }
 
         //checks to see if player Wipesout, and resets trick bools
-        if (isTrick && isGrounded)
+        if (northTrick && isGrounded || eastTrick && isGrounded)
         {
             Debug.Log("Wipeout");
             isTrick = false;
@@ -176,7 +181,7 @@ public class Player : MonoBehaviour
     //All code Refering to north button trick
     void NorthTrick()
     {
-        if (!isGrounded && !isTrick)
+        if (!isGrounded)
         {
             isTrick = true;
             northTrick = true;
@@ -194,7 +199,7 @@ public class Player : MonoBehaviour
 
     IEnumerator NorthTrickCooldown()
     {
-        if (!isGrounded)
+        if (!isGrounded && !eastTrick)
         {
             northTrick = false;
             animator.SetBool("Ntrick", false);
@@ -214,7 +219,7 @@ public class Player : MonoBehaviour
 
     void EastTrick()
     {
-        if (!isGrounded && !isTrick)
+        if (!isGrounded)
         {
             isTrick = true;
             eastTrick = true;
@@ -287,6 +292,11 @@ public class Player : MonoBehaviour
             slowDownIsActive = false;
         }
 
+    }
+
+    void Jump()
+    {
+        transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
     }
         
     private void OnEnable()

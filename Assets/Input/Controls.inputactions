@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DebugJump",
+                    "type": "Button",
+                    "id": "386329cd-cc45-4814-b591-a6c3274c70c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -237,6 +245,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EastTrick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e77f2d28-cc62-4eed-852b-79df4f480925",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
