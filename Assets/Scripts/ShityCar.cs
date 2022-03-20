@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class ShityCar : MonoBehaviour
 {
-    Rigidbody carRB;
+    private Rigidbody carRB;
 
-    private float speed;
+    [SerializeField] private float speed;
+    [SerializeField] private float minDistance;
+    [SerializeField] private float minDestroyDistance;
     // Start is called before the first frame update
     void Start()
     {
         carRB = GetComponent<Rigidbody>();
         transform.parent = null;
-        speed = Player.Instance.speed;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         var distance = (Player.Instance.transform.position - transform.position).z;
         
-
-        Debug.Log(distance);
-        if(distance >= -100)
+        if(distance >= minDistance)
         {
             var currentVelocity = carRB.velocity.y;
             carRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
+        }
+
+        if (distance >= minDestroyDistance)
+        {
+            Destroy(gameObject);
         }
     }
 }
