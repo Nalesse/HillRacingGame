@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,19 @@ public class ShityCar : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float minDistance;
     [SerializeField] private float minDestroyDistance;
+    [SerializeField] private float distanceBetweenCars;
+    
     // Start is called before the first frame update
     void Start()
     {
         carRB = GetComponent<Rigidbody>();
         transform.parent = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, distanceBetweenCars);
+
     }
 
     // Update is called once per frame
@@ -31,5 +40,7 @@ public class ShityCar : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 }
