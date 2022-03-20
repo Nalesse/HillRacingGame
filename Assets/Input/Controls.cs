@@ -41,6 +41,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugJump"",
+                    ""type"": ""Button"",
+                    ""id"": ""386329cd-cc45-4814-b591-a6c3274c70c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -252,6 +260,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""EastTrick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e77f2d28-cc62-4eed-852b-79df4f480925"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugJump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +282,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
         m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
         m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
+        m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +335,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Racing_Move;
     private readonly InputAction m_Racing_NorthTrick;
     private readonly InputAction m_Racing_EastTrick;
+    private readonly InputAction m_Racing_DebugJump;
     public struct RacingActions
     {
         private @Controls m_Wrapper;
@@ -322,6 +343,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Racing_Move;
         public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
         public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
+        public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -340,6 +362,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
                 @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
                 @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @DebugJump.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                @DebugJump.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                @DebugJump.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -353,6 +378,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @EastTrick.started += instance.OnEastTrick;
                 @EastTrick.performed += instance.OnEastTrick;
                 @EastTrick.canceled += instance.OnEastTrick;
+                @DebugJump.started += instance.OnDebugJump;
+                @DebugJump.performed += instance.OnDebugJump;
+                @DebugJump.canceled += instance.OnDebugJump;
             }
         }
     }
@@ -362,5 +390,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnNorthTrick(InputAction.CallbackContext context);
         void OnEastTrick(InputAction.CallbackContext context);
+        void OnDebugJump(InputAction.CallbackContext context);
     }
 }
