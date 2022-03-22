@@ -1,10 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShityCar : MonoBehaviour
 {
-    Rigidbody carRB;
+    private Rigidbody carRB;
+
+    [SerializeField] private float speed;
+    [SerializeField] private float minDistance;
+    [SerializeField] private float minDestroyDistance;
+    // [SerializeField] private float distanceBetweenCars;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -12,22 +19,28 @@ public class ShityCar : MonoBehaviour
         transform.parent = null;
     }
 
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.DrawWireSphere(transform.position, distanceBetweenCars);
+    //
+    // }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         var distance = (Player.Instance.transform.position - transform.position).z;
-        var speed = Player.Instance.speed;
-
-        if(distance >= 20)
+        
+        if(distance >= minDistance)
         {
-            Debug.Log(distance);
             var currentVelocity = carRB.velocity.y;
             carRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
         }
-        else if(distance >= 300)
+
+        if (distance >= minDestroyDistance)
         {
-            Destroy(gameObject, 2);
-            Debug.Log("Car destroyed");
+            Destroy(gameObject);
         }
+
+        
     }
 }
