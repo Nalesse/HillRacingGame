@@ -67,3 +67,12 @@ MonoBehaviour:
     zMax: 0
     disallowedXMin: -1.92
     disallowedXMax: 1.92
+  - prefab: {fileID: 5666359609849991738, guid: d32bfbd6cabea4643a2a6ec43837b608, type: 3}
+    Offset: {x: 0, y: 1, z: 0}
+    chanceToSpawn: 0.898
+    xMin: -7.51
+    xMax: 7.51
+    zMin: 0
+    zMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
