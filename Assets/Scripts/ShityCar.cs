@@ -10,7 +10,7 @@ public class ShityCar : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float minDistance;
     [SerializeField] private float minDestroyDistance;
-    [SerializeField] private float distanceBetweenCars;
+    // [SerializeField] private float distanceBetweenCars;
     
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,11 @@ public class ShityCar : MonoBehaviour
         transform.parent = null;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, distanceBetweenCars);
-
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.DrawWireSphere(transform.position, distanceBetweenCars);
+    //
+    // }
 
     // Update is called once per frame
     void FixedUpdate()
