@@ -8,14 +8,40 @@ using UnityEngine.Serialization;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] gameplayTracks;
-    private List<AudioSource> audioSources;
-    [SerializeField] private float fadeStart;
-    private AudioSource currentTrack;
-
     [SerializeField] private float timeLeft;
+    [SerializeField] private float fadeStart;
+    [SerializeField] private float maxVolume = 1f;
     
+    private AudioSource currentTrack;
+    private AudioSource nextTrack;
+    private List<AudioSource> audioSources;
+    private float minVolume = 0f;
+    private bool doFade = true;
+
+
 
     private void Start()
+    {
+        CreateAudioSources();
+    }
+
+    private void Update()
+    {
+        timeLeft = currentTrack.clip.length - currentTrack.time;
+        if (timeLeft <= fadeStart)
+        {
+            if (doFade)
+            {
+                StartCoroutine(FadeOut(currentTrack, 2f, 0));
+                StartCoroutine(FadeIn(nextTrack, 2f, maxVolume));
+                doFade = false;
+            }
+        }
+    }
+
+    #region BGMFade
+
+    private void CreateAudioSources()
     {
         audioSources = new List<AudioSource>(new AudioSource[gameplayTracks.Length]);
 
@@ -30,43 +56,55 @@ public class AudioManager : MonoBehaviour
         }
         // Sets the current track to be the first audio source and enables it
         currentTrack = audioSources[0];
-        currentTrack.volume = 1;
+        nextTrack = audioSources[1];
+        currentTrack.volume = maxVolume;
         currentTrack.Play();
-
     }
-
-    private void Update()
+    
+    IEnumerator FadeIn(AudioSource track, float duration, float targetVolume)
     {
-        timeLeft = currentTrack.clip.length - currentTrack.time;
-        if (timeLeft <= fadeStart)
+        float timer = 0f;
+        float currentVolume = track.volume;
+        float targetValue = Mathf.Clamp(targetVolume, minVolume, maxVolume);
+
+        track.Play();
+        while (timer < duration)
         {
-            StopAllCoroutines();
-            StartCoroutine(LerpTracks());
+            timer += Time.deltaTime;
+            var newVolume = Mathf.Lerp(currentVolume, targetValue, timer / duration);
+            track.volume = newVolume;
+            yield return null;
         }
-    }
 
-    private IEnumerator LerpTracks()
-    {
-        var nextTrackIndex = audioSources.IndexOf(currentTrack) + 1;
-        float timeToFade = 1.25f;
-        float timeElapsed = 0;
+        currentTrack = nextTrack;
+        var nextTrackIndex = audioSources.IndexOf(nextTrack) + 1;
         if (nextTrackIndex >= audioSources.Count)
         {
             nextTrackIndex = 0;
         }
-        
-        var nextTrack = audioSources[nextTrackIndex];
-
-        while (timeElapsed < timeToFade)
-        {
-            currentTrack.volume = Mathf.Lerp(1, 0, timeElapsed / timeToFade);
-            nextTrack.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
-            timeElapsed += Time.deltaTime;
-        }
-        currentTrack.Stop();
-        nextTrack.Play();
-        currentTrack = nextTrack;
-        yield return null;
+        nextTrack = audioSources[nextTrackIndex];
+        doFade = true;
 
     }
+    
+    IEnumerator FadeOut(AudioSource track, float duration, float targetVolume)
+    {
+        float timer = 0f;
+        float currentVolume = track.volume;
+        float targetValue = Mathf.Clamp(targetVolume, minVolume, maxVolume);
+
+        while (track.volume > 0)
+        {
+            timer += Time.deltaTime;
+            var newVolume = Mathf.Lerp(currentVolume, targetValue, timer / duration);
+            track.volume = newVolume;
+            yield return null;
+        }
+        track.Stop();
+
+    }
+    
+    #endregion
+
+    
 }
