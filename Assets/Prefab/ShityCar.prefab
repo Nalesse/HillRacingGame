@@ -61,10 +61,6 @@ MonoBehaviour:
   speed: 3100
   minDistance: -130
   minDestroyDistance: 20
-  distanceBetweenCars: 7.06
-  ignoreMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!54 &842052752886450798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -143,6 +139,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6a58ad77625b0f418432fe7480db6ea, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6a58ad77625b0f418432fe7480db6ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6a58ad77625b0f418432fe7480db6ea, type: 3}
