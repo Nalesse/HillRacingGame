@@ -8,8 +8,6 @@ using UnityEngine.Serialization;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] gameplayTracks;
-    [SerializeField] private float timeLeft;
-    [SerializeField] private float fadeStart;
     [SerializeField] private float maxVolume = 1f;
     [SerializeField] private float fadeDuration;
     
@@ -17,7 +15,6 @@ public class AudioManager : MonoBehaviour
     private AudioSource nextTrack;
     private List<AudioSource> audioSources;
     private float minVolume = 0f;
-    private bool doFade = true;
 
 
 
