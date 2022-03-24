@@ -26,19 +26,9 @@ public class AudioManager : MonoBehaviour
         CreateAudioSources();
     }
 
-    private void Update()
-    {
-        timeLeft = currentTrack.clip.length - currentTrack.time;
-        if (timeLeft <= fadeStart)
-        {
-            if (doFade)
-            {
-                StartCoroutine(FadeOut(currentTrack, fadeDuration, 0));
-                StartCoroutine(FadeIn(nextTrack, fadeDuration, maxVolume));
-                doFade = false;
-            }
-        }
-    }
+    // Timer Event Listener
+    private void OnEnable() => GameEvents.TimerCompleted.AddListener(StartFade);
+    private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(StartFade);
 
     #region BGMFade
 
@@ -61,7 +51,15 @@ public class AudioManager : MonoBehaviour
         currentTrack.volume = maxVolume;
         currentTrack.Play();
     }
-    
+
+    private void StartFade()
+    {
+        StartCoroutine(FadeOut(currentTrack, fadeDuration, 0));
+        StartCoroutine(FadeIn(nextTrack, fadeDuration, maxVolume));
+    }
+
+
+    // Fades the track in and sets the next track to be the next song
     IEnumerator FadeIn(AudioSource track, float duration, float targetVolume)
     {
         float timer = 0f;
