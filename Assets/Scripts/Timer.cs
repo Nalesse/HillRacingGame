@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
         timeValue.text = (timeLeft).ToString("0");
         if (timeLeft < 0)
         {
-
+            GameEvents.TimerCompleted.Invoke();
             timeLeft = 60f;
 
             //pauses game
