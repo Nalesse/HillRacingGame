@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
 
         if (isDamage)
         {
-            speed = LerpSpeed(speed, 0, 0.1f);
+            speed = LerpSpeed(speed, 0, 500);
         }
 
         PlayerSlowDown();
@@ -272,7 +272,7 @@ public class Player : MonoBehaviour
         animator.SetBool("Etrick", false);
         isDamage = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3);
 
         isDamage = false;
 

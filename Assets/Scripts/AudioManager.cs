@@ -79,7 +79,6 @@ public class AudioManager : MonoBehaviour
             nextTrackIndex = 0;
         }
         nextTrack = audioSources[nextTrackIndex];
-        doFade = true;
 
     }
     
