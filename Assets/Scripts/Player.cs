@@ -28,7 +28,9 @@ public class Player : MonoBehaviour
     public bool isTrick;
     public bool northTrick;
     public bool eastTrick;
-    
+    public bool isDamage;
+
+
     //Player Boundaries
     [Header("Player Bounds")]
     [SerializeField] private float xLimit;
@@ -128,7 +130,7 @@ public class Player : MonoBehaviour
             animator.SetBool("isGrounded", true);
         }
 
-        if (!slowDownIsActive)
+        if (!slowDownIsActive && !isDamage)
         {
             speed = LerpSpeed(speed, maxSpeed, lerpSpeed);
         }
@@ -145,12 +147,15 @@ public class Player : MonoBehaviour
         //checks to see if player Wipesout, and resets trick bools
         if (northTrick && isGrounded || eastTrick && isGrounded)
         {
-            Debug.Log("Wipeout");
-            isTrick = false;
-            northTrick = false;
-            eastTrick = false;
+          
 
             //Decrease hp by one here:
+            StartCoroutine(Damage());
+        }
+
+        if (isDamage)
+        {
+            speed = LerpSpeed(speed, 0, 500);
         }
 
         PlayerSlowDown();
@@ -181,13 +186,13 @@ public class Player : MonoBehaviour
     //All code Refering to north button trick
     void NorthTrick()
     {
-        if (!isGrounded)
+        if (!isGrounded && !isTrick)
         {
-            isTrick = true;
             northTrick = true;
+            isTrick = true;
+            
             animator.SetBool("Ntrick", true);
             
-
         }
        
     }
@@ -201,14 +206,14 @@ public class Player : MonoBehaviour
     {
         if (!isGrounded && !eastTrick)
         {
-            northTrick = false;
+            
             animator.SetBool("Ntrick", false);
             Debug.Log("start cooldown");
             
 
             //this is cooldown time for trick
             yield return new WaitForSeconds(.7f);
-
+            northTrick = false;
             Debug.Log("Trickcooled");
             
             isTrick = false;
@@ -250,6 +255,26 @@ public class Player : MonoBehaviour
             isTrick = false;
         }
 
+
+    }
+
+    IEnumerator Damage()
+    {
+        Debug.Log("Wipeout");
+        isTrick = false;
+        northTrick = false;
+        eastTrick = false;
+        animator.SetTrigger("isDamage");
+
+
+        //Turns off trick animations
+        animator.SetBool("Ntrick", false);
+        animator.SetBool("Etrick", false);
+        isDamage = true;
+
+        yield return new WaitForSeconds(3);
+
+        isDamage = false;
 
     }
 
