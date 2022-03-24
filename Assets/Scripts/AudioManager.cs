@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float timeLeft;
     [SerializeField] private float fadeStart;
     [SerializeField] private float maxVolume = 1f;
+    [SerializeField] private float fadeDuration;
     
     private AudioSource currentTrack;
     private AudioSource nextTrack;
@@ -32,8 +33,8 @@ public class AudioManager : MonoBehaviour
         {
             if (doFade)
             {
-                StartCoroutine(FadeOut(currentTrack, 2f, 0));
-                StartCoroutine(FadeIn(nextTrack, 2f, maxVolume));
+                StartCoroutine(FadeOut(currentTrack, fadeDuration, 0));
+                StartCoroutine(FadeIn(nextTrack, fadeDuration, maxVolume));
                 doFade = false;
             }
         }
