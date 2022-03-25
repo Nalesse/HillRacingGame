@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,6 +19,13 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         CreateAudioSources();
+        // Removes fade functionality if there is only one song
+        if (audioSources.Count < 2)
+        {
+            GameEvents.TimerCompleted.RemoveListener(StartFade);
+            return;
+        }
+        nextTrack = audioSources[1];
     }
 
     // Timer Event Listener
@@ -44,7 +49,6 @@ public class AudioManager : MonoBehaviour
         }
         // Sets the current track to be the first audio source and enables it
         currentTrack = audioSources[0];
-        nextTrack = audioSources[1];
         currentTrack.volume = maxVolume;
         currentTrack.Play();
     }

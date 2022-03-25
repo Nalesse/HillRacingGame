@@ -5,5 +5,8 @@ using UnityEngine;
 
 public static class GameEvents
 {
-    public static UnityEvent TimerCompleted = new UnityEvent();
+    /// <summary>
+    /// Event that fires everytime the game timer reaches 0
+    /// </summary>
+    public static readonly UnityEvent TimerCompleted = new UnityEvent();
 }
