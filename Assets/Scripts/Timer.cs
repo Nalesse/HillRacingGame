@@ -20,7 +20,9 @@ public class Timer : MonoBehaviour
         timeValue.text = (timeLeft).ToString("0");
         if (timeLeft < 0)
         {
-            GameEvents.TimerCompleted.Invoke();
+            // Invokes TimerCompleted event, which other classes can listen to.
+            // ? operator checks if the event is null  
+            GameEvents.TimerCompleted?.Invoke();
             timeLeft = 60f;
 
             //pauses game
