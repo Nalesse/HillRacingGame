@@ -3,7 +3,12 @@ guid: 8baef2cfa1c7f1c4ab0239a1f8fb4093
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shittycar_Vroom_VroomMat
+    second: {fileID: 2100000, guid: 0a41aeeb39b87d747bf35c267871930d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

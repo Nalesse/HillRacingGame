@@ -24,13 +24,13 @@ public class RoadTile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelGenerator.Instance.SpawnTile();
+            LevelGenerator.Instance.SpawnObjects();
             Destroy(gameObject, 2);
         }
         
     }
 
-    public void SpawnObjects(SpawnableObject spawnableObjectData)
+    public void SpawnRoadObjects(SpawnableObject spawnableObjectData)
     {
         var tileTransform = transform;
         var randomPos = tileTransform.position;
