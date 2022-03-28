@@ -29,7 +29,7 @@ public struct SpawnableObject
     public float disallowedXMin;
     [Range(1.38f, 1.92f)]
     public float disallowedXMax;
-    
+
     public Vector3 GenerateRandomPosition()
     {
         // Generates a random position to start with
@@ -78,7 +78,6 @@ public class LevelGenerator : MonoBehaviour
     // and rotations for all the spawnable objects will need to be readjusted  
     private float roadSlopeAngle = 0;
     private SpawnableObject spawnedObjectData;
-    private int objectDataIndex;
     #endregion
 
     #region Inspector Fields
@@ -94,22 +93,30 @@ public class LevelGenerator : MonoBehaviour
 
     
     
-    public void SpawnTile()
+    public void SpawnObjects()
     {
         int spawnIndex = Random.Range(0, roadTiles.Length);
+        
         // Setup for Spawning Road objects
-        objectDataIndex = Random.Range(0, SpawnableObjects.Length);
-        spawnedObjectData = SpawnableObjects[objectDataIndex];
-        var chanceToSpawn = 1 - spawnedObjectData.chanceToSpawn;
 
         //Spawns a tile and sets the parent to the container. Then preforms setup for the next tile to be spawned
         spawnedTile = Instantiate(roadTiles[spawnIndex], nextSpawnPoint, Quaternion.identity);
         spawnedTile.transform.SetParent(roadTileContainer.transform, false);
         col = spawnedTile.transform.GetChild(0).GetComponent<BoxCollider>();
-        if (Random.value > chanceToSpawn)
+        
+        // loops through all the spawnable objects and checks the chance to spawn.
+        //if random.value is greater then the chance to spawn then the object gets spawned
+        for (int i = 0; i < SpawnableObjects.Length; i++)
         {
-            spawnedTile.GetComponent<RoadTile>().SpawnObjects(spawnedObjectData);
+            var chanceToSpawn = 1 - SpawnableObjects[i].chanceToSpawn;
+            if (Random.value > chanceToSpawn)
+            {
+                spawnedObjectData = SpawnableObjects[i];
+                break;
+            }
         }
+        
+        spawnedTile.GetComponent<RoadTile>().SpawnRoadObjects(spawnedObjectData);
         nextSpawnPoint = CalculateNextSpawnPoint();
     }
     
@@ -136,7 +143,7 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < tilesToPreSpawn; i++)
         {
-            SpawnTile();
+            SpawnObjects();
         }
         // Sets the rotation of the container, which also rotates the tiles
         SetRotation(roadTileContainer, roadSlopeAngle, Vector3.right);
