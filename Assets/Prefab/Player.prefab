@@ -215,11 +215,14 @@ MonoBehaviour:
     m_Bits: 8
   isTrick: 0
   northTrick: 0
+  eastTrick: 0
+  isDamage: 0
   xLimit: 16.6
   xSlowDownRange: 9.8
   slowDownSpeed: 1900
   slowDownLerpSpeed: 300
   animator: {fileID: 8401585071384670820}
+  jumpForce: 0
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0

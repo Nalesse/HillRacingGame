@@ -7,7 +7,8 @@ using Cinemachine;
 public class Player : MonoBehaviour
 {
     Controls controls;
-    
+    //TrickSystem trickSystem;
+
     [Header("Movement")]
     public float speed;
     [SerializeField] private float maxSpeed;
@@ -23,11 +24,12 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public LayerMask ground;
 
-    //Tricks
+    
     [Header("Tricks")]
     public bool isTrick;
     public bool northTrick;
     public bool eastTrick;
+    public bool southTrick;
     public bool isDamage;
 
 
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
+        
 
         controls.Racing.Move.performed += ctx => controllerInput = ctx.ReadValue<Vector2>();
         controls.Racing.Move.canceled += ctx => controllerInput = Vector2.zero;
@@ -66,6 +69,9 @@ public class Player : MonoBehaviour
 
         controls.Racing.EastTrick.performed += ctx => EastTrick();
         controls.Racing.EastTrick.canceled += ctx => EastTrickCancelled();
+
+        controls.Racing.SouthTrick.performed += ctx => SouthTrick();
+        controls.Racing.SouthTrick.canceled += ctx => SouthTrickCancelled();
 
         // Singleton setup
         if (_instance != null && _instance != this)
@@ -145,7 +151,7 @@ public class Player : MonoBehaviour
         }
 
         //checks to see if player Wipesout, and resets trick bools
-        if (northTrick && isGrounded || eastTrick && isGrounded)
+        if (northTrick && isGrounded || eastTrick && isGrounded || southTrick && isGrounded)
         {
           
 
@@ -182,101 +188,8 @@ public class Player : MonoBehaviour
         return currentSpeed;
     }
 
-
-    //All code Refering to north button trick
-    void NorthTrick()
-    {
-        if (!isGrounded && !isTrick)
-        {
-            northTrick = true;
-            isTrick = true;
-            
-            animator.SetBool("Ntrick", true);
-            
-        }
-       
-    }
-
-    void NorthTrickCancelled()
-    {
-        StartCoroutine(NorthTrickCooldown());
-    }
-
-    IEnumerator NorthTrickCooldown()
-    {
-        if (!isGrounded && !eastTrick)
-        {
-            
-            animator.SetBool("Ntrick", false);
-            Debug.Log("start cooldown");
-            
-
-            //this is cooldown time for trick
-            yield return new WaitForSeconds(.7f);
-            northTrick = false;
-            Debug.Log("Trickcooled");
-            
-            isTrick = false;
-        }
-       
-
-    }
-
-    void EastTrick()
-    {
-        if (!isGrounded)
-        {
-            isTrick = true;
-            eastTrick = true;
-            animator.SetBool("Etrick", true);
-        }
-        
-    }
-
-    void EastTrickCancelled()
-    {
-        StartCoroutine(EastTrickCooldown());
-    }
-
-    IEnumerator EastTrickCooldown()
-    {
-        if (!isGrounded)
-        {
-            eastTrick = false;
-            animator.SetBool("Etrick", false);
-            Debug.Log("start cooldown");
-
-
-            //this is cooldown time for trick
-            yield return new WaitForSeconds(.7f);
-
-            Debug.Log("Trickcooled");
-
-            isTrick = false;
-        }
-
-
-    }
-
-    IEnumerator Damage()
-    {
-        Debug.Log("Wipeout");
-        isTrick = false;
-        northTrick = false;
-        eastTrick = false;
-        animator.SetTrigger("isDamage");
-
-
-        //Turns off trick animations
-        animator.SetBool("Ntrick", false);
-        animator.SetBool("Etrick", false);
-        isDamage = true;
-
-        yield return new WaitForSeconds(3);
-
-        isDamage = false;
-
-    }
+   
+    
 
 
     /// <summary>
@@ -319,11 +232,163 @@ public class Player : MonoBehaviour
 
     }
 
+
+
+
+
+
+
+    //Trick stuff 
+
+
+
+
+
+
     void Jump()
     {
         transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
     }
-        
+
+
+    //All code Refering to north button trick
+    void NorthTrick()
+    {
+        if (!isGrounded && !isTrick)
+        {
+            northTrick = true;
+            isTrick = true;
+
+            animator.SetBool("Ntrick", true);
+
+        }
+
+    }
+
+    void NorthTrickCancelled()
+    {
+        StartCoroutine(NorthTrickCooldown());
+    }
+
+    IEnumerator NorthTrickCooldown()
+    {
+        if (!isGrounded && !eastTrick)
+        {
+
+            animator.SetBool("Ntrick", false);
+            Debug.Log("start cooldown");
+
+
+            //this is cooldown time for trick
+            yield return new WaitForSeconds(.7f);
+            northTrick = false;
+            Debug.Log("Trickcooled");
+
+            isTrick = false;
+        }
+
+
+    }
+
+
+
+    void EastTrick()
+    {
+        if (!isGrounded && !isTrick)
+        {
+            isTrick = true;
+            eastTrick = true;
+            animator.SetBool("Etrick", true);
+        }
+
+    }
+
+    void EastTrickCancelled()
+    {
+        StartCoroutine(EastTrickCooldown());
+    }
+
+    IEnumerator EastTrickCooldown()
+    {
+        if (!isGrounded)
+        {
+            eastTrick = false;
+            animator.SetBool("Etrick", false);
+            Debug.Log("start cooldown");
+
+
+            //this is cooldown time for trick
+            yield return new WaitForSeconds(.7f);
+
+            Debug.Log("Trickcooled");
+
+            isTrick = false;
+        }
+
+
+    }
+
+    //South Trick
+    void SouthTrick()
+    {
+        if (!isGrounded && !isTrick)
+        {
+            isTrick = true;
+            southTrick = true;
+            animator.SetBool("Strick", true);
+        }
+    }
+
+    void SouthTrickCancelled()
+    {
+        StartCoroutine(SouthTrickCooldown());
+    }
+
+    IEnumerator SouthTrickCooldown()
+    {
+        if (!isGrounded)
+        {
+            southTrick = false;
+            animator.SetBool("Strick", false);
+            Debug.Log("start cooldown");
+
+
+            //this is cooldown time for trick
+            yield return new WaitForSeconds(.7f);
+
+            Debug.Log("Trickcooled");
+
+            isTrick = false;
+        }
+
+
+    }
+
+    IEnumerator Damage()
+    {
+        Debug.Log("Wipeout");
+
+        //set all trick bools to false
+        isTrick = false;
+        northTrick = false;
+        eastTrick = false;
+        southTrick = false;
+
+        animator.SetTrigger("isDamage");
+
+
+        //Turns off trick animations
+        animator.SetBool("Ntrick", false);
+        animator.SetBool("Etrick", false);
+        animator.SetBool("Strick", false);
+        isDamage = true;
+
+        yield return new WaitForSeconds(3);
+
+        isDamage = false;
+
+    }
+
     private void OnEnable()
     {
         controls.Racing.Enable();

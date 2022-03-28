@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
     void Update()
     {
         scoreValue.text = "" + $"{(int)score:00000}";
-        if (Player.Instance.northTrick || Player.Instance.eastTrick || Input.GetKey(KeyCode.RightBracket))
+        if (Player.Instance.northTrick || Player.Instance.eastTrick || Player.Instance.southTrick || Input.GetKey(KeyCode.RightBracket))
         {
             score += pointsIncreasing = 100 * Time.deltaTime;
         }
