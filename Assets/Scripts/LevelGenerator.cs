@@ -112,11 +112,12 @@ public class LevelGenerator : MonoBehaviour
             if (Random.value > chanceToSpawn)
             {
                 spawnedObjectData = SpawnableObjects[i];
+                spawnedTile.GetComponent<RoadTile>().SpawnRoadObjects(spawnedObjectData);
                 break;
             }
         }
         
-        spawnedTile.GetComponent<RoadTile>().SpawnRoadObjects(spawnedObjectData);
+        
         nextSpawnPoint = CalculateNextSpawnPoint();
     }
     
