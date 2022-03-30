@@ -48,5 +48,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0dfe1c58968fd346b7788d52e32ecb8, type: 3}
   - {fileID: 8300000, guid: 7004984d41b4c2d4f95bdcad788f14ca, type: 3}
   - {fileID: 8300000, guid: 0d3d683effa9d0e4290c3e4c2fd9ba71, type: 3}
-  maxVolume: 0.204
+  timeLeft: 0
+  fadeStart: 2
   fadeDuration: 2
+  maxVolume: 0.204
