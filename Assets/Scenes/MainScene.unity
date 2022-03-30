@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4746639962091573655, guid: fa423dfb4c9407c4b9500710450f715c, type: 3}
+      propertyPath: fadeDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4746639962091573656, guid: fa423dfb4c9407c4b9500710450f715c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -454,6 +458,10 @@ PrefabInstance:
     - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: speed
       value: 3500
+      objectReference: {fileID: 0}
+    - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
+      propertyPath: maxSpeed
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: jumpForce
