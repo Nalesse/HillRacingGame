@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource nextTrack;
     private List<AudioSource> audioSources;
     private float minVolume = 0f;
+    private bool doFade;
     
 
 
@@ -23,11 +24,11 @@ public class AudioManager : MonoBehaviour
     {
         CreateAudioSources();
         // Removes fade functionality if there is only one song
-        if (audioSources.Count < 2)
-        {
-            GameEvents.TimerCompleted.RemoveListener(StartFade);
-            return;
-        }
+        // if (audioSources.Count < 2)
+        // {
+        //     GameEvents.TimerCompleted.RemoveListener(StartFade);
+        //     return;
+        // }
         nextTrack = audioSources[1];
     }
 
@@ -38,16 +39,15 @@ public class AudioManager : MonoBehaviour
         {
             if (doFade)
             {
-                StartCoroutine(FadeOut(currentTrack, 2f, 0));
-                StartCoroutine(FadeIn(nextTrack, 2f, maxVolume));
+                StartFade();
                 doFade = false;
             }
         }
     }
 
     // Timer Event Listener
-    private void OnEnable() => GameEvents.TimerCompleted.AddListener(StartFade);
-    private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(StartFade);
+    // private void OnEnable() => GameEvents.TimerCompleted.AddListener(StartFade);
+    // private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(StartFade);
 
     #region BGMFade
 
