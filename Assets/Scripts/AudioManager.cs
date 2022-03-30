@@ -8,11 +8,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] gameplayTracks;
     [SerializeField] private float maxVolume = 1f;
     [SerializeField] private float fadeDuration;
+    [SerializeField] private float timeLeft;
+    [SerializeField] private float fadeStart;
     
     private AudioSource currentTrack;
     private AudioSource nextTrack;
     private List<AudioSource> audioSources;
     private float minVolume = 0f;
+    
 
 
 
@@ -26,6 +29,20 @@ public class AudioManager : MonoBehaviour
             return;
         }
         nextTrack = audioSources[1];
+    }
+
+    private void Update()
+    {
+        timeLeft = currentTrack.clip.length - currentTrack.time;
+        if (timeLeft <= fadeStart)
+        {
+            if (doFade)
+            {
+                StartCoroutine(FadeOut(currentTrack, 2f, 0));
+                StartCoroutine(FadeIn(nextTrack, 2f, maxVolume));
+                doFade = false;
+            }
+        }
     }
 
     // Timer Event Listener
