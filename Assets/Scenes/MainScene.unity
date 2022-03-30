@@ -227,10 +227,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4746639962091573655, guid: fa423dfb4c9407c4b9500710450f715c, type: 3}
-      propertyPath: fadeStart
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4746639962091573656, guid: fa423dfb4c9407c4b9500710450f715c, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -1,35 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] gameplayTracks;
-    [SerializeField] private float maxVolume = 1f;
-    [SerializeField] private float fadeDuration;
     [SerializeField] private float timeLeft;
     [SerializeField] private float fadeStart;
+    [SerializeField] private float fadeDuration;
+    [SerializeField] private float maxVolume = 1f;
     
     private AudioSource currentTrack;
     private AudioSource nextTrack;
     private List<AudioSource> audioSources;
     private float minVolume = 0f;
-    private bool doFade;
-    
+    private bool doFade = true;
 
 
 
     private void Start()
     {
         CreateAudioSources();
-        // Removes fade functionality if there is only one song
-        // if (audioSources.Count < 2)
-        // {
-        //     GameEvents.TimerCompleted.RemoveListener(StartFade);
-        //     return;
-        // }
-        nextTrack = audioSources[1];
     }
 
     private void Update()
@@ -39,15 +33,12 @@ public class AudioManager : MonoBehaviour
         {
             if (doFade)
             {
-                StartFade();
+                StartCoroutine(FadeOut(currentTrack, fadeDuration, 0));
+                StartCoroutine(FadeIn(nextTrack, fadeDuration, maxVolume));
                 doFade = false;
             }
         }
     }
-
-    // Timer Event Listener
-    // private void OnEnable() => GameEvents.TimerCompleted.AddListener(StartFade);
-    // private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(StartFade);
 
     #region BGMFade
 
@@ -66,18 +57,11 @@ public class AudioManager : MonoBehaviour
         }
         // Sets the current track to be the first audio source and enables it
         currentTrack = audioSources[0];
+        nextTrack = audioSources[1];
         currentTrack.volume = maxVolume;
         currentTrack.Play();
     }
-
-    private void StartFade()
-    {
-        StartCoroutine(FadeOut(currentTrack, fadeDuration, 0));
-        StartCoroutine(FadeIn(nextTrack, fadeDuration, maxVolume));
-    }
-
-
-    // Fades the track in and sets the next track to be the next song
+    
     IEnumerator FadeIn(AudioSource track, float duration, float targetVolume)
     {
         float timer = 0f;
@@ -100,6 +84,7 @@ public class AudioManager : MonoBehaviour
             nextTrackIndex = 0;
         }
         nextTrack = audioSources[nextTrackIndex];
+        doFade = true;
 
     }
     
