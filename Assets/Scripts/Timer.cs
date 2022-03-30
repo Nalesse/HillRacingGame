@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         {
             // Invokes TimerCompleted event, which other classes can listen to.
             // ? operator checks if the event is null  
-            //GameEvents.TimerCompleted?.Invoke();
+            GameEvents.TimerCompleted?.Invoke();
             timeLeft = 60f;
 
             //pauses game
