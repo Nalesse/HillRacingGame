@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Cinemachine;
 
-
-
-
 public class Player : MonoBehaviour
 {
     Controls controls;
@@ -34,6 +31,7 @@ public class Player : MonoBehaviour
     public bool eastTrick;
     public bool southTrick;
     public bool isDamage;
+    private TrickSystem TrickSystem;
     
 
 
@@ -54,41 +52,37 @@ public class Player : MonoBehaviour
     public float jumpForce;
 
     //singleton
-    private static Player _instance;
-    public static Player Instance => _instance;
+    public static Player Instance { get; private set; }
 
 
     private void Awake()
     {
         controls = new Controls();
-        
+        TrickSystem = GetComponent<TrickSystem>();
 
         controls.Racing.Move.performed += ctx => controllerInput = ctx.ReadValue<Vector2>();
         controls.Racing.Move.canceled += ctx => controllerInput = Vector2.zero;
 
         controls.Racing.DebugJump.performed += ctx => Jump();
 
-        var trickSystem = TrickSystem.Instance;
-
-        controls.Racing.NorthTrick.performed += ctx => trickSystem.DoTrick("Ntrick");
-        controls.Racing.NorthTrick.canceled += ctx => StartCoroutine(trickSystem.CooldownTrick());
-
-        controls.Racing.EastTrick.performed += ctx => trickSystem.DoTrick("Etrick");
-        controls.Racing.EastTrick.canceled += ctx => StartCoroutine(trickSystem.CooldownTrick());
+        controls.Racing.NorthTrick.performed += ctx => TrickSystem.DoTrick("Ntrick");
+        controls.Racing.NorthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick());
         
-        controls.Racing.SouthTrick.performed += ctx => trickSystem.DoTrick("Strick");
-        controls.Racing.SouthTrick.canceled += ctx => StartCoroutine(trickSystem.CooldownTrick());
+        controls.Racing.EastTrick.performed += ctx => TrickSystem.DoTrick("Etrick");
+        controls.Racing.EastTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick());
+        
+        controls.Racing.SouthTrick.performed += ctx => TrickSystem.DoTrick("Strick");
+        controls.Racing.SouthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick());
 
         // Singleton setup
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-
-        else
-        {
-            _instance = this;
-        }
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        } 
 
     }
     // Start is called before the first frame update
@@ -157,9 +151,9 @@ public class Player : MonoBehaviour
         }
         
         // //checks to see if player Wipesout, and resets trick bools
-        if (TrickSystem.Instance.isDoingTrick && isGrounded)
+        if (TrickSystem.isDoingTrick && isGrounded)
         {
-            TrickSystem.Instance.isDoingTrick = false;
+            TrickSystem.isDoingTrick = false;
             StartCoroutine(Damage());
         }
 
@@ -236,7 +230,6 @@ public class Player : MonoBehaviour
 
     }
     
-
 
     //Trick Debug 
     
