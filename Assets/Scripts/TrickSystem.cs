@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,36 +13,50 @@ public struct Trick
 
 public class TrickSystem : MonoBehaviour
 {
-    //Player player;
 
-    public Animator animator;
-
-    //trick delegate
+    public bool isDoingTrick;
+    [SerializeField] private Animator animator;
     
+    //singleton
+    private static TrickSystem _instance;
+    public static TrickSystem Instance => _instance;
 
-    //public bool isTrick;
-
+    private string animatorBool;
+    
     private void Awake()
     {
-
-    }
-
-
-
-
-    IEnumerator TrickCooldown(string animatorBool)
-    {
-        if (!Player.Instance.isGrounded)
+        animator = GetComponent<Animator>();
+        
+        // Singleton setup
+        if (_instance != null && _instance != this)
         {
-            animator.SetBool(animatorBool, false);
-            Debug.Log("start cooldown");
+            Destroy(this.gameObject);
+        }
 
-            //this is cooldown time for trick
-            yield return new WaitForSeconds(.7f);
-
-            Debug.Log("Trickcooled");
-
-            Player.Instance.isTrick = false;
+        else
+        {
+            _instance = this;
         }
     }
+
+
+    public void DoTrick(string _animatorBool)
+    {
+        if (isDoingTrick || Player.Instance.isGrounded) {return;}
+
+        animatorBool = _animatorBool;
+        Debug.Log("Performing trick: " + animatorBool);
+        isDoingTrick = true;
+        animator.SetBool(animatorBool, true);
+        
+    }
+    
+    public IEnumerator CooldownTrick()
+    {
+        animator.SetBool(animatorBool, false);
+        Debug.Log(animatorBool + " Cooled");
+        yield return new WaitForSeconds(.7f);
+        isDoingTrick = false;
+    }
+
 }
