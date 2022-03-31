@@ -1,72 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TrickSystem : MonoBehaviour
 {
-    Player player;
 
-    public Animator animator;
+    public bool isDoingTrick;
+    [SerializeField] private Animator animator;
+    
+    //singleton
+    private static TrickSystem _instance;
+    public static TrickSystem Instance => _instance;
 
-    public bool isTrick;
-
+    private string animatorBool;
+    
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+        
+        // Singleton setup
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        else
+        {
+            _instance = this;
+        }
+    }
+
+
+    public void DoTrick(string _animatorBool)
+    {
+        if (isDoingTrick || Player.Instance.isGrounded) {return;}
+
+        animatorBool = _animatorBool;
+        Debug.Log("Performing trick: " + animatorBool);
+        isDoingTrick = true;
+        animator.SetBool(animatorBool, true);
         
     }
-
-
-    public void StartTrick()
-    {
-        StartCoroutine(Trick());
-    }
-
-    public void EndTrick()
-    {
-        StartCoroutine(TrickCoolDown());
-    }
     
-    IEnumerator Trick()
+    public IEnumerator CooldownTrick()
     {
-        if (player.isGrounded == false && player.isTrick == false)
-        {
-            if (player.northTrick)
-            {
-                isTrick = true;
-                yield return new WaitForSeconds(.7f);
-                animator.SetBool("Ntrick", true);
-            }
-
-
-
-        }
-
-
-    }
-
-    IEnumerator TrickCoolDown()
-    {
-        if (player.isGrounded == false)
-        {
-
-            if(player.northTrick == true && player.eastTrick == false)
-            {
-                animator.SetBool("Ntrick", false);
-                Debug.Log("start cooldown");
-
-
-                //this is cooldown time for trick
-                yield return new WaitForSeconds(.7f);
-                player.northTrick = false;
-                Debug.Log("Trickcooled");
-
-                player.northTrick = false;
-                isTrick = false;
-            }
-
-
-
-        }
+        animator.SetBool(animatorBool, false);
+        Debug.Log(animatorBool + " Cooled");
+        yield return new WaitForSeconds(.7f);
+        isDoingTrick = false;
     }
 
 }

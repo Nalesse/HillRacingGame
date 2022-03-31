@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 507538283314026263}
   - component: {fileID: 507538283314026264}
   - component: {fileID: 507538283314026267}
+  - component: {fileID: 8614984909397080405}
   - component: {fileID: 170975303}
   - component: {fileID: 8401585071384670820}
   m_Layer: 0
@@ -224,6 +225,19 @@ MonoBehaviour:
   slowDownLerpSpeed: 300
   animator: {fileID: 8401585071384670820}
   jumpForce: 0
+--- !u!114 &8614984909397080405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507538283314026261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146055e7302880949b0ef220dfb28bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDoingTrick: 0
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0
