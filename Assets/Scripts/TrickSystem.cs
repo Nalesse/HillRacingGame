@@ -8,10 +8,6 @@ public class TrickSystem : MonoBehaviour
 
     public bool isDoingTrick;
     [SerializeField] private Animator animator;
-    
-    //singleton
-    private static TrickSystem _instance;
-    public static TrickSystem Instance => _instance;
 
     private string animatorBool;
     
@@ -19,16 +15,7 @@ public class TrickSystem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         
-        // Singleton setup
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-
-        else
-        {
-            _instance = this;
-        }
+        
     }
 
 

@@ -9,4 +9,5 @@ public static class GameEvents
     /// Event that fires everytime the game timer reaches 0
     /// </summary>
     public static readonly UnityEvent TimerCompleted = new UnityEvent();
+    public static readonly UnityEvent TrickPerformed = new UnityEvent();
 }

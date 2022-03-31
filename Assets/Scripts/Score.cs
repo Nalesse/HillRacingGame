@@ -11,10 +11,13 @@ public class Score : MonoBehaviour
     public float score;
     public TextMeshProUGUI scoreValue;
     public float pointsIncreasing;
+    private TrickSystem TrickSystem;
     void Start()
     {
         score = 0f;
         pointsIncreasing = 1f;
+
+        TrickSystem = GameObject.FindObjectOfType<TrickSystem>();
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class Score : MonoBehaviour
             score += pointsIncreasing = -100 * Time.deltaTime;
         }*/
 
-        if (TrickSystem.Instance.isDoingTrick)
+        if (TrickSystem.isDoingTrick)
         {
             score += pointsIncreasing = 100 * Time.deltaTime;
         }
