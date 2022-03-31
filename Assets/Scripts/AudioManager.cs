@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
             {
                 StartCoroutine(FadeOut(currentTrack, fadeDuration, 0));
                 StartCoroutine(FadeIn(nextTrack, fadeDuration, maxVolume));
+                //currentTrack.Stop();
+                //nextTrack.Play();
                 doFade = false;
             }
         }

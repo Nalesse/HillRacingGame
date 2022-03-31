@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Cinemachine;
 
+
+
+
 public class Player : MonoBehaviour
 {
     Controls controls;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     public bool eastTrick;
     public bool southTrick;
     public bool isDamage;
+    
 
 
     //Player Boundaries

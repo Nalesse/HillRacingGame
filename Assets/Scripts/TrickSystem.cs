@@ -2,71 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Trick
+{
+    public bool NorthTrick;
+    public bool EastTrick;
+    public bool SouthTrick;
+}
+
+
 public class TrickSystem : MonoBehaviour
 {
-    Player player;
+    //Player player;
 
     public Animator animator;
 
-    public bool isTrick;
+    //trick delegate
+    
+
+    //public bool isTrick;
 
     private void Awake()
     {
-        
+
     }
 
 
-    public void StartTrick()
-    {
-        StartCoroutine(Trick());
-    }
 
-    public void EndTrick()
+
+    IEnumerator TrickCooldown(string animatorBool)
     {
-        StartCoroutine(TrickCoolDown());
-    }
-    
-    IEnumerator Trick()
-    {
-        if (player.isGrounded == false && player.isTrick == false)
+        if (!Player.Instance.isGrounded)
         {
-            if (player.northTrick)
-            {
-                isTrick = true;
-                yield return new WaitForSeconds(.7f);
-                animator.SetBool("Ntrick", true);
-            }
+            animator.SetBool(animatorBool, false);
+            Debug.Log("start cooldown");
 
+            //this is cooldown time for trick
+            yield return new WaitForSeconds(.7f);
 
+            Debug.Log("Trickcooled");
 
-        }
-
-
-    }
-
-    IEnumerator TrickCoolDown()
-    {
-        if (player.isGrounded == false)
-        {
-
-            if(player.northTrick == true && player.eastTrick == false)
-            {
-                animator.SetBool("Ntrick", false);
-                Debug.Log("start cooldown");
-
-
-                //this is cooldown time for trick
-                yield return new WaitForSeconds(.7f);
-                player.northTrick = false;
-                Debug.Log("Trickcooled");
-
-                player.northTrick = false;
-                isTrick = false;
-            }
-
-
-
+            Player.Instance.isTrick = false;
         }
     }
-
 }
