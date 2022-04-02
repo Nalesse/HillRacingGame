@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -26,14 +28,8 @@ public class Player : MonoBehaviour
 
     
     [Header("Tricks")]
-    public bool isTrick;
-    public bool northTrick;
-    public bool eastTrick;
-    public bool southTrick;
     public bool isDamage;
     private TrickSystem TrickSystem;
-    
-
 
     //Player Boundaries
     [Header("Player Bounds")]
@@ -55,6 +51,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
 
+    #region UnityEventFunctions
     private void Awake()
     {
         controls = new Controls();
@@ -81,19 +78,22 @@ public class Player : MonoBehaviour
         } 
         else 
         { 
-            Instance = this; 
-        } 
+            Instance = this;
+        }
 
     }
+    
     // Start is called before the first frame update
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody>();
     }
-
+    
     // Update is called once per frame
     void FixedUpdate()
     {
+        #region Input
+
         //checks to see if turning
         int turning = 0;
 
@@ -120,11 +120,37 @@ public class Player : MonoBehaviour
         }
 
         animator.SetInteger("Turn", turning);
+
+        #endregion
         
         KeepInBounds();
     }
-
+    
     private void Update()
+    {
+        IsGroundedCheck();
+        LerpControl();
+        CheckForWipeout();
+        PlayerSlowDown();
+
+        if (TrickSystem.isDoingTrick)
+        {
+            turnSpeed = 210f;
+        }
+        else
+        {
+            turnSpeed = 420;
+        }
+        
+
+        
+    }
+    #endregion
+    
+
+    #region UpdateHelperFunctions
+
+    private void IsGroundedCheck()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
         if (!isGrounded)
@@ -135,61 +161,31 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isGrounded", true);
         }
+    }
 
+    private void LerpControl()
+    {
         if (!slowDownIsActive && !isDamage)
         {
             speed = LerpSpeed(speed, maxSpeed, lerpSpeed);
         }
-
-        if (isTrick)
-        {
-            turnSpeed = 210f;
-        }
-        else
-        {
-            turnSpeed = 420;
-        }
         
-        // //checks to see if player Wipesout, and resets trick bools
+        if (isDamage)
+        {
+            speed = LerpSpeed(speed, 0, 500);
+        }
+    }
+
+    private void CheckForWipeout()
+    {
+        // //checks to see if player Wipes-out
         if (TrickSystem.isDoingTrick && isGrounded)
         {
             TrickSystem.isDoingTrick = false;
             StartCoroutine(Damage());
         }
-
-        if (isDamage)
-        {
-            speed = LerpSpeed(speed, 0, 500);
-        }
-
-        PlayerSlowDown();
     }
-
-    /// <summary>
-    /// Lerps between the current speed to the desired speed.
-    /// the speed will slowly get closer to the desired speed each time this function is called 
-    /// </summary>
-    /// <param name="currentSpeed">
-    /// The starting value for the lerp
-    /// </param>
-    /// <param name="desiredSpeed">
-    /// The ending value for the lerp
-    /// </param>
-    /// <param name="_lerpSpeed">
-    /// The rate at which currentSpeed will approach desiredSpeed
-    /// </param>
-    /// <returns></returns>
-    private float LerpSpeed(float currentSpeed,float desiredSpeed, float _lerpSpeed)
-    {
-        currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeed, _lerpSpeed * Time.deltaTime);
-
-        return currentSpeed;
-    }
-
-   
     
-
-
     /// <summary>
     /// Keeps the player in the play area by limiting how far thy can move on the x
     /// </summary>
@@ -229,8 +225,32 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    #endregion
+
     
 
+    /// <summary>
+    /// Lerps between the current speed to the desired speed.
+    /// the speed will slowly get closer to the desired speed each time this function is called 
+    /// </summary>
+    /// <param name="currentSpeed">
+    /// The starting value for the lerp
+    /// </param>
+    /// <param name="desiredSpeed">
+    /// The ending value for the lerp
+    /// </param>
+    /// <param name="_lerpSpeed">
+    /// The rate at which currentSpeed will approach desiredSpeed
+    /// </param>
+    /// <returns></returns>
+    private float LerpSpeed(float currentSpeed,float desiredSpeed, float _lerpSpeed)
+    {
+        currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeed, _lerpSpeed * Time.deltaTime);
+
+        return currentSpeed;
+    }
+    
     //Trick Debug 
     
     void Jump()
