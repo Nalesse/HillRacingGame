@@ -32,7 +32,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""2b1633d0-7e7a-4c51-934b-195bc7d3feae"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.1)""
                 },
                 {
                     ""name"": ""EastTrick"",
@@ -40,7 +40,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""db49c426-e5ae-4975-b55f-dd6a11f4911c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.1)""
                 },
                 {
                     ""name"": ""SouthTrick"",
@@ -48,13 +48,13 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""f68de04c-f877-4a28-92b3-3edfb9069a34"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.1)""
                 },
                 {
                     ""name"": ""DebugJump"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""386329cd-cc45-4814-b591-a6c3274c70c8"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }

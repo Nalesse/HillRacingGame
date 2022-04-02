@@ -21,6 +21,7 @@ public class TrickSystem : MonoBehaviour
 
     public void DoTrick(string _animatorBool)
     {
+        
         if (isDoingTrick || Player.Instance.isGrounded) {return;}
 
         animatorBool = _animatorBool;

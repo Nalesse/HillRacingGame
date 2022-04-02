@@ -14,4 +14,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Kcamp.unity
     guid: e360dd8eaf23b9941843e276d2dbca28
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 045d7f7174c9d9e4390fe3e9b5cb97b2, type: 2}
