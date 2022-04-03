@@ -35,8 +35,9 @@ public class TrickSystem : MonoBehaviour
     {
         if (!Player.Instance.isGrounded)
         {
-            yield return new WaitForSeconds(.7f);
             animator.SetBool(animatorBool, false);
+            yield return new WaitForSeconds(.7f);
+            
             isDoingTrick = false;
             Debug.Log(animatorBool + " Cooled");
            
