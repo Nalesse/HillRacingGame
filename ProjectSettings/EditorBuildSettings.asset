@@ -9,10 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/Scenes/Mcampbell.unity
-    guid: ab8fd8bdbde9ccd4dbadbf6b10ad0744
-  - enabled: 0
-    path: Assets/Scenes/Kcamp.unity
-    guid: e360dd8eaf23b9941843e276d2dbca28
+    path: Assets/Scenes/MainMenu.unity
+    guid: f74ed035519efe148838462b477c2037
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 045d7f7174c9d9e4390fe3e9b5cb97b2, type: 2}
