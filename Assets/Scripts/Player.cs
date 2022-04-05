@@ -289,6 +289,10 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Damage());
             collision.collider.enabled = false;
+            /* Get the average value of the contact point on the x, if the value is less than 0 then apply less knock-back on the x
+             if the value is greater then apply more knock-back on the x
+            */
+            //Debug.Log(collision.GetContact(0).point);
         }
     }
 
