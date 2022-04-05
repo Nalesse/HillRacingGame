@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,6 +128,7 @@ public class Player : MonoBehaviour
         #endregion
         
         KeepInBounds();
+
     }
     
     private void Update()
@@ -135,6 +137,7 @@ public class Player : MonoBehaviour
         LerpControl();
         CheckForWipeout();
         PlayerSlowDown();
+        Knockback();
 
         if (TrickSystem.isDoingTrick)
         {
@@ -278,5 +281,24 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         controls.Racing.Disable();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Collidable"))
+        {
+            StartCoroutine(Damage());
+            collision.collider.enabled = false;
+        }
+    }
+
+    private void Knockback()
+    {
+        if (isDamage)
+        {
+            var forceDirection = new Vector3(-1, 0, -1f);
+            playerRB.AddForce(forceDirection * 2, ForceMode.VelocityChange);
+        }
+        
     }
 }
