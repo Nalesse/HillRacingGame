@@ -13,6 +13,23 @@ public class ShityCar : MonoBehaviour
     [SerializeField] private float minDestroyDistance;
     [SerializeField] private GameObject[] shittyCarModels;
     
+    [Header("Crash Settings")]
+    [SerializeField] private float crashLeftSideX;
+    [SerializeField] private float crashRightSideX;
+    [SerializeField] private float crashSpeed;
+    private string crashDirection;
+    
+    private bool stopMoving = false;
+    private Transform _transform;
+    private bool doCrash = false;
+    
+    
+
+    private void Awake()
+    {
+        _transform = GetComponent<Transform>();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +49,7 @@ public class ShityCar : MonoBehaviour
         var distance = (Player.Instance.transform.position - transform.position).z;
         
         // Starts moving the car when the player is within the min distance
-        if(distance >= minDistance)
+        if(distance >= minDistance && !stopMoving)
         {
             var currentVelocity = carRB.velocity.y;
             carRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
@@ -44,5 +61,38 @@ public class ShityCar : MonoBehaviour
         }
 
         
+    }
+
+    private void Update()
+    {
+        if (doCrash)
+        {
+            Crash(crashDirection);
+        }
+    }
+
+    public void Crash(string _crashDirection)
+    {
+        crashDirection = _crashDirection;
+        doCrash = true;
+        stopMoving = true;
+
+        switch (crashDirection)
+        {
+            case "Left":
+                LerpPosition(crashLeftSideX);
+                break;
+            case "Right":
+                LerpPosition(crashRightSideX);
+                break;
+        }
+        
+    }
+
+    private void LerpPosition(float target)
+    {
+        var position = _transform.position;
+        position.x = Mathf.MoveTowards(position.x, target, crashSpeed * Time.deltaTime);
+        _transform.position = position;
     }
 }

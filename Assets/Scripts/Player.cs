@@ -137,7 +137,6 @@ public class Player : MonoBehaviour
         LerpControl();
         CheckForWipeout();
         PlayerSlowDown();
-        Knockback();
 
         if (TrickSystem.isDoingTrick)
         {
@@ -289,20 +288,11 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Damage());
             collision.collider.enabled = false;
-            /* Get the average value of the contact point on the x, if the value is less than 0 then apply less knock-back on the x
-             if the value is greater then apply more knock-back on the x
-            */
-            //Debug.Log(collision.GetContact(0).point);
-        }
-    }
+            var car = collision.gameObject.GetComponent<ShityCar>();
+            float xDistance = transform.position.x - car.transform.position.x;
 
-    private void Knockback()
-    {
-        if (isDamage)
-        {
-            var forceDirection = new Vector3(-1, 0, -1f);
-            playerRB.AddForce(forceDirection * 2, ForceMode.VelocityChange);
+            // if the xDistance is less then 0 crash left else crash right
+            car.Crash(xDistance < 0 ? "Left" : "Right");
         }
-        
     }
 }
