@@ -289,10 +289,14 @@ public class Player : MonoBehaviour
             StartCoroutine(Damage());
             collision.collider.enabled = false;
             var car = collision.gameObject.GetComponent<ShityCar>();
-            float xDistance = transform.position.x - car.transform.position.x;
+            if (car != null)
+            {
+                float xDistance = transform.position.x - car.transform.position.x;
 
-            // if the xDistance is less then 0 crash left else crash right
-            car.Crash(xDistance < 0 ? "Left" : "Right");
+                // if the xDistance is less then 0 crash left else crash right
+                car.Crash(xDistance < 0 ? "Left" : "Right");
+            }
+            
         }
     }
 }
