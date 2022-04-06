@@ -51,6 +51,9 @@ MonoBehaviour:
   shittyCarModels:
   - {fileID: 919132149155446097, guid: f6a58ad77625b0f418432fe7480db6ea, type: 3}
   - {fileID: 919132149155446097, guid: 8baef2cfa1c7f1c4ab0239a1f8fb4093, type: 3}
+  crashLeftSideX: 14
+  crashRightSideX: -14
+  crashSpeed: 25
 --- !u!54 &842052752886450798
 Rigidbody:
   m_ObjectHideFlags: 0
