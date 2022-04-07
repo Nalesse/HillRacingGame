@@ -31,17 +31,22 @@ public class TrickSystem : MonoBehaviour
 
     }
     
-    public IEnumerator CooldownTrick()
+    public IEnumerator CooldownTrick(string _animatorBool)
     {
-        if (!Player.Instance.isGrounded)
+
+        if (_animatorBool == animatorBool)
         {
-            animator.SetBool(animatorBool, false);
-            yield return new WaitForSeconds(.7f);
-            
-            isDoingTrick = false;
-            Debug.Log(animatorBool + " Cooled");
-           
+            if (!Player.Instance.isGrounded)
+            {
+                animator.SetBool(animatorBool, false);
+                yield return new WaitForSeconds(.5f);
+
+                isDoingTrick = false;
+                Debug.Log(animatorBool + " Cooled");
+
+            }
         }
+        
         
     }
 
