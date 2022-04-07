@@ -428,6 +428,14 @@ PrefabInstance:
       propertyPath: pointsIncreasing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7146691220164822447, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: scoreRequirement
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146691220164822447, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: requirementIncreaseAmount
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 8662176650853015552, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -190
