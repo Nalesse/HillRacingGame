@@ -264,14 +264,17 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator Damage()
-     {
+    {
          Debug.Log("Wipeout");
+         animator.SetBool(TrickSystem.animatorBool, false);
+
+
          animator.SetTrigger("isDamage");
          isDamage = true;
          yield return new WaitForSeconds(4);
          isDamage = false;
 
-     }
+    }
      private void OnEnable()
     {
         controls.Racing.Enable();

@@ -214,10 +214,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
-  isTrick: 0
-  northTrick: 0
-  eastTrick: 0
-  southTrick: 0
   isDamage: 0
   xLimit: 16.6
   xSlowDownRange: 9.8
@@ -238,6 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoingTrick: 0
+  animator: {fileID: 0}
+  animatorBool: 
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0
