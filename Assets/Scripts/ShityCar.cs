@@ -49,7 +49,7 @@ public class ShityCar : MonoBehaviour
         var distance = (Player.Instance.transform.position - transform.position).z;
         
         // Starts moving the car when the player is within the min distance
-        if(distance >= minDistance && !stopMoving)
+        if(distance >= minDistance && stopMoving == false)
         {
             var currentVelocity = carRB.velocity.y;
             carRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
@@ -86,6 +86,9 @@ public class ShityCar : MonoBehaviour
                 LerpPosition(crashRightSideX);
                 break;
         }
+        
+        carRB.velocity = Vector3.zero;
+        carRB.angularVelocity = Vector3.zero;
         
     }
 
