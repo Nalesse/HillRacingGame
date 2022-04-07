@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 5883290688613474907}
   - component: {fileID: 1946031012530990230}
   - component: {fileID: 5420416230296036689}
+  - component: {fileID: 2220681000368608751}
   m_Layer: 0
   m_Name: Billboard
   m_TagString: Untagged
@@ -388,6 +389,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2220681000368608751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098379031252537212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2281dbfdff565743aa7f5f45fc97331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: 57905a5be787f3f439a2954f1977aff1, type: 2}
+  - {fileID: 2100000, guid: 548f6a7c94118fe45beba107b9dfac8f, type: 2}
+  - {fileID: 2100000, guid: 6a774fa320c35904f818796cb8ebd14b, type: 2}
+  - {fileID: 2100000, guid: d66e2ad00028250498be5ab440cbf666, type: 2}
+  - {fileID: 2100000, guid: e356b1ff595640f4daf8779d6867a7d2, type: 2}
+  billboard: {fileID: 0}
 --- !u!1 &5495584315479906077
 GameObject:
   m_ObjectHideFlags: 0
