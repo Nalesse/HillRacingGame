@@ -7,6 +7,14 @@ public class SceneController : MonoBehaviour
 {
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
     }
+
+    //private IEnumerator Start()
+    //{
+       // yield return new WaitForSeconds(3.0f);
+       // SceneManager.LoadScene(1);
+    //}
+
 }
