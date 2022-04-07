@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsBillBoardThere : MonoBehaviour
+public class IsBillBoardThere : MonoBehaviour, ICollidable
 {
     public int randomNumber;
     // Start is called before the first frame update
@@ -19,5 +19,12 @@ public class IsBillBoardThere : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CollisionAction()
+    {
+        Debug.Log("Billboard hit");
+        
+        // move particle effects here
     }
 }

@@ -354,7 +354,7 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
     }
 
-    IEnumerator Damage()
+     IEnumerator Damage()
     {
          Debug.Log("Wipeout");
          
@@ -373,19 +373,12 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Collidable"))
+        var collisionObject = collision.gameObject.GetComponent<ICollidable>();
+        if (collisionObject != null)
         {
             StartCoroutine(Damage());
             collision.collider.enabled = false;
-            var car = collision.gameObject.GetComponent<ShityCar>();
-            if (car != null)
-            {
-                float xDistance = transform.position.x - car.transform.position.x;
-
-                // if the xDistance is less then 0 crash left else crash right
-                car.Crash(xDistance < 0 ? "Left" : "Right");
-            }
-            
+            collisionObject.CollisionAction();
         }
     }
 

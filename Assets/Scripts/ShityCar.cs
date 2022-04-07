@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ShityCar : MonoBehaviour
+public class ShityCar : MonoBehaviour, ICollidable
 {
     private Rigidbody carRB;
 
@@ -22,8 +22,8 @@ public class ShityCar : MonoBehaviour
     private bool stopMoving = false;
     private Transform _transform;
     private bool doCrash = false;
-    
-    
+    private ICollidable _collidableImplementation;
+
 
     private void Awake()
     {
@@ -67,14 +67,22 @@ public class ShityCar : MonoBehaviour
     {
         if (doCrash)
         {
-            Crash(crashDirection);
+            CollisionAction();
         }
     }
 
-    public void Crash(string _crashDirection)
+    private void LerpPosition(float target)
     {
-        crashDirection = _crashDirection;
+        var position = _transform.position;
+        position.x = Mathf.MoveTowards(position.x, target, crashSpeed * Time.deltaTime);
+        _transform.position = position;
+    }
+
+    public void CollisionAction()
+    {
         doCrash = true;
+        float xDistance = Player.Instance.transform.position.x - _transform.position.x;
+        crashDirection = xDistance < 0 ? "Left" : "Right";
         stopMoving = true;
 
         switch (crashDirection)
@@ -89,13 +97,5 @@ public class ShityCar : MonoBehaviour
         
         carRB.velocity = Vector3.zero;
         carRB.angularVelocity = Vector3.zero;
-        
-    }
-
-    private void LerpPosition(float target)
-    {
-        var position = _transform.position;
-        position.x = Mathf.MoveTowards(position.x, target, crashSpeed * Time.deltaTime);
-        _transform.position = position;
     }
 }
