@@ -110,6 +110,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 17.663055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2977908435786291912}
   - {fileID: 5883290688613474907}
   m_Father: {fileID: 1690677612770483674}
   m_RootOrder: 2
@@ -174,6 +175,8 @@ GameObject:
   - component: {fileID: 1690677612770483674}
   - component: {fileID: 4136363233203622864}
   - component: {fileID: 6752820502331378969}
+  - component: {fileID: 1548403095668165330}
+  - component: {fileID: 7353012799098472944}
   m_Layer: 0
   m_Name: billboard 3
   m_TagString: Collidable
@@ -226,6 +229,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 37.66361, z: 1}
   m_Center: {x: 0, y: 18.3318, z: 0}
+--- !u!114 &1548403095668165330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308953394157888872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af979db4b92385b49a25ab61a13edcc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomNumber: 0
+--- !u!114 &7353012799098472944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308953394157888872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d3aded72683df4dbf471b0e57413ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billBoardPlane: {fileID: 5098379031252537212}
+  particles: {fileID: 1544242308453367974}
 --- !u!1 &3579213912207996163
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +368,7 @@ Transform:
   m_LocalScale: {x: 2.3111124, y: 2.1487901, z: 1.3027617}
   m_Children: []
   m_Father: {fileID: 8961697614392977171}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: -180, z: 180}
 --- !u!33 &1946031012530990230
 MeshFilter:
@@ -570,3 +600,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1771747634362275001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8961697614392977171}
+    m_Modifications:
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6119173
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8707383
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.1305274
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.99144477
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656621168852079599, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+      propertyPath: m_Name
+      value: BillboardParticleBreak
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+--- !u!4 &2977908435786291912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3586313256071007857, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+  m_PrefabInstance: {fileID: 1771747634362275001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1544242308453367974 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1006769079252636703, guid: 4b4942043a3ff664ab0913431dfbd8a3, type: 3}
+  m_PrefabInstance: {fileID: 1771747634362275001}
+  m_PrefabAsset: {fileID: 0}
