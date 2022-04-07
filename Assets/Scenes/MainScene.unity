@@ -425,6 +425,10 @@ PrefabInstance:
       value: -190
       objectReference: {fileID: 0}
     - target: {fileID: 7146691220164822447, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: enableGameOver
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146691220164822447, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: pointsIncreasing
       value: 0
       objectReference: {fileID: 0}
@@ -783,3 +787,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDoingTrick: 0
   animator: {fileID: 1545998783}
+  animatorBool: 
