@@ -60,7 +60,19 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
 
-    #region UnityEventFunctions
+    #region Unity Functions(Awake,Update, Start, etc)
+    private void OnEnable()
+    {
+        controls.Racing.Enable();
+        GameEvents.GameOver.AddListener(GameOver);
+    }
+
+    private void OnDisable()
+    {
+        controls.Racing.Disable();
+        GameEvents.GameOver.RemoveListener(GameOver);
+    }
+    
     private void Awake()
     {
         controls = new Controls();
@@ -181,44 +193,56 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region TrickTimers
     void TryTrick() 
     {
         if (TrickSystem.isDoingTrick)
         {
-            if (!northTrickTimer)
-            {
-                StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
-            }
-
-            if (!eastTrickTimer)
-            {
-                StartCoroutine(TrickSystem.CooldownTrick("Etrick"));
-            }
-
-            if (!southTrickTimer)
-            {
-                StartCoroutine(TrickSystem.CooldownTrick("Strick"));
-            }
+            CheckTrickCooldownTimers();
         }
         else
         {
-            if (northTrickTimer)
-            {
-                TrickSystem.DoTrick("Ntrick");
-            }
-            else if (eastTrickTimer)
-            {
-                TrickSystem.DoTrick("Etrick");
-            }
-            else if (southTrickTimer)
-            {
-                TrickSystem.DoTrick("Strick");
-            }
+            CheckTrickTimers();
         }
-    
-    
-    
+
     }
+
+    private void CheckTrickTimers()
+    {
+        if (northTrickTimer)
+        {
+            TrickSystem.DoTrick("Ntrick");
+        }
+        else if (eastTrickTimer)
+        {
+            TrickSystem.DoTrick("Etrick");
+        }
+        else if (southTrickTimer)
+        {
+            TrickSystem.DoTrick("Strick");
+        }
+    }
+
+    private void CheckTrickCooldownTimers()
+    {
+        if (!northTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
+        }
+
+        if (!eastTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Etrick"));
+        }
+
+        if (!southTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Strick"));
+        }
+    }
+
+    #endregion
+    
 
 
     #region UpdateHelperFunctions
@@ -333,26 +357,19 @@ public class Player : MonoBehaviour
     IEnumerator Damage()
     {
          Debug.Log("Wipeout");
-         animator.SetBool(TrickSystem.animatorBool, false);
-
-
+         
+         if (TrickSystem.animatorBool != String.Empty)
+         {
+             animator.SetBool(TrickSystem.animatorBool, false);
+         }
+         
          animator.SetTrigger("isDamage");
          isDamage = true;
          yield return new WaitForSeconds(4);
          isDamage = false;
 
     }
-     private void OnEnable()
-    {
-        controls.Racing.Enable();
-        GameEvents.GameOver.AddListener(GameOver);
-    }
-
-    private void OnDisable()
-    {
-        controls.Racing.Disable();
-        GameEvents.GameOver.RemoveListener(GameOver);
-    }
+     
 
     private void OnCollisionEnter(Collision collision)
     {

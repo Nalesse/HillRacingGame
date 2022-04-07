@@ -591,6 +591,9 @@ MonoBehaviour:
   score: 0
   scoreValue: {fileID: 3938421975345508499}
   pointsIncreasing: 0
+  scoreRequirement: 1000
+  requirementIncreaseAmount: 500
+  enableGameOver: 1
 --- !u!1 &3938421976050910882
 GameObject:
   m_ObjectHideFlags: 0
