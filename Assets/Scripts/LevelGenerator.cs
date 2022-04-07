@@ -144,7 +144,11 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < tilesToPreSpawn; i++)
         {
-            SpawnObjects();
+            if (i != 0)
+            {
+                SpawnObjects();
+            }
+            
         }
         // Sets the rotation of the container, which also rotates the tiles
         SetRotation(roadTileContainer, roadSlopeAngle, Vector3.right);
