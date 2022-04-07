@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float slowDownLerpSpeed;
     private bool slowDownIsActive;
 
+    private bool gameOver;
+
     //Animation stuff
     public Animator animator;
 
@@ -96,6 +98,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        KeepInBounds();
+        if (gameOver) { return;}
+        
         #region Input
 
         //checks to see if turning
@@ -127,12 +132,12 @@ public class Player : MonoBehaviour
 
         #endregion
         
-        KeepInBounds();
-
     }
     
     private void Update()
     {
+        if (gameOver) { return;}
+        
         IsGroundedCheck();
         LerpControl();
         CheckForWipeout();
@@ -154,7 +159,6 @@ public class Player : MonoBehaviour
     
 
     #region UpdateHelperFunctions
-
     private void IsGroundedCheck()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
@@ -278,11 +282,13 @@ public class Player : MonoBehaviour
      private void OnEnable()
     {
         controls.Racing.Enable();
+        GameEvents.GameOver.AddListener(GameOver);
     }
 
     private void OnDisable()
     {
         controls.Racing.Disable();
+        GameEvents.GameOver.RemoveListener(GameOver);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -301,5 +307,11 @@ public class Player : MonoBehaviour
             }
             
         }
+    }
+
+    private void GameOver()
+    {
+        playerRB.velocity /= 2;
+        GetComponent<Player>().enabled = false;
     }
 }

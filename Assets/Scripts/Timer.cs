@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,17 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timeValue; // used for showing countdown from 3, 2, 1 
     public static bool gamePaused;
     public GameObject pauseMenu;
-    void Start()
-    {
 
+    private void OnEnable()
+    {
+        GameEvents.GameOver.AddListener(GameOver);
     }
+
+    private void OnDisable()
+    {
+        GameEvents.GameOver.RemoveListener(GameOver);
+    }
+
     void Update()
     {
         timeLeft -= Time.deltaTime;
@@ -24,16 +32,12 @@ public class Timer : MonoBehaviour
             // ? operator checks if the event is null  
             GameEvents.TimerCompleted?.Invoke();
             timeLeft = 60f;
-
-            //pauses game
-            //Time.timeScale = 0f;
         }
+    }
 
-       // if (Input.GetKeyDown(KeyCode.P)) <-Pause function; work in progress.
-        //{
-           // gamePaused = !gamePaused;
-           // PauseGame();
-        //}
+    private void GameOver()
+    {
+        GetComponent<Timer>().enabled = false;
     }
 
 }
