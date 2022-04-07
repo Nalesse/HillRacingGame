@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
     public Rigidbody playerRB;
     public float currentVelocity;
 
+    //Timers
+    public bool northTrickTimer;
+    public bool eastTrickTimer;
+    public bool southTrickTimer;
+
+    public float maxInputBuffer = 0.3f;
 
     [Header("Ground collision")]
     public bool isGrounded;
@@ -65,14 +71,30 @@ public class Player : MonoBehaviour
 
         controls.Racing.DebugJump.performed += ctx => Jump();
 
+        
+        //stuff
+        controls.Racing.NorthTrick.performed += ctx => northTrickTimer = true;
+        controls.Racing.NorthTrick.canceled += ctx => northTrickTimer = false;
+
+        controls.Racing.EastTrick.performed += ctx => eastTrickTimer = true;
+        controls.Racing.EastTrick.canceled += ctx => eastTrickTimer = false;
+
+        controls.Racing.SouthTrick.performed += ctx => southTrickTimer = true;
+        controls.Racing.SouthTrick.canceled += ctx => southTrickTimer = false;
+
+        
+
+        /*
         controls.Racing.NorthTrick.performed += ctx => TrickSystem.DoTrick("Ntrick");
-        controls.Racing.NorthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick());
+        controls.Racing.NorthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
         
         controls.Racing.EastTrick.performed += ctx => TrickSystem.DoTrick("Etrick");
-        controls.Racing.EastTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick());
+        controls.Racing.EastTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick("Etrick"));
         
         controls.Racing.SouthTrick.performed += ctx => TrickSystem.DoTrick("Strick");
-        controls.Racing.SouthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick());
+        controls.Racing.SouthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick("Strick"));
+        */
+        
 
         // Singleton setup
         if (Instance != null && Instance != this) 
@@ -151,12 +173,53 @@ public class Player : MonoBehaviour
         {
             turnSpeed = 420;
         }
-        
 
+        TryTrick();
+
+        
         
     }
     #endregion
+
+    void TryTrick() 
+    {
+        if (TrickSystem.isDoingTrick)
+        {
+            if (!northTrickTimer)
+            {
+                StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
+            }
+
+            if (!eastTrickTimer)
+            {
+                StartCoroutine(TrickSystem.CooldownTrick("Etrick"));
+            }
+
+            if (!southTrickTimer)
+            {
+                StartCoroutine(TrickSystem.CooldownTrick("Strick"));
+            }
+        }
+        else
+        {
+            if (northTrickTimer)
+            {
+                TrickSystem.DoTrick("Ntrick");
+            }
+            else if (eastTrickTimer)
+            {
+                TrickSystem.DoTrick("Etrick");
+            }
+            else if (southTrickTimer)
+            {
+                TrickSystem.DoTrick("Strick");
+            }
+        }
     
+    
+    
+    }
+
 
     #region UpdateHelperFunctions
     private void IsGroundedCheck()
