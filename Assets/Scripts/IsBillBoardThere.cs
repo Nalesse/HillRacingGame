@@ -8,7 +8,7 @@ public class IsBillBoardThere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomNumber = Random.Range(0, 2);
+        randomNumber = Random.Range(0, 5);
         if(randomNumber >= 1)
         {
             gameObject.SetActive(false);
