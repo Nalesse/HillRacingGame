@@ -9,7 +9,7 @@ public class TrickSystem : MonoBehaviour
     public bool isDoingTrick;
     [SerializeField] private Animator animator;
 
-    public string animatorBool = "";
+    public string animatorBool;
     
     private void Awake()
     {

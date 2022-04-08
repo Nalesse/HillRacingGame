@@ -60,7 +60,19 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
 
-    #region UnityEventFunctions
+    #region Unity Functions(Awake,Update, Start, etc)
+    private void OnEnable()
+    {
+        controls.Racing.Enable();
+        GameEvents.GameOver.AddListener(GameOver);
+    }
+
+    private void OnDisable()
+    {
+        controls.Racing.Disable();
+        GameEvents.GameOver.RemoveListener(GameOver);
+    }
+    
     private void Awake()
     {
         controls = new Controls();
@@ -181,44 +193,56 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region TrickTimers
     void TryTrick() 
     {
         if (TrickSystem.isDoingTrick)
         {
-            if (!northTrickTimer)
-            {
-                StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
-            }
-
-            if (!eastTrickTimer)
-            {
-                StartCoroutine(TrickSystem.CooldownTrick("Etrick"));
-            }
-
-            if (!southTrickTimer)
-            {
-                StartCoroutine(TrickSystem.CooldownTrick("Strick"));
-            }
+            CheckTrickCooldownTimers();
         }
         else
         {
-            if (northTrickTimer)
-            {
-                TrickSystem.DoTrick("Ntrick");
-            }
-            else if (eastTrickTimer)
-            {
-                TrickSystem.DoTrick("Etrick");
-            }
-            else if (southTrickTimer)
-            {
-                TrickSystem.DoTrick("Strick");
-            }
+            CheckTrickTimers();
         }
-    
-    
-    
+
     }
+
+    private void CheckTrickTimers()
+    {
+        if (northTrickTimer)
+        {
+            TrickSystem.DoTrick("Ntrick");
+        }
+        else if (eastTrickTimer)
+        {
+            TrickSystem.DoTrick("Etrick");
+        }
+        else if (southTrickTimer)
+        {
+            TrickSystem.DoTrick("Strick");
+        }
+    }
+
+    private void CheckTrickCooldownTimers()
+    {
+        if (!northTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
+        }
+
+        if (!eastTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Etrick"));
+        }
+
+        if (!southTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Strick"));
+        }
+    }
+
+    #endregion
+    
 
 
     #region UpdateHelperFunctions
@@ -330,45 +354,33 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
     }
 
-    IEnumerator Damage()
+     IEnumerator Damage()
     {
          Debug.Log("Wipeout");
-         animator.SetBool(TrickSystem.animatorBool, false);
-
-
+         
+         if (TrickSystem.animatorBool != String.Empty)
+         {
+             animator.SetBool(TrickSystem.animatorBool, false);
+         }
+         
          animator.SetTrigger("isDamage");
          isDamage = true;
          yield return new WaitForSeconds(4);
          isDamage = false;
 
     }
-     private void OnEnable()
-    {
-        controls.Racing.Enable();
-        GameEvents.GameOver.AddListener(GameOver);
-    }
-
-    private void OnDisable()
-    {
-        controls.Racing.Disable();
-        GameEvents.GameOver.RemoveListener(GameOver);
-    }
+     
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Collidable"))
+        var collisionObject = collision.gameObject.GetComponent<ICollidable>();
+        if (collisionObject != null)
         {
             StartCoroutine(Damage());
             collision.collider.enabled = false;
-            var car = collision.gameObject.GetComponent<ShityCar>();
-            if (car != null)
-            {
-                float xDistance = transform.position.x - car.transform.position.x;
-
-                // if the xDistance is less then 0 crash left else crash right
-                car.Crash(xDistance < 0 ? "Left" : "Right");
-            }
-            
+            //if the object the player collided with has a script attached which implements CollisionAction();
+            //from ICollidable then that objects specific action will be run. e.g cars will spin out and billboards will play a particle effect    
+            collisionObject.CollisionAction();
         }
     }
 
