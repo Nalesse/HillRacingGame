@@ -19,10 +19,9 @@ public class ShityCar : MonoBehaviour, ICollidable
     [SerializeField] private float crashSpeed;
     private string crashDirection;
     
-    private bool stopMoving = false;
+    private bool stopMoving;
     private Transform _transform;
-    private bool doCrash = false;
-    private ICollidable _collidableImplementation;
+    private bool doCrash;
 
 
     private void Awake()
