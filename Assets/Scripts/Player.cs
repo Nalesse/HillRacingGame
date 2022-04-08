@@ -249,14 +249,7 @@ public class Player : MonoBehaviour
     private void IsGroundedCheck()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position,.15f, ground);
-        if (!isGrounded)
-        {
-            animator.SetBool("isGrounded",false);
-        }
-        else
-        {
-            animator.SetBool("isGrounded", true);
-        }
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     private void LerpControl()
