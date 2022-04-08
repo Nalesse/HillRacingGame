@@ -378,6 +378,8 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Damage());
             collision.collider.enabled = false;
+            //if the object the player collided with has a script attached which implements CollisionAction();
+            //from ICollidable then that objects specific action will be run. e.g cars will spin out and billboards will play a particle effect    
             collisionObject.CollisionAction();
         }
     }

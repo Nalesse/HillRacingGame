@@ -175,8 +175,7 @@ GameObject:
   - component: {fileID: 1690677612770483674}
   - component: {fileID: 4136363233203622864}
   - component: {fileID: 6752820502331378969}
-  - component: {fileID: 1548403095668165330}
-  - component: {fileID: 7353012799098472944}
+  - component: {fileID: 2765381109756427762}
   m_Layer: 0
   m_Name: billboard 3
   m_TagString: Collidable
@@ -229,7 +228,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 37.66361, z: 1}
   m_Center: {x: 0, y: 18.3318, z: 0}
---- !u!114 &1548403095668165330
+--- !u!114 &2765381109756427762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,20 +237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3308953394157888872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af979db4b92385b49a25ab61a13edcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomNumber: 0
---- !u!114 &7353012799098472944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308953394157888872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d3aded72683df4dbf471b0e57413ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 50b14ce25d47c664195e135a29887e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   billBoardPlane: {fileID: 5098379031252537212}
