@@ -239,6 +239,8 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(TrickSystem.CooldownTrick("Strick"));
         }
+
+
     }
 
     #endregion
@@ -272,6 +274,10 @@ public class Player : MonoBehaviour
         {
             TrickSystem.isDoingTrick = false;
             StartCoroutine(Damage());
+
+
+
+
         }
     }
     
@@ -348,7 +354,7 @@ public class Player : MonoBehaviour
     }
 
      IEnumerator Damage()
-    {
+     {
          Debug.Log("Wipeout");
          
          if (TrickSystem.animatorBool != String.Empty)
@@ -361,7 +367,9 @@ public class Player : MonoBehaviour
          yield return new WaitForSeconds(4);
          isDamage = false;
 
-    }
+        
+
+     }
      
 
     private void OnCollisionEnter(Collision collision)
