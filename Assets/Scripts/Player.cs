@@ -225,6 +225,10 @@ public class Player : MonoBehaviour
 
     private void CheckTrickCooldownTimers()
     {
+        if (TrickSystem.stopCooldown)
+        {
+            return;
+        }
         if (!northTrickTimer)
         {
             StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
@@ -274,9 +278,6 @@ public class Player : MonoBehaviour
         {
             TrickSystem.isDoingTrick = false;
             StartCoroutine(Damage());
-
-
-
 
         }
     }

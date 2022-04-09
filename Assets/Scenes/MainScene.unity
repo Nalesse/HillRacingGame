@@ -883,3 +883,4 @@ MonoBehaviour:
   isDoingTrick: 0
   animator: {fileID: 1545998783}
   animatorBool: 
+  stopCooldown: 0
