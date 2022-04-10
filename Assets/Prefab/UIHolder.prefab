@@ -590,10 +590,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   scoreValue: {fileID: 3938421975345508499}
-  pointsIncreasing: 0
+  highScoreValue: {fileID: 3938421977346970973}
   scoreRequirement: 1000
-  requirementIncreaseAmount: 500
-  enableGameOver: 1
+  requirementMultiplier: 1.7
+  enableGameOver: 0
 --- !u!1 &3938421976050910882
 GameObject:
   m_ObjectHideFlags: 0
