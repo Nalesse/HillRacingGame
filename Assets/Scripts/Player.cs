@@ -132,7 +132,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        KeepInBounds();
         if (gameOver) { return;}
         
         #region Input
@@ -166,6 +165,7 @@ public class Player : MonoBehaviour
 
         #endregion
         
+        KeepInBounds();
     }
     
     private void Update()
@@ -229,6 +229,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        
         if (!northTrickTimer)
         {
             StartCoroutine(TrickSystem.CooldownTrick("Ntrick"));
