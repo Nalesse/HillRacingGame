@@ -10,6 +10,8 @@ public class TrickSystem : MonoBehaviour
     [SerializeField] private Animator animator;
 
     public string animatorBool;
+
+    public bool stopCooldown;
     
     private void Awake()
     {
@@ -36,13 +38,15 @@ public class TrickSystem : MonoBehaviour
 
         if (_animatorBool == animatorBool)
         {
-            if (!Player.Instance.isGrounded)
+            if (!Player.Instance.isGrounded && !stopCooldown)
             {
+                stopCooldown = true;
+                Debug.Log("Cooling trick");
                 animator.SetBool(animatorBool, false);
                 yield return new WaitForSeconds(.5f);
-
                 isDoingTrick = false;
                 Debug.Log(animatorBool + " Cooled");
+                stopCooldown = false;
 
             }
         }
