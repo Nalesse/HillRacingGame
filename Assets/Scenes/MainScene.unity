@@ -537,14 +537,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: roadTiles.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: roadTiles.Array.data[3]
-      value: 
-      objectReference: {fileID: 864747726808477884, guid: 2d9cdbda9147d5945a8937000657fcb0, type: 3}
     - target: {fileID: 5345311641709041392, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: m_Name
       value: LevelGenerator

@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 1253682736924406498, guid: f42795f7e10ecbd489611e8a24798735, type: 3}
   - {fileID: 1253682736924406498, guid: b49c2ae4e3413274a99dce9e82726f3b, type: 3}
   - {fileID: 1253682736924406498, guid: 6adcf7f88fd15d84da45b01653fc9f0c, type: 3}
+  - {fileID: 864747726808477884, guid: 2d9cdbda9147d5945a8937000657fcb0, type: 3}
   tilesToPreSpawn: 15
   SpawnableObjects:
   - prefab: {fileID: 8468794168959760222, guid: 947f019bb9f1a694ca76fd91e743f2d6, type: 3}
@@ -69,6 +70,42 @@ MonoBehaviour:
     disallowedXMax: 1.92
   - prefab: {fileID: 5666359609849991738, guid: d32bfbd6cabea4643a2a6ec43837b608, type: 3}
     Offset: {x: 0, y: 1, z: 0}
+    chanceToSpawn: 0.4
+    xMin: -7.51
+    xMax: 7.51
+    zMin: 0
+    zMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
+  - prefab: {fileID: 2198336577533197662, guid: 9ddcf4abb8db74d47939d40baa4ee0b5, type: 3}
+    Offset: {x: 0, y: 25, z: 0}
+    chanceToSpawn: 0.4
+    xMin: -7.51
+    xMax: 7.51
+    zMin: 0
+    zMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
+  - prefab: {fileID: 857387940767069086, guid: 9dde86f77ac703f4aa841cb4a5044f56, type: 3}
+    Offset: {x: 0, y: 25, z: 0}
+    chanceToSpawn: 0.4
+    xMin: -7.51
+    xMax: 7.51
+    zMin: 0
+    zMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
+  - prefab: {fileID: 8754621487087021102, guid: c709d09ea9d4a9f44bce2a84b6416e8c, type: 3}
+    Offset: {x: 0, y: 23, z: 0}
+    chanceToSpawn: 0.4
+    xMin: -7.51
+    xMax: 7.51
+    zMin: 0
+    zMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
+  - prefab: {fileID: 7456821533175039407, guid: 43e544dbbf18fe64ca1c4e5c6990e813, type: 3}
+    Offset: {x: 0, y: 23, z: 0}
     chanceToSpawn: 0.4
     xMin: -7.51
     xMax: 7.51
