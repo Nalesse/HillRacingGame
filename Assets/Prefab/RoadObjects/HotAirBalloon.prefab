@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3b4075b2dc420144c85c1155c8d418a4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a1549035d1dc0f43abcecbb4d6a0321, type: 2}
+      objectReference: {fileID: 2100000, guid: 97cf9458b72385d4bb77cc0691cde5cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 3b4075b2dc420144c85c1155c8d418a4, type: 3}
       propertyPath: m_Name
       value: hotairballoon
