@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
         
         if (isDamage)
         {
-            speed = LerpSpeed(speed, 0, 500);
+            speed = LerpSpeed(speed, speed/2, 500);
         }
     }
 
