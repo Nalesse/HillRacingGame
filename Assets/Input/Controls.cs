@@ -57,6 +57,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugFPS30"",
+                    ""type"": ""Button"",
+                    ""id"": ""da55d6f5-abb3-43a8-a47d-d6795aa49421"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugFPS60"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf922c23-15f1-43b9-8e62-4513cd6a598b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -301,6 +317,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""SouthTrick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52bf4aa1-3591-4b91-9dfe-44a6af8fd2f3"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugFPS30"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f26f3cab-02f0-4ccb-94b2-8cba71ba6d63"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugFPS60"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -314,6 +352,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
         m_Racing_SouthTrick = m_Racing.FindAction("SouthTrick", throwIfNotFound: true);
         m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
+        m_Racing_DebugFPS30 = m_Racing.FindAction("DebugFPS30", throwIfNotFound: true);
+        m_Racing_DebugFPS60 = m_Racing.FindAction("DebugFPS60", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -368,6 +408,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Racing_EastTrick;
     private readonly InputAction m_Racing_SouthTrick;
     private readonly InputAction m_Racing_DebugJump;
+    private readonly InputAction m_Racing_DebugFPS30;
+    private readonly InputAction m_Racing_DebugFPS60;
     public struct RacingActions
     {
         private @Controls m_Wrapper;
@@ -377,6 +419,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
         public InputAction @SouthTrick => m_Wrapper.m_Racing_SouthTrick;
         public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
+        public InputAction @DebugFPS30 => m_Wrapper.m_Racing_DebugFPS30;
+        public InputAction @DebugFPS60 => m_Wrapper.m_Racing_DebugFPS60;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -401,6 +445,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DebugJump.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
                 @DebugJump.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
                 @DebugJump.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                @DebugFPS30.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                @DebugFPS30.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                @DebugFPS30.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                @DebugFPS60.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                @DebugFPS60.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                @DebugFPS60.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -420,6 +470,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DebugJump.started += instance.OnDebugJump;
                 @DebugJump.performed += instance.OnDebugJump;
                 @DebugJump.canceled += instance.OnDebugJump;
+                @DebugFPS30.started += instance.OnDebugFPS30;
+                @DebugFPS30.performed += instance.OnDebugFPS30;
+                @DebugFPS30.canceled += instance.OnDebugFPS30;
+                @DebugFPS60.started += instance.OnDebugFPS60;
+                @DebugFPS60.performed += instance.OnDebugFPS60;
+                @DebugFPS60.canceled += instance.OnDebugFPS60;
             }
         }
     }
@@ -431,5 +487,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnEastTrick(InputAction.CallbackContext context);
         void OnSouthTrick(InputAction.CallbackContext context);
         void OnDebugJump(InputAction.CallbackContext context);
+        void OnDebugFPS30(InputAction.CallbackContext context);
+        void OnDebugFPS60(InputAction.CallbackContext context);
     }
 }
