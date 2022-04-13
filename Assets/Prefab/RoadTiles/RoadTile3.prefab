@@ -306,7 +306,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 282cc5a1f13021a4ea10841a68c0205b, type: 2}
+  - {fileID: 2100000, guid: cdb1592bd2768bb4489ec687fa069203, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1610,7 +1610,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 282cc5a1f13021a4ea10841a68c0205b, type: 2}
+  - {fileID: 2100000, guid: cdb1592bd2768bb4489ec687fa069203, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3299,7 +3299,7 @@ BoxCollider:
   m_GameObject: {fileID: 6890299066592192922}
   m_Material: {fileID: 13400000, guid: d1b34cda9073de44b8720fb3fe10d438, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4741,7 +4741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4353434832208333893, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.78
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4353434832208333893, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5723,7 +5723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4353434832208333893, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.78
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4353434832208333893, guid: e548b3e94a9e92f4d9b22c40a9239a8e, type: 3}
       propertyPath: m_LocalPosition.z
