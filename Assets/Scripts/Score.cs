@@ -19,6 +19,7 @@ public class Score : MonoBehaviour
     [Header("Score Requirement Settings")]
     [SerializeField] private float scoreRequirement;
     [SerializeField] private float requirementMultiplier;
+    [SerializeField] private TextMeshProUGUI goalValue;
 
     // for debug only
     [Header("Debug")]
@@ -60,6 +61,8 @@ public class Score : MonoBehaviour
 
     private void ScoreRequirement()
     {
+        goalValue.text = $"{(int)scoreRequirement * requirementMultiplier}";
+
         if (score < (int)scoreRequirement)
         {
             if (enableGameOver)
