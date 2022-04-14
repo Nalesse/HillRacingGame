@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2000
-  minDistance: -130
+  minDistance: -170
   minDestroyDistance: 20
   shittyCarModels:
   - {fileID: 919132149155446097, guid: f6a58ad77625b0f418432fe7480db6ea, type: 3}
