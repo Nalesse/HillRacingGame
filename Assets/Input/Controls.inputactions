@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "WestTrick",
+                    "type": "Button",
+                    "id": "e6f10afa-eb59-4f60-b3b4-aa08cd9fce3a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "SouthTrick",
                     "type": "Button",
                     "id": "f68de04c-f877-4a28-92b3-3edfb9069a34",
@@ -324,6 +332,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DebugFPS60",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "900d7c01-32ae-4f74-86df-ea87c57009c9",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WestTrick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b984906-c029-4e2c-837a-3a4549754ce5",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WestTrick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
