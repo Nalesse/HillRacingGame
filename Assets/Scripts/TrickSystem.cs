@@ -10,6 +10,7 @@ public class TrickSystem : MonoBehaviour
     [SerializeField] private Animator animator;
 
     public string animatorBool;
+    public bool isDoingTrickSmaller;
 
     public bool stopCooldown;
     
@@ -29,6 +30,7 @@ public class TrickSystem : MonoBehaviour
         animatorBool = _animatorBool;
         Debug.Log("Performing trick: " + animatorBool);
         isDoingTrick = true;
+        isDoingTrickSmaller = true;
         animator.SetBool(animatorBool, true);
 
     }
@@ -40,6 +42,7 @@ public class TrickSystem : MonoBehaviour
         stopCooldown = true;
         Debug.Log("Cooling trick");
         animator.SetBool(animatorBool, false);
+        isDoingTrickSmaller = false;
         yield return new WaitForSeconds(.5f);
         isDoingTrick = false;
         Debug.Log(animatorBool + " Cooled");

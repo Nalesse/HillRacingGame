@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBoost: 6000
-  liftForce: 20
+  liftForce: 35
 --- !u!65 &4439191380241415323
 BoxCollider:
   m_ObjectHideFlags: 0
