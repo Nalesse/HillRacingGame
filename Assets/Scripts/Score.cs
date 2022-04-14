@@ -71,7 +71,7 @@ public class Score : MonoBehaviour
 
         if (Player.Instance.isDamage)
         {
-            Debug.Log("TempScoreToZero");
+            //Debug.Log("TempScoreToZero");
             tempScore = 0;
         }
 
@@ -90,7 +90,7 @@ public class Score : MonoBehaviour
             
             if (isScoreMultiplying == true)
             {
-                Debug.Log(pointMultiplier + " point multiplier");
+                //Debug.Log(pointMultiplier + " point multiplier");
                 pointMultiplier += 1;
                 isScoreMultiplying = false;
             }
