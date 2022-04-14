@@ -71,16 +71,17 @@ public class Score : MonoBehaviour
 
         if (Player.Instance.isDamage)
         {
-            Debug.Log("TempScoreToZero");
+            //Debug.Log("TempScoreToZero");
             tempScore = 0;
         }
 
         if (Player.Instance.isGrounded)
         {
-            pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
+
             score += tempScore * pointMultiplier;
             tempScore = 0;
             pointMultiplier = 0;
+            pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
         }
 
         
@@ -90,7 +91,7 @@ public class Score : MonoBehaviour
             
             if (isScoreMultiplying == true)
             {
-                Debug.Log(pointMultiplier + " point multiplier");
+                //Debug.Log(pointMultiplier + " point multiplier");
                 pointMultiplier += 1;
                 isScoreMultiplying = false;
             }
