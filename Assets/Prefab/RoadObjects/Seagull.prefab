@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7456821533175039406}
   - component: {fileID: 1642985132503391044}
   - component: {fileID: 8061041685931338985}
+  - component: {fileID: 6990333060957418457}
   m_Layer: 0
   m_Name: Seagull
   m_TagString: Untagged
@@ -58,6 +59,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689b2dbee43fb2c4589ac2a57641d312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6990333060957418457
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456821533175039407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1261605810666071475
 PrefabInstance:
   m_ObjectHideFlags: 0
