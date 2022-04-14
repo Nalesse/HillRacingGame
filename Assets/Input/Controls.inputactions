@@ -44,6 +44,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DebugFPS30",
+                    "type": "Button",
+                    "id": "da55d6f5-abb3-43a8-a47d-d6795aa49421",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DebugFPS60",
+                    "type": "Button",
+                    "id": "cf922c23-15f1-43b9-8e62-4513cd6a598b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -286,6 +302,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SouthTrick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52bf4aa1-3591-4b91-9dfe-44a6af8fd2f3",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugFPS30",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f26f3cab-02f0-4ccb-94b2-8cba71ba6d63",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugFPS60",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

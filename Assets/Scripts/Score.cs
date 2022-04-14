@@ -9,35 +9,48 @@ using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float score;
-    public TextMeshProUGUI scoreValue;
-    public float pointsIncreasing;
+    [SerializeField] private float score;
+    private float highScore;
+    [SerializeField] private TextMeshProUGUI scoreValue;
+    [SerializeField] private TextMeshProUGUI highScoreValue;
+    private float pointsIncreasing;
     private TrickSystem TrickSystem;
 
     [Header("Score Requirement Settings")]
     [SerializeField] private float scoreRequirement;
-    [SerializeField] private float requirementIncreaseAmount;
+    [SerializeField] private float requirementMultiplier;
+    [SerializeField] private TextMeshProUGUI goalValue;
 
     // for debug only
     [Header("Debug")]
     [SerializeField] private bool enableGameOver;
 
-    private void OnEnable() => GameEvents.TimerCompleted.AddListener(ScoreRequirement);
+    private void OnEnable()
+    {
+        GameEvents.TimerCompleted.AddListener(ScoreRequirement);
+        GameEvents.GameOver.AddListener(GameOver);
+    }
 
     private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(ScoreRequirement);
 
-    void Start()
+    private void Start()
     {
         score = 0f;
         pointsIncreasing = 1f;
-
         TrickSystem = FindObjectOfType<TrickSystem>();
+
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetFloat("HighScore");
+            highScoreValue.text = $"{(int)highScore:00000}";
+        }
+        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        scoreValue.text = "" + $"{(int)score:00000}";
+        scoreValue.text = $"{(int)score:00000}";
         
 
         if (TrickSystem.isDoingTrick)
@@ -48,7 +61,9 @@ public class Score : MonoBehaviour
 
     private void ScoreRequirement()
     {
-        if (score < scoreRequirement)
+        goalValue.text = $"{(int)scoreRequirement * requirementMultiplier}";
+
+        if (score < (int)scoreRequirement)
         {
             if (enableGameOver)
             {
@@ -59,8 +74,17 @@ public class Score : MonoBehaviour
         }
         else
         {
-            scoreRequirement += requirementIncreaseAmount;
-            Debug.Log("Score Requirement: " + scoreRequirement);
+            scoreRequirement *= requirementMultiplier;
+            Debug.Log("Score Requirement: " + (int)scoreRequirement);
         }
+    }
+
+    private void GameOver()
+    {
+        if (!(score > highScore)) return;
+        
+        highScore = (int)score;
+        PlayerPrefs.SetFloat("HighScore", highScore);
+        highScoreValue.text = $"{(int)highScore:00000}";
     }
 }
