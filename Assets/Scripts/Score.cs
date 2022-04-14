@@ -77,10 +77,11 @@ public class Score : MonoBehaviour
 
         if (Player.Instance.isGrounded)
         {
-            pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
+
             score += tempScore * pointMultiplier;
             tempScore = 0;
             pointMultiplier = 0;
+            pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
         }
 
         
