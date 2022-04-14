@@ -2,22 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpeedBoost : MonoBehaviour
 {
-    [SerializeField] private float speedBoostSpeed;
-    private Player Player;
+    [field: SerializeField] protected float speedBoost;
 
-    private void Start()
-    {
-        Player = FindObjectOfType<Player>();
-    }
-
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Player.speed = speedBoostSpeed;
+            Player.Instance.speed = speedBoost;
         }
     }
 }
