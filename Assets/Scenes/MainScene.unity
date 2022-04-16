@@ -475,6 +475,14 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 464412395}
+    - target: {fileID: 1907315597872376746, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1747772670}
+    - target: {fileID: 1907315597872376746, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
     - target: {fileID: 3163698652422579887, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: m_Name
       value: UIHolder
@@ -482,6 +490,10 @@ PrefabInstance:
     - target: {fileID: 3938421975482894140, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: m_ScreenMatchMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499306529913672277, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7146691220164822447, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: enableGameOver
@@ -495,6 +507,38 @@ PrefabInstance:
       propertyPath: tempScoreValue
       value: 
       objectReference: {fileID: 1003007428}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1747772670}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Loading
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530455066765331857, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8636700800197237955, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 400
@@ -788,6 +832,23 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8401585071384670820, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
   m_PrefabInstance: {fileID: 1545998781}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1747772664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3938421975482894142, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+  m_PrefabInstance: {fileID: 1235628695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1747772670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747772664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99da104157b45c64c86477c7d2ba6478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1952244444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -829,15 +890,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08693156
+      value: 0.086931534
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039208755
+      value: 0.003920841
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00034214577
+      value: -0.00034214265
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -941,15 +1002,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08693156
+      value: 0.086931534
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039208755
+      value: 0.003920841
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00034214577
+      value: -0.00034214265
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
