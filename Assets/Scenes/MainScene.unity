@@ -320,7 +320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1003007428 stripped
 MonoBehaviour:
@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 4bffb0f9ed09a2f498dae05553331d55, type: 3}
     - target: {fileID: 4746639962091573656, guid: fa423dfb4c9407c4b9500710450f715c, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4746639962091573656, guid: fa423dfb4c9407c4b9500710450f715c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -635,6 +635,14 @@ PrefabInstance:
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[5].zMax
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: aerialObjects.Array.data[1].Offset.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: aerialObjects.Array.data[3].Offset.y
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].prefab
