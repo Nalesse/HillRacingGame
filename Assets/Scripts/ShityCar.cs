@@ -12,6 +12,7 @@ public class ShityCar : MonoBehaviour, ICollidable
     [SerializeField] private float minDistance;
     [SerializeField] private float minDestroyDistance;
     [SerializeField] private GameObject[] shittyCarModels;
+    [SerializeField] private float nearMissSpeed;
     
     [Header("Crash Settings")]
     [SerializeField] private float crashLeftSideX;
@@ -97,4 +98,17 @@ public class ShityCar : MonoBehaviour, ICollidable
         carRB.velocity = Vector3.zero;
         carRB.angularVelocity = Vector3.zero;
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (Player.Instance.isDamage == false)
+        {
+            Debug.Log("Near Miss");
+            Player.Instance.speed = nearMissSpeed;
+        }
+    }
 }
+
+
