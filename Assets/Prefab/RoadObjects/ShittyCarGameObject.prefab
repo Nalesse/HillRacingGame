@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 842052752886450798}
   - component: {fileID: 2764871251267731314}
   - component: {fileID: 8738564150427894514}
+  - component: {fileID: 8873341761325091030}
   m_Layer: 0
   m_Name: ShittyCarGameObject
   m_TagString: Collidable
@@ -98,3 +99,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.12, y: 3.9704819, z: 15.9}
   m_Center: {x: 0.05640459, y: 2.1146183, z: 0.75450325}
+--- !u!95 &8873341761325091030
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666359609849991738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed734e2c4bfaf89468eee3a299b3aca8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
