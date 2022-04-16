@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5105747470395675322}
   - component: {fileID: 3093602633482991063}
+  - component: {fileID: 2618588845188916388}
   m_Layer: 0
   m_Name: Tree (4)
   m_TagString: Untagged
@@ -82,6 +83,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2618588845188916388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176659695213859684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &191899877480698055
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671518833498352948}
   - component: {fileID: 3382585972738476724}
+  - component: {fileID: 5344882764900804729}
   m_Layer: 0
   m_Name: Tree (23)
   m_TagString: Untagged
@@ -164,6 +178,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5344882764900804729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191899877480698055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &297705455637800449
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8881345364610739155}
   - component: {fileID: 2411876894138248680}
+  - component: {fileID: 6502974325306904367}
   m_Layer: 0
   m_Name: Tree (1)
   m_TagString: Untagged
@@ -246,6 +273,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6502974325306904367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297705455637800449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &442175417840765670
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6618368651758915881}
   - component: {fileID: 3960026935779986134}
+  - component: {fileID: 7740401940163856584}
   m_Layer: 0
   m_Name: Tree (2)
   m_TagString: Untagged
@@ -768,6 +808,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7740401940163856584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030827050009241362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1136132562643017124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,6 +1201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563895830460343013}
   - component: {fileID: 378166673884290266}
+  - component: {fileID: 5516495307274574763}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -1221,6 +1274,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5516495307274574763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955964318145119350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1962256587757545539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8224960917121474802}
   - component: {fileID: 4766671971429524536}
+  - component: {fileID: 7531700550070149140}
   m_Layer: 0
   m_Name: Tree (17)
   m_TagString: Untagged
@@ -1386,6 +1452,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7531700550070149140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256359389130799410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2502348907365741661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,6 +1474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2951275176257383974}
   - component: {fileID: 1188653306080465516}
+  - component: {fileID: 7498924619208363001}
   m_Layer: 0
   m_Name: Tree (15)
   m_TagString: Untagged
@@ -1468,6 +1547,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7498924619208363001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2502348907365741661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2505320024887684638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,6 +1746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7636202492571674401}
   - component: {fileID: 14301330702264791}
+  - component: {fileID: 1992715890004427308}
   m_Layer: 0
   m_Name: Tree (13)
   m_TagString: Untagged
@@ -1727,6 +1819,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1992715890004427308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749882821049274354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2818855875699754991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4229033494180003458}
   - component: {fileID: 2880049671306335268}
+  - component: {fileID: 2543074011108767405}
   m_Layer: 0
   m_Name: Tree (10)
   m_TagString: Untagged
@@ -1891,6 +1996,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2543074011108767405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937380669959233087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2947159544685724975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,6 +2018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3113809582056874417}
   - component: {fileID: 3424722926134242297}
+  - component: {fileID: 262380541296613012}
   m_Layer: 0
   m_Name: Tree (14)
   m_TagString: Untagged
@@ -1973,6 +2091,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &262380541296613012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947159544685724975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2995350805504818003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,6 +2113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3832741162738834770}
   - component: {fileID: 3272692004017797437}
+  - component: {fileID: 5686401198422952167}
   m_Layer: 0
   m_Name: Tree (5)
   m_TagString: Untagged
@@ -2055,6 +2186,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5686401198422952167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2995350805504818003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3268854920144339417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4859951742036102006}
   - component: {fileID: 9147363796631520230}
+  - component: {fileID: 2500065486647073410}
   m_Layer: 0
   m_Name: Tree (20)
   m_TagString: Untagged
@@ -2137,6 +2281,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2500065486647073410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268854920144339417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3522829342848913686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5300148351963955380}
   - component: {fileID: 8829043644109163940}
+  - component: {fileID: 8167340719350734014}
   m_Layer: 0
   m_Name: Tree (8)
   m_TagString: Untagged
@@ -2219,6 +2376,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8167340719350734014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522829342848913686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4148040628622386476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,6 +2482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423393148117352015}
   - component: {fileID: 3642314994386623889}
+  - component: {fileID: 6198350800250693346}
   m_Layer: 0
   m_Name: Tree (19)
   m_TagString: Untagged
@@ -2385,6 +2555,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6198350800250693346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181841776652829177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4466124541753013665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,6 +2741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6362994083769426129}
   - component: {fileID: 2219878105818334873}
+  - component: {fileID: 6650573476486807638}
   m_Layer: 0
   m_Name: Tree (22)
   m_TagString: Untagged
@@ -2631,6 +2814,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6650573476486807638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244457573912209215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5411808513061926321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +3085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284740840245850214}
   - component: {fileID: 8184510906899629040}
+  - component: {fileID: 3533497497008376814}
   m_Layer: 0
   m_Name: Tree (9)
   m_TagString: Untagged
@@ -2962,6 +3158,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3533497497008376814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679809558036435284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5891710734682183041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,6 +3180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8765497973997766676}
   - component: {fileID: 2291184451369694738}
+  - component: {fileID: 1905429856157392322}
   m_Layer: 0
   m_Name: Tree (7)
   m_TagString: Untagged
@@ -3044,6 +3253,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1905429856157392322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891710734682183041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5980260724597069731
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,6 +3275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5216277531542169758}
   - component: {fileID: 435238300391452800}
+  - component: {fileID: 2277956273744481358}
   m_Layer: 0
   m_Name: Tree (21)
   m_TagString: Untagged
@@ -3126,6 +3348,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2277956273744481358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980260724597069731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6213205620568045480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,6 +3370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3277845262761320279}
   - component: {fileID: 5213767280824855907}
+  - component: {fileID: 8040018786489829421}
   m_Layer: 0
   m_Name: Tree (16)
   m_TagString: Untagged
@@ -3208,6 +3443,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8040018786489829421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213205620568045480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6890299066592192922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,6 +3560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3973916729538063629}
   - component: {fileID: 8618131089823222472}
+  - component: {fileID: 1259660246889772208}
   m_Layer: 0
   m_Name: Tree (18)
   m_TagString: Untagged
@@ -3385,6 +3633,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1259660246889772208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7267854931799924564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7543164480555898177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3520,6 +3780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5205699985525923696}
   - component: {fileID: 5709420393712662581}
+  - component: {fileID: 2365779421302273494}
   m_Layer: 0
   m_Name: Tree (11)
   m_TagString: Untagged
@@ -3592,6 +3853,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2365779421302273494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949019030219500606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8016520959532624623
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,6 +4329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923920744475675158}
   - component: {fileID: 2612054060412750377}
+  - component: {fileID: 1340684092140290804}
   m_Layer: 0
   m_Name: Tree (12)
   m_TagString: Untagged
@@ -4128,6 +4402,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1340684092140290804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8701883056477273471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9105040036011724382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,6 +4424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8759406993504246577}
   - component: {fileID: 1829513607187639563}
+  - component: {fileID: 456536377052006656}
   m_Layer: 0
   m_Name: Tree (6)
   m_TagString: Untagged
@@ -4210,6 +4497,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &456536377052006656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105040036011724382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9206831592900442504
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8569038678040224929}
   - component: {fileID: 6372469551233098526}
+  - component: {fileID: 9047508463755199402}
   m_Layer: 0
   m_Name: Tree (3)
   m_TagString: Untagged
@@ -4292,6 +4592,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9047508463755199402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206831592900442504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9227784a0296c41aa6621018099fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &956217153747977046
 PrefabInstance:
   m_ObjectHideFlags: 0

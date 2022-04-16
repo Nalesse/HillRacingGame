@@ -43,6 +43,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""WestTrick"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6f10afa-eb59-4f60-b3b4-aa08cd9fce3a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""SouthTrick"",
                     ""type"": ""Button"",
                     ""id"": ""f68de04c-f877-4a28-92b3-3edfb9069a34"",
@@ -339,6 +347,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""DebugFPS60"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""900d7c01-32ae-4f74-86df-ea87c57009c9"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestTrick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b984906-c029-4e2c-837a-3a4549754ce5"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestTrick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -350,6 +380,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
         m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
         m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
+        m_Racing_WestTrick = m_Racing.FindAction("WestTrick", throwIfNotFound: true);
         m_Racing_SouthTrick = m_Racing.FindAction("SouthTrick", throwIfNotFound: true);
         m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
         m_Racing_DebugFPS30 = m_Racing.FindAction("DebugFPS30", throwIfNotFound: true);
@@ -406,6 +437,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Racing_Move;
     private readonly InputAction m_Racing_NorthTrick;
     private readonly InputAction m_Racing_EastTrick;
+    private readonly InputAction m_Racing_WestTrick;
     private readonly InputAction m_Racing_SouthTrick;
     private readonly InputAction m_Racing_DebugJump;
     private readonly InputAction m_Racing_DebugFPS30;
@@ -417,6 +449,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Racing_Move;
         public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
         public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
+        public InputAction @WestTrick => m_Wrapper.m_Racing_WestTrick;
         public InputAction @SouthTrick => m_Wrapper.m_Racing_SouthTrick;
         public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
         public InputAction @DebugFPS30 => m_Wrapper.m_Racing_DebugFPS30;
@@ -439,6 +472,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
                 @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
                 @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @WestTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                @WestTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                @WestTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
                 @SouthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
                 @SouthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
                 @SouthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
@@ -464,6 +500,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @EastTrick.started += instance.OnEastTrick;
                 @EastTrick.performed += instance.OnEastTrick;
                 @EastTrick.canceled += instance.OnEastTrick;
+                @WestTrick.started += instance.OnWestTrick;
+                @WestTrick.performed += instance.OnWestTrick;
+                @WestTrick.canceled += instance.OnWestTrick;
                 @SouthTrick.started += instance.OnSouthTrick;
                 @SouthTrick.performed += instance.OnSouthTrick;
                 @SouthTrick.canceled += instance.OnSouthTrick;
@@ -485,6 +524,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnNorthTrick(InputAction.CallbackContext context);
         void OnEastTrick(InputAction.CallbackContext context);
+        void OnWestTrick(InputAction.CallbackContext context);
         void OnSouthTrick(InputAction.CallbackContext context);
         void OnDebugJump(InputAction.CallbackContext context);
         void OnDebugFPS30(InputAction.CallbackContext context);

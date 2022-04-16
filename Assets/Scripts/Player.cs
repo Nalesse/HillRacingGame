@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public bool northTrickTimer;
     public bool eastTrickTimer;
     public bool southTrickTimer;
+    public bool westTrickTimer;
 
     public float maxInputBuffer = 0.3f;
 
@@ -94,7 +95,10 @@ public class Player : MonoBehaviour
         controls.Racing.SouthTrick.performed += ctx => southTrickTimer = true;
         controls.Racing.SouthTrick.canceled += ctx => southTrickTimer = false;
 
-        
+        controls.Racing.WestTrick.performed += ctx => westTrickTimer = true;
+        controls.Racing.WestTrick.canceled += ctx => westTrickTimer = false;
+
+
 
         /*
         controls.Racing.NorthTrick.performed += ctx => TrickSystem.DoTrick("Ntrick");
@@ -106,7 +110,7 @@ public class Player : MonoBehaviour
         controls.Racing.SouthTrick.performed += ctx => TrickSystem.DoTrick("Strick");
         controls.Racing.SouthTrick.canceled += ctx => StartCoroutine(TrickSystem.CooldownTrick("Strick"));
         */
-        
+
 
         // Singleton setup
         if (Instance != null && Instance != this) 
@@ -221,6 +225,10 @@ public class Player : MonoBehaviour
         {
             TrickSystem.DoTrick("Strick");
         }
+        else if (westTrickTimer)
+        {
+            TrickSystem.DoTrick("Wtrick");
+        }
     }
 
     private void CheckTrickCooldownTimers()
@@ -245,7 +253,10 @@ public class Player : MonoBehaviour
             StartCoroutine(TrickSystem.CooldownTrick("Strick"));
         }
 
-
+        if (!westTrickTimer)
+        {
+            StartCoroutine(TrickSystem.CooldownTrick("Wtrick"));
+        }
     }
 
     #endregion

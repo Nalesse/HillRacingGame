@@ -15,8 +15,10 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         int currentResolutionIndex = 0;
-        string option = 1920 + " x " + 1080;
-        options.Add(option);
+        string[] option = new string[] {420 + " x " + 380, 1440 + " x " + 1080, 1920 + " x " + 1080};
+        options.Add(option[0]);
+        options.Add(option[1]);
+        options.Add(option[2]);
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
