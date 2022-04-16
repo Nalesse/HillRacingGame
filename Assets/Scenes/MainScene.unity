@@ -533,60 +533,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: tilesToPreSpawn
-      value: 35
+      propertyPath: SpawnableObjects.Array.data[0].chanceToSpawn
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[6].zMax
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[7].xMax
-      value: 7.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[7].xMin
-      value: -7.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[7].prefab
-      value: 
-      objectReference: {fileID: 1609861442778490765, guid: 523fca50b1229d344892f4760471412a, type: 3}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[7].Offset.y
-      value: 30
+      propertyPath: SpawnableObjects.Array.data[1].chanceToSpawn
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[3].chanceToSpawn
-      value: 0.4
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[4].chanceToSpawn
-      value: 0.4
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[5].chanceToSpawn
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[6].chanceToSpawn
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[7].chanceToSpawn
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[7].disallowedXMax
-      value: 1.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[7].disallowedXMin
-      value: -1.92
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041392, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: m_Name
