@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pointMultValue;
     private float pointsIncreasing;
     private int pointMultiplier;
-    private TrickSystem TrickSystem;
+    public TrickSystem TrickSystem;
 
     public float trickBuffer;
     
@@ -44,7 +44,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         score = 0f;
-        pointsIncreasing = 1f;
+        pointsIncreasing = 100 * Time.deltaTime;
         TrickSystem = FindObjectOfType<TrickSystem>();
 
         if (PlayerPrefs.HasKey("HighScore"))
@@ -64,7 +64,8 @@ public class Score : MonoBehaviour
 
         if (TrickSystem.isDoingTrick)
         {
-            tempScore += pointsIncreasing = 100 * Time.deltaTime;
+            Debug.Log("+1 Point");
+            tempScore += pointsIncreasing;
         }
         if (TrickSystem.isDoingTrickSmaller)
         {
