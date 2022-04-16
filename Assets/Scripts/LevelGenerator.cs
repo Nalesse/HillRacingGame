@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -81,12 +82,12 @@ public class LevelGenerator : MonoBehaviour
     #endregion
 
     #region Inspector Fields
-    //TODO: When we do biomes this will need to be changed to support 2 levels of random, random biome and then whithin that biome a random tile.
-    // This will be done with scriptiple objects, the biome will be a scriptiple object each one will have its own array of tiles
     [SerializeField] private GameObject[] roadTiles;
     [SerializeField] private int tilesToPreSpawn;
-    [SerializeField] private SpawnableObject[] SpawnableObjects;
-     
+    [SerializeField] private SpawnableObject shittyCar;
+    [SerializeField] private SpawnableObject[] aerialObjects;
+    [FormerlySerializedAs("SpawnableObjects")] [SerializeField] private SpawnableObject[] roadObjects;
+
     #endregion
 
     
@@ -96,7 +97,7 @@ public class LevelGenerator : MonoBehaviour
     public void SpawnObjects()
     {
         int spawnIndex = Random.Range(0, roadTiles.Length);
-        
+
         // Setup for Spawning Road objects
 
         //Spawns a tile and sets the parent to the container. Then preforms setup for the next tile to be spawned
@@ -104,24 +105,37 @@ public class LevelGenerator : MonoBehaviour
         spawnedTile.transform.SetParent(roadTileContainer.transform, false);
         col = spawnedTile.transform.GetChild(0).GetComponent<BoxCollider>();
         
+        var roadTileScript = spawnedTile.GetComponent<RoadTile>();
+        
         // loops through all the spawnable objects and checks the chance to spawn.
         //if random.value is greater then the chance to spawn then the object gets spawned
-        for (int i = 0; i < SpawnableObjects.Length; i++)
+        for (int i = 0; i < roadObjects.Length; i++)
         {
-            var chanceToSpawn = 1 - SpawnableObjects[i].chanceToSpawn;
+            var chanceToSpawn = 1 - roadObjects[i].chanceToSpawn;
             if (Random.value > chanceToSpawn)
             {
-                spawnedObjectData = SpawnableObjects[i];
-                spawnedTile.GetComponent<RoadTile>().SpawnRoadObjects(spawnedObjectData);
+                spawnedObjectData = roadObjects[i];
+                roadTileScript.SpawnRoadObjects(spawnedObjectData);
+                break;
+            }
+        }
+
+        for (int i = 0; i < aerialObjects.Length; i++)
+        {
+            var chanceToSpawn = 1 - aerialObjects[i].chanceToSpawn;
+            if (Random.value > chanceToSpawn)
+            {
+                spawnedObjectData = aerialObjects[i];
+                roadTileScript.SpawnRoadObjects(spawnedObjectData);
                 break;
             }
         }
         
-        
+        roadTileScript.SpawnCar(shittyCar);
         nextSpawnPoint = CalculateNextSpawnPoint();
     }
-    
-    
+
+
     private void Awake()
     {
         // Singleton setup

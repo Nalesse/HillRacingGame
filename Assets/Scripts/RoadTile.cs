@@ -37,11 +37,24 @@ public class RoadTile : MonoBehaviour
 
         spawnedObject = Instantiate(spawnableObjectData.prefab, randomPos, spawnableObjectData.prefab.transform.rotation);
         spawnedObject.transform.SetParent(tileTransform,true);
-
-        AdjustPosition(spawnableObjectData);
+        AdjustPosition(spawnableObjectData, spawnedObject);
+        
     }
 
-    private void AdjustPosition(SpawnableObject spawnableObjectData)
+    public void SpawnCar(SpawnableObject carData)
+    {
+        var chanceToSpawn = 1 - carData.chanceToSpawn;
+        if (Random.value > chanceToSpawn)
+        {
+            var spawnedCar = Instantiate(carData.prefab, transform.position, carData.prefab.transform.rotation);
+            spawnedCar.transform.SetParent(transform, true);
+            AdjustPosition(carData, spawnedCar);
+        }
+        
+    }
+    
+
+    private void AdjustPosition(SpawnableObject spawnableObjectData, GameObject spawnedGameObject)
     {
         // Makes sure object is positioned correctly at the center of the road  
         var objectPosition = transform.position + spawnableObjectData.Offset;
@@ -49,7 +62,7 @@ public class RoadTile : MonoBehaviour
         //Once object is positioned object is given random position on road
         var randomPos = objectPosition + spawnableObjectData.GenerateRandomPosition();
         objectPosition = randomPos;
-        spawnedObject.transform.position = objectPosition;
+        spawnedGameObject.transform.position = objectPosition;
     }
 
     
