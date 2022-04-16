@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1322884484421576320, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3163698652422579887, guid: f97f6849dfdd896449d77a4c23c8b67a, type: 3}
       propertyPath: m_Name
       value: UIHolder
@@ -472,24 +476,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.xMax
+      value: 8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.xMin
+      value: -8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.prefab
+      value: 
+      objectReference: {fileID: 5666359609849991738, guid: d32bfbd6cabea4643a2a6ec43837b608, type: 3}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.Offset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.chanceToSpawn
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.disallowedXMax
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: shittyCar.disallowedXMin
+      value: -1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: SpawnableObjects.Array.data[0].xMax
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
+      propertyPath: SpawnableObjects.Array.data[6].Offset.y
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[0].chanceToSpawn
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[1].chanceToSpawn
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[3].chanceToSpawn
-      value: 0.05
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[4].chanceToSpawn
-      value: 0.025
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: SpawnableObjects.Array.data[5].chanceToSpawn
-      value: 0.05
+      propertyPath: SpawnableObjects.Array.data[6].chanceToSpawn
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[7].chanceToSpawn
@@ -716,15 +748,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08693156
+      value: 0.086931534
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039208755
+      value: 0.003920841
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00034214577
+      value: -0.00034214265
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -828,15 +860,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08693156
+      value: 0.086931534
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039208755
+      value: 0.003920841
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00034214577
+      value: -0.00034214265
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
