@@ -36,7 +36,7 @@ public class Score : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.TimerCompleted.AddListener(ScoreRequirement);
-        GameEvents.GameOver.AddListener(GameOver);
+        //GameEvents.GameOver.AddListener(GameOver);
     }
 
     private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(ScoreRequirement);
@@ -45,13 +45,14 @@ public class Score : MonoBehaviour
     {
         score = 0f;
         pointsIncreasing = 1f;
-        TrickSystem = FindObjectOfType<TrickSystem>();
+        TrickSystem = GameObject.Find("Player").GetComponent<TrickSystem>();
 
-        if (PlayerPrefs.HasKey("HighScore"))
+        /*if (PlayerPrefs.HasKey("HighScore"))
         {
             highScore = PlayerPrefs.GetFloat("HighScore");
             highScoreValue.text = $"{(int)highScore:00000}";
         }
+        */
         
     }
 
@@ -64,7 +65,8 @@ public class Score : MonoBehaviour
 
         if (TrickSystem.isDoingTrick)
         {
-            tempScore += pointsIncreasing = 100 * Time.deltaTime;
+            pointsIncreasing = 100 * Time.deltaTime;
+            tempScore += pointsIncreasing;
         }
         if (TrickSystem.isDoingTrickSmaller)
         {
@@ -131,7 +133,7 @@ public class Score : MonoBehaviour
             Debug.Log("Score Requirement: " + (int)scoreRequirement);
         }
     }
-
+    /*
     private void GameOver()
     {
         if (!(score > highScore)) return;
@@ -139,5 +141,5 @@ public class Score : MonoBehaviour
         highScore = (int)score;
         PlayerPrefs.SetFloat("HighScore", highScore);
         highScoreValue.text = $"{(int)highScore:00000}";
-    }
+    } */
 }
