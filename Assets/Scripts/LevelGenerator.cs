@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -84,7 +85,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject[] roadTiles;
     [SerializeField] private int tilesToPreSpawn;
     [SerializeField] private SpawnableObject shittyCar;
-    [SerializeField] private SpawnableObject[] SpawnableObjects;
+    [SerializeField] private SpawnableObject[] aerialObjects;
+    [FormerlySerializedAs("SpawnableObjects")] [SerializeField] private SpawnableObject[] roadObjects;
 
     #endregion
 
@@ -107,12 +109,23 @@ public class LevelGenerator : MonoBehaviour
         
         // loops through all the spawnable objects and checks the chance to spawn.
         //if random.value is greater then the chance to spawn then the object gets spawned
-        for (int i = 0; i < SpawnableObjects.Length; i++)
+        for (int i = 0; i < roadObjects.Length; i++)
         {
-            var chanceToSpawn = 1 - SpawnableObjects[i].chanceToSpawn;
+            var chanceToSpawn = 1 - roadObjects[i].chanceToSpawn;
             if (Random.value > chanceToSpawn)
             {
-                spawnedObjectData = SpawnableObjects[i];
+                spawnedObjectData = roadObjects[i];
+                roadTileScript.SpawnRoadObjects(spawnedObjectData);
+                break;
+            }
+        }
+
+        for (int i = 0; i < aerialObjects.Length; i++)
+        {
+            var chanceToSpawn = 1 - aerialObjects[i].chanceToSpawn;
+            if (Random.value > chanceToSpawn)
+            {
+                spawnedObjectData = aerialObjects[i];
                 roadTileScript.SpawnRoadObjects(spawnedObjectData);
                 break;
             }
