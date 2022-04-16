@@ -19,6 +19,8 @@ public class Score : MonoBehaviour
     private float pointsIncreasing;
     private int pointMultiplier;
     private TrickSystem TrickSystem;
+
+    public float trickBuffer;
     
     private bool isScoreMultiplying = true;
 
@@ -89,8 +91,9 @@ public class Score : MonoBehaviour
         if (!TrickSystem.isDoingTrickSmaller && tempScore > 0)
         {
             
-            if (isScoreMultiplying == true)
+            if (isScoreMultiplying == true && trickBuffer >= 10)
             {
+                trickBuffer = 0;
                 //Debug.Log(pointMultiplier + " point multiplier");
                 pointMultiplier += 1;
                 isScoreMultiplying = false;
@@ -99,6 +102,13 @@ public class Score : MonoBehaviour
         else
         {
             isScoreMultiplying = true;
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (TrickSystem.isDoingTrick)
+        {
+            trickBuffer += 0.1f;
         }
     }
 
