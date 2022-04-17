@@ -41,15 +41,21 @@ public class RoadTile : MonoBehaviour
         
     }
 
-    public void SpawnCar(SpawnableObject carData)
+    public void SpawnCar(SpawnableObject[] carData)
     {
-        var chanceToSpawn = 1 - carData.chanceToSpawn;
-        if (Random.value > chanceToSpawn)
+        for (int i = 0; i < carData.Length; i++)
         {
-            var spawnedCar = Instantiate(carData.prefab, transform.position, carData.prefab.transform.rotation);
-            spawnedCar.transform.SetParent(transform, true);
-            AdjustPosition(carData, spawnedCar);
+            var chanceToSpawn = 1 - carData[i].chanceToSpawn;
+            if (Random.value > chanceToSpawn)
+            {
+                var spawnedCar = Instantiate(carData[i].prefab, transform.position, carData[i].prefab.transform.rotation);
+                spawnedCar.transform.SetParent(transform, true);
+                AdjustPosition(carData[i], spawnedCar);
+                break;
+            }
         }
+        
+        
         
     }
     

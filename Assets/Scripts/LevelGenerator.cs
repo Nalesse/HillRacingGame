@@ -84,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
     #region Inspector Fields
     [SerializeField] private GameObject[] roadTiles;
     [SerializeField] private int tilesToPreSpawn;
-    [SerializeField] private SpawnableObject shittyCar;
+    [FormerlySerializedAs("shittyCar")] [SerializeField] private SpawnableObject[] shittyCars;
     [SerializeField] private SpawnableObject[] aerialObjects;
     [FormerlySerializedAs("SpawnableObjects")] [SerializeField] private SpawnableObject[] roadObjects;
 
@@ -131,7 +131,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         
-        roadTileScript.SpawnCar(shittyCar);
+        roadTileScript.SpawnCar(shittyCars);
         nextSpawnPoint = CalculateNextSpawnPoint();
     }
 
