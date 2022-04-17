@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     public GameObject controlScreen;
     public GameObject optionsScreen;
+    public GameObject keyboardControls;
+    public GameObject gamepadControls;
 
     void Start()
     {
@@ -33,6 +35,18 @@ public class MainMenu : MonoBehaviour
     public void CloseOptions()
     {
         optionsScreen.SetActive(false);
+    }
+
+    public void ShowKeyboardControls()
+    {
+        keyboardControls.SetActive(true);
+        gamepadControls.SetActive(false);
+    }
+
+    public void ShowGamepadControls()
+    {
+        keyboardControls.SetActive(false);
+        gamepadControls.SetActive(true);
     }
 
     public void EndGame()

@@ -10,7 +10,7 @@ public class Billboard : MonoBehaviour,ICollidable
     // Start is called before the first frame update
     void Start()
     {
-        randomNumber = Random.Range(0, 5);
+        randomNumber = Random.Range(0, 10);
         if(randomNumber >= 1)
         {
             gameObject.SetActive(false);
