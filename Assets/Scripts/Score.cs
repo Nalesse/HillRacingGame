@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     [SerializeField] private float tempScore;
     private float highScore;
     [SerializeField] private TextMeshProUGUI scoreValue;
+    [SerializeField] private TextMeshProUGUI finalScoreValue;
     [SerializeField] private TextMeshProUGUI tempScoreValue;
     [SerializeField] private TextMeshProUGUI highScoreValue;
     [SerializeField] private TextMeshProUGUI pointMultValue;
@@ -60,6 +61,7 @@ public class Score : MonoBehaviour
     private void Update()
     {
         scoreValue.text = $"{(int)score:00000}";
+        finalScoreValue.text = $"{(int)score}";
         tempScoreValue.text = $"{(int)tempScore:00000}";
         
 
