@@ -12,40 +12,32 @@ public class ShityCar : MonoBehaviour, ICollidable
     [SerializeField] private float speed;
     [SerializeField] private float minDistance;
     [SerializeField] private float minDestroyDistance;
-    [SerializeField] private GameObject[] shittyCarModels;
     [SerializeField] private float nearMissSpeed;
     
     [Header("Crash Settings")]
     [SerializeField] private float crashLeftSideX;
     [SerializeField] private float crashRightSideX;
     [SerializeField] private float crashSpeed;
-    //[SerializeField] private AnimatorController _animatorController;
     private string crashDirection;
     private Animator Animator;
     
     private bool stopMoving;
     private Transform _transform;
     private bool doCrash;
+    private static readonly int CrashLeft = Animator.StringToHash("CrashLeft");
+    private static readonly int CrashRight = Animator.StringToHash("CrashRight");
 
 
     private void Awake()
     {
         _transform = GetComponent<Transform>();
-        //Animator = GetComponent<Animator>();
+        carRB = GetComponent<Rigidbody>();
+        Animator = GetComponentInChildren<Animator>();
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        // Picks a random car model and makes it a child object
-        var spawnIndex = Random.Range(0, shittyCarModels.Length);
-        var carModel = Instantiate(shittyCarModels[spawnIndex], transform);
-        //Animator = carModel.AddComponent<Animator>();
-        //Animator.runtimeAnimatorController = _animatorController;
-        //Animator.applyRootMotion = true;
-
-
-        carRB = GetComponent<Rigidbody>();
         // Unparents the game object from the road tile
         // so it doesn't get destroyed when the tile does 
         transform.parent = null;
@@ -97,11 +89,11 @@ public class ShityCar : MonoBehaviour, ICollidable
         {
             case "Left":
                 LerpPosition(crashLeftSideX);
-                //Animator.SetTrigger("CrashLeft");
+                Animator.SetTrigger(CrashLeft);
                 break;
             case "Right":
                 LerpPosition(crashRightSideX);
-                //Animator.SetTrigger("CrashRight");
+                Animator.SetTrigger(CrashRight);
                 break;
         }
         

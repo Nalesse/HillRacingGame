@@ -49,12 +49,21 @@ MonoBehaviour:
   - {fileID: 1253682736924406498, guid: 6adcf7f88fd15d84da45b01653fc9f0c, type: 3}
   - {fileID: 864747726808477884, guid: 2d9cdbda9147d5945a8937000657fcb0, type: 3}
   tilesToPreSpawn: 35
-  shittyCar:
-    prefab: {fileID: 5666359609849991738, guid: d32bfbd6cabea4643a2a6ec43837b608, type: 3}
+  shittyCars:
+  - prefab: {fileID: 5666359609849991738, guid: d32bfbd6cabea4643a2a6ec43837b608, type: 3}
     Offset: {x: 0, y: 1, z: 0}
-    chanceToSpawn: 0.4
-    xMin: -8.3
-    xMax: 8.3
+    chanceToSpawn: 0.5
+    xMin: -8.609
+    xMax: 8.609
+    zMin: 0
+    zMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
+  - prefab: {fileID: 5666359609849991738, guid: 00dc08094b30c5e43a97c8cabce0db68, type: 3}
+    Offset: {x: 0, y: 1, z: 0}
+    chanceToSpawn: 0.5
+    xMin: -8.609
+    xMax: 8.609
     zMin: 0
     zMax: 0
     disallowedXMin: -1.92
@@ -70,7 +79,7 @@ MonoBehaviour:
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 857387940767069086, guid: 9dde86f77ac703f4aa841cb4a5044f56, type: 3}
-    Offset: {x: 0, y: 25, z: 0}
+    Offset: {x: 0, y: 50, z: 0}
     chanceToSpawn: 0.25
     xMin: -7.51
     xMax: 7.51
@@ -88,7 +97,7 @@ MonoBehaviour:
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 8754621487087021102, guid: c709d09ea9d4a9f44bce2a84b6416e8c, type: 3}
-    Offset: {x: 0, y: 25, z: 0}
+    Offset: {x: 0, y: 65, z: 0}
     chanceToSpawn: 0.25
     xMin: -7.51
     xMax: 7.51
