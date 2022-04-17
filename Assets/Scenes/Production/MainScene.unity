@@ -832,28 +832,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: speed
-      value: 3800
-      objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: maxSpeed
-      value: 5500
-      objectReference: {fileID: 0}
-    - target: {fileID: 507538283314026267, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-      propertyPath: jumpForce
-      value: 10000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
 --- !u!4 &1545998782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 507538283314026265, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-  m_PrefabInstance: {fileID: 1545998781}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1545998783 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8401585071384670820, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
   m_PrefabInstance: {fileID: 1545998781}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1747772664 stripped
@@ -1058,25 +1041,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
---- !u!1 &2137153732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 507538283314026261, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
-  m_PrefabInstance: {fileID: 1545998781}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2137153733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137153732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146055e7302880949b0ef220dfb28bd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDoingTrick: 0
-  animator: {fileID: 1545998783}
-  animatorBool: 
-  isDoingTrickSmaller: 0
-  stopCooldown: 0

@@ -59,6 +59,13 @@ public class Player : MonoBehaviour
 
     //singleton
     public static Player Instance { get; private set; }
+    
+    //Audio
+    [Header("Audio")]
+    [SerializeField] private AudioClip damageSFX;
+    [SerializeField] private AudioClip landingSFX;
+    private AudioSource audioSource;
+    private AudioSource sfxAudioSource;
 
 
     #region Unity Functions(Awake,Update, Start, etc)
@@ -78,6 +85,7 @@ public class Player : MonoBehaviour
     {
         controls = new Controls();
         TrickSystem = GetComponent<TrickSystem>();
+        audioSource = GetComponent<AudioSource>();
 
         controls.Racing.Move.performed += ctx => controllerInput = ctx.ReadValue<Vector2>();
         controls.Racing.Move.canceled += ctx => controllerInput = Vector2.zero;
@@ -131,6 +139,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody>();
+        sfxAudioSource = gameObject.AddComponent<AudioSource>();
+        sfxAudioSource.volume = 0.5f;
     }
     
     // Update is called once per frame
@@ -188,6 +198,18 @@ public class Player : MonoBehaviour
         else
         {
             turnSpeed = 420;
+        }
+
+        if (isGrounded)
+        {
+            if (!audioSource.isPlaying && isGrounded)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
         }
 
         TryTrick();
@@ -370,7 +392,7 @@ public class Player : MonoBehaviour
      {
          Debug.Log("Wipeout");
          
-         if (TrickSystem.animatorBool != String.Empty)
+         if (TrickSystem.animatorBool != string.Empty)
          {
              animator.SetBool(TrickSystem.animatorBool, false);
          }
@@ -391,10 +413,19 @@ public class Player : MonoBehaviour
         if (collisionObject != null)
         {
             StartCoroutine(Damage());
+            sfxAudioSource.PlayOneShot(damageSFX);
             collision.collider.enabled = false;
             //if the object the player collided with has a script attached which implements CollisionAction();
             //from ICollidable then that objects specific action will be run. e.g cars will spin out and billboards will play a particle effect    
             collisionObject.CollisionAction();
+        }
+        else
+        {
+            if (!audioSource.isPlaying)
+            {
+                sfxAudioSource.PlayOneShot(landingSFX);
+            }
+            
         }
     }
 

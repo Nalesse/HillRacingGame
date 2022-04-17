@@ -11,21 +11,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] gameplayTracks;
     [SerializeField] private float timeLeft;
     [SerializeField] private AudioMixer mainMixer;
-    public AudioManager Instance { get; private set; }
+   
     private AudioSource musicSource;
     private AudioClip currentTrack;
     private int currentTrackIndex;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
         musicSource = GetComponent<AudioSource>();
     }
 
@@ -43,6 +35,12 @@ public class AudioManager : MonoBehaviour
         {
             ChangeTracks();
         }
+
+        //sometimes the music just randomly does not play so just putting this here as fix
+        if (!musicSource.isPlaying)
+        {
+            ChangeTracks();
+        }
     }
 
     #region Music
@@ -50,7 +48,6 @@ public class AudioManager : MonoBehaviour
 
     private void ChangeTracks()
     {
-        musicSource.Stop();
         currentTrackIndex++;
         
         if (currentTrackIndex >= gameplayTracks.Length)
