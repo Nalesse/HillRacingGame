@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5100789, g: 0.49270403, b: 0.5075242, a: 1}
+  m_IndirectSpecularColor: {r: 0.5101384, g: 0.4927181, b: 0.50744027, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5996,7 +5996,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.37993798, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8629,8 +8629,8 @@ RectTransform:
   m_Father: {fileID: 6064873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.37993798, y: 0}
+  m_AnchorMax: {x: 0.37993798, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10323,10 +10323,10 @@ AudioSource:
   m_GameObject: {fileID: 898731066}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 9d18b2a2c577b0c439b6e152a982a0a2, type: 2}
   m_audioClip: {fileID: 8300000, guid: fb1274a52debd224fae3bc8baab053b0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.75
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13681,6 +13681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 2012586471}
   audioMixer: {fileID: 24100000, guid: 9d18b2a2c577b0c439b6e152a982a0a2, type: 2}
+  audioSlider: {fileID: 1829833241}
 --- !u!114 &1451725190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21346,10 +21347,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 127828945}
   m_HandleRect: {fileID: 576399242}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.38
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
