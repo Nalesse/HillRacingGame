@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,7 +19,9 @@ public class ShityCar : MonoBehaviour, ICollidable
     [SerializeField] private float crashLeftSideX;
     [SerializeField] private float crashRightSideX;
     [SerializeField] private float crashSpeed;
+    [SerializeField] private AnimatorController _animatorController;
     private string crashDirection;
+    private Animator Animator;
     
     private bool stopMoving;
     private Transform _transform;
@@ -28,6 +31,7 @@ public class ShityCar : MonoBehaviour, ICollidable
     private void Awake()
     {
         _transform = GetComponent<Transform>();
+        //Animator = GetComponent<Animator>();
     }
     
     // Start is called before the first frame update
@@ -35,8 +39,12 @@ public class ShityCar : MonoBehaviour, ICollidable
     {
         // Picks a random car model and makes it a child object
         var spawnIndex = Random.Range(0, shittyCarModels.Length);
-        Instantiate(shittyCarModels[spawnIndex], transform);
-        
+        var carModel = Instantiate(shittyCarModels[spawnIndex], transform);
+        Animator = carModel.AddComponent<Animator>();
+        Animator.runtimeAnimatorController = _animatorController;
+        Animator.applyRootMotion = true;
+
+
         carRB = GetComponent<Rigidbody>();
         // Unparents the game object from the road tile
         // so it doesn't get destroyed when the tile does 
@@ -89,9 +97,11 @@ public class ShityCar : MonoBehaviour, ICollidable
         {
             case "Left":
                 LerpPosition(crashLeftSideX);
+                Animator.SetTrigger("CrashLeft");
                 break;
             case "Right":
                 LerpPosition(crashRightSideX);
+                Animator.SetTrigger("CrashRight");
                 break;
         }
         
