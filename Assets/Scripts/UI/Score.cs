@@ -37,7 +37,7 @@ public class Score : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.TimerCompleted.AddListener(ScoreRequirement);
-        //GameEvents.GameOver.AddListener(GameOver);
+        GameEvents.GameOver.AddListener(GameOver);
     }
 
     private void OnDisable() => GameEvents.TimerCompleted.RemoveListener(ScoreRequirement);
@@ -45,15 +45,15 @@ public class Score : MonoBehaviour
     private void Start()
     {
         score = 0f;
+        goalValue.text = "" + scoreRequirement;
         pointsIncreasing = 1f;
         TrickSystem = GameObject.Find("Player").GetComponent<TrickSystem>();
 
-        /*if (PlayerPrefs.HasKey("HighScore"))
+        if (PlayerPrefs.HasKey("HighScore"))
         {
             highScore = PlayerPrefs.GetFloat("HighScore");
             highScoreValue.text = $"{(int)highScore:00000}";
         }
-        */
         
     }
 
@@ -118,7 +118,9 @@ public class Score : MonoBehaviour
 
     private void ScoreRequirement()
     {
-        goalValue.text = $"{(int)scoreRequirement * requirementMultiplier}";
+        var requirementValue = scoreRequirement * requirementMultiplier;
+        requirementValue = Mathf.CeilToInt(requirementValue);
+        goalValue.text = $"{requirementValue}";
 
         if (score < (int)scoreRequirement)
         {
@@ -135,7 +137,6 @@ public class Score : MonoBehaviour
             Debug.Log("Score Requirement: " + (int)scoreRequirement);
         }
     }
-    /*
     private void GameOver()
     {
         if (!(score > highScore)) return;
@@ -143,5 +144,5 @@ public class Score : MonoBehaviour
         highScore = (int)score;
         PlayerPrefs.SetFloat("HighScore", highScore);
         highScoreValue.text = $"{(int)highScore:00000}";
-    } */
+    } 
 }
