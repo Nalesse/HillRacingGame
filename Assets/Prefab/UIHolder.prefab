@@ -877,14 +877,15 @@ MonoBehaviour:
   score: 0
   tempScore: 0
   scoreValue: {fileID: 3938421975345508499}
+  finalScoreValue: {fileID: 4499306528777666847}
   tempScoreValue: {fileID: 227672131}
   highScoreValue: {fileID: 3938421977346970973}
   pointMultValue: {fileID: 6054800397697985848}
   trickBuffer: 0
-  scoreRequirement: 1000
+  scoreRequirement: 4000
   requirementMultiplier: 1.7
   goalValue: {fileID: 5879196941661356113}
-  enableGameOver: 0
+  enableGameOver: 1
 --- !u!1 &3938421976050910882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,3 +1895,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 396281073260261578, guid: 75908e5c23668134b8160bbbc5c9deb1, type: 3}
   m_PrefabInstance: {fileID: 4255726799779717790}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4499306528777666847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 396281072114557825, guid: 75908e5c23668134b8160bbbc5c9deb1, type: 3}
+  m_PrefabInstance: {fileID: 4255726799779717790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
