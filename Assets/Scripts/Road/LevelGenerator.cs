@@ -24,9 +24,9 @@ public struct SpawnableObject
     public float zMin;
     [Range(0,66.65f)]
     public float zMax;
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 80)]
     public float yMin;
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 80)]
     public float yMax;
     
     [Header("Disallowed Spawn Range")]
