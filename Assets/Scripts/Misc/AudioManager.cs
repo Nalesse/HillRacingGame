@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float timeLeft;
     [SerializeField] private AudioMixer mainMixer;
    
-    private AudioSource musicSource;
+    public AudioSource musicSource;
     private AudioClip currentTrack;
     private int currentTrackIndex;
 
@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
         }
 
         //sometimes the music just randomly does not play so just putting this here as fix
-        if (!musicSource.isPlaying)
+        if (!musicSource.isPlaying && !Player.Instance.gameOver)
         {
             ChangeTracks();
         }

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     Controls controls;
     //TrickSystem trickSystem;
 
+    AudioManager audioSongs;
+
     [Header("Movement")]
     public float speed;
     [SerializeField] private float maxSpeed;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
     public Vector2 controllerInput;
     public Rigidbody playerRB;
     public float currentVelocity;
+    public AudioSource lofi;
 
     //Timers
     public bool northTrickTimer;
@@ -49,7 +52,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float slowDownLerpSpeed;
     private bool slowDownIsActive;
 
-    private bool gameOver;
+    public bool gameOver;
 
     //Animation stuff
     public Animator animator;
@@ -68,6 +71,9 @@ public class Player : MonoBehaviour
     private AudioSource sfxAudioSource;
 
 
+    
+
+
     #region Unity Functions(Awake,Update, Start, etc)
     private void OnEnable()
     {
@@ -84,6 +90,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
+
+        audioSongs = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         TrickSystem = GetComponent<TrickSystem>();
         audioSource = GetComponent<AudioSource>();
 
@@ -432,6 +440,10 @@ public class Player : MonoBehaviour
     private void GameOver()
     {
         playerRB.velocity /= 2;
+        audioSongs.musicSource.Stop();
+        lofi.Play();
+        gameOver = true;
         GetComponent<Player>().enabled = false;
+
     }
 }
