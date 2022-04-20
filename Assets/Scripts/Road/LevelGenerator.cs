@@ -24,6 +24,10 @@ public struct SpawnableObject
     public float zMin;
     [Range(0,66.65f)]
     public float zMax;
+    [Range(0.0f, 1.0f)]
+    public float yMin;
+    [Range(0.0f, 1.0f)]
+    public float yMax;
     
     [Header("Disallowed Spawn Range")]
     [Range(-1.92f, -1.38f)]
@@ -34,13 +38,13 @@ public struct SpawnableObject
     public Vector3 GenerateRandomPosition()
     {
         // Generates a random position to start with
-        var randomPos = GetRandomVector3(xMin, xMax, zMin, zMax);
+        var randomPos = GetRandomVector3(xMin, xMax, zMin, zMax, yMin, yMax);
 
         // if the random position is in the disallowed spawn range then a new position is generated until it is
         // no longer is within the spawn range
         while (randomPos.x >= disallowedXMin && randomPos.x <= disallowedXMax)
         {
-            randomPos = GetRandomVector3(xMin, xMax, zMin, zMax);
+            randomPos = GetRandomVector3(xMin, xMax, zMin, zMax, yMin, yMax);
         }
 
         return randomPos;
@@ -48,12 +52,13 @@ public struct SpawnableObject
     }
 
     // Helper function to avoid repeated code
-    private Vector3 GetRandomVector3(float _xMin, float _xMax, float _zMin, float _zMax)
+    private Vector3 GetRandomVector3(float _xMin, float _xMax, float _zMin, float _zMax, float _yMin, float _yMax)
     {
         var randomVector3 = new Vector3
         {
             x = Random.Range(_xMin, _xMax),
-            z = Random.Range(_zMin, _zMax)
+            z = Random.Range(_zMin, _zMax),
+            y = Random.Range(_yMin, _yMax)
         };
 
         return randomVector3;
