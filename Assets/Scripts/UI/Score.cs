@@ -22,9 +22,13 @@ namespace UI
     
         private bool isScoreMultiplying = true;
 
-        [Header("Score Requirement Settings")]
+        [Header("Score Requirement")]
         [SerializeField] private float scoreRequirement;
-        [SerializeField] private float requirementMultiplier;
+        [SerializeField] private float increaseAmount;
+        [SerializeField] private int timerDecreaseRound;
+        [SerializeField] private int timerDecreaseAmount;
+        [SerializeField] private Timer timer;
+
         [SerializeField] private TextMeshProUGUI goalValue;
 
         // for debug only
@@ -113,10 +117,6 @@ namespace UI
 
         private void ScoreRequirement()
         {
-            var requirementValue = scoreRequirement * requirementMultiplier;
-            requirementValue = Mathf.CeilToInt(requirementValue);
-            goalValue.text = $"{requirementValue}";
-
             if (score < (int)scoreRequirement)
             {
                 if (enableGameOver)
@@ -128,7 +128,17 @@ namespace UI
             }
             else
             {
-                scoreRequirement *= requirementMultiplier;
+                scoreRequirement += increaseAmount;
+                increaseAmount += 500;
+                scoreRequirement = Mathf.CeilToInt(scoreRequirement);
+                goalValue.text = $"{scoreRequirement}";
+
+                if (timer.RoundCounter >= timerDecreaseRound)
+                {
+                    timer.TimerLength -= timerDecreaseAmount;
+                    timerDecreaseAmount += 5;
+                }
+                
                 Debug.Log("Score Requirement: " + (int)scoreRequirement);
             }
         }

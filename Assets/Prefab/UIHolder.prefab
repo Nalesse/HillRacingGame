@@ -1733,7 +1733,7 @@ MonoBehaviour:
   pointMultValue: {fileID: 6054800397697985848}
   trickBuffer: 0
   scoreRequirement: 4000
-  requirementMultiplier: 1.7
+  initialIncreaseAmount: 4500
   goalValue: {fileID: 5879196941661356113}
   enableGameOver: 1
 --- !u!1 &3938421976050910882
