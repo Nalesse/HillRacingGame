@@ -7,10 +7,12 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float timeLeft = 60.0f;
+    public float timeLeft;
     public TextMeshProUGUI timeValue; // used for showing countdown from 3, 2, 1 
     public static bool gamePaused;
     public GameObject pauseMenu;
+    public float TimerLength { get; set; }
+    public int RoundCounter { get; private set; }
 
     private void OnEnable()
     {
@@ -22,6 +24,12 @@ public class Timer : MonoBehaviour
         GameEvents.GameOver.RemoveListener(GameOver);
     }
 
+    private void Start()
+    {
+        TimerLength = 60.0f;
+        timeLeft = TimerLength;
+    }
+
     void Update()
     {
         timeLeft -= Time.deltaTime;
@@ -31,7 +39,8 @@ public class Timer : MonoBehaviour
             // Invokes TimerCompleted event, which other classes can listen to.
             // ? operator checks if the event is null  
             GameEvents.TimerCompleted?.Invoke();
-            timeLeft = 60f;
+            RoundCounter++;
+            timeLeft = TimerLength;
         }
     }
 
