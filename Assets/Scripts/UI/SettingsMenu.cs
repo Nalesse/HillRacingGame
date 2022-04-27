@@ -14,17 +14,6 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
-        string[] option =  {420 + " x " + 380, 1440 + " x " + 1080, 1920 + " x " + 1080};
-        options.Add(option[0]);
-        options.Add(option[1]);
-        options.Add(option[2]);
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
         
         if (PlayerPrefs.HasKey("volume"))
         {
@@ -39,10 +28,28 @@ public class SettingsMenu : MonoBehaviour
         
     }
 
-    public void SetResolution (int resolutionIndex)
+    public void SetQuality()
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        SetResolution();
+    }
+    public void SetResolution()
+    {
+        //getting the name of what was pressed
+        string index = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
+        switch (index)
+        {
+            case "Res1":
+                Screen.SetResolution(420, 380, true);
+                break;
+
+            case "Res2":
+                Screen.SetResolution(1440, 1080, true);
+                break;
+
+            case "Res3":
+                Screen.SetResolution(1920, 1080, true);
+                break;
+        }
     }
 
     public void SetVolume (float volume)
