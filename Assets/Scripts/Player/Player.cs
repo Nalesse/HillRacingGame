@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float slowDownLerpSpeed;
     private bool slowDownIsActive;
 
-    public bool gameOver;
+    public bool gameOver { get; private set; }
 
     //Animation stuff
     public Animator animator;
@@ -154,36 +154,39 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameOver) { return;}
-        
+
         #region Input
 
-        //checks to see if turning
-        int turning = 0;
-
-        currentVelocity = playerRB.velocity.y; //makes the player fall normally
-        //Moves player forward
-
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        playerRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
-
-        //right
-        if (controllerInput.x >= 0.2f)
+        if (!gameOver)
         {
-            //transform.Translate(Vector2.right * Time.deltaTime * turnSpeed);
-            playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
-            turning = 1;
-        }
+            //checks to see if turning
+            int turning = 0;
 
-        //left
-        if (controllerInput.x <= -0.2f)
-        {
-            //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
-            playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
-            turning = -1;
-        }
+            currentVelocity = playerRB.velocity.y; //makes the player fall normally
+            //Moves player forward
 
-        animator.SetInteger("Turn", turning);
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            playerRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
+
+            //right
+            if (controllerInput.x >= 0.2f)
+            {
+                //transform.Translate(Vector2.right * Time.deltaTime * turnSpeed);
+                playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
+                turning = 1;
+            }
+
+            //left
+            if (controllerInput.x <= -0.2f)
+            {
+                //transform.Translate(Vector2.left * Time.deltaTime * turnSpeed);
+                playerRB.velocity = new Vector3(controllerInput.x * turnSpeed * Time.deltaTime, currentVelocity, 1 * speed * Time.deltaTime);
+                turning = -1;
+            }
+
+            animator.SetInteger("Turn", turning);
+        }
+        
 
         #endregion
         
@@ -192,8 +195,6 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
-        if (gameOver) { return;}
-        
         IsGroundedCheck();
         LerpControl();
         CheckForWipeout();
@@ -398,8 +399,7 @@ public class Player : MonoBehaviour
 
      IEnumerator Damage()
      {
-         Debug.Log("Wipeout");
-         
+
          if (TrickSystem.animatorBool != string.Empty)
          {
              animator.SetBool(TrickSystem.animatorBool, false);
@@ -441,9 +441,10 @@ public class Player : MonoBehaviour
     {
         playerRB.velocity /= 2;
         audioSongs.musicSource.Stop();
+        sfxAudioSource.Stop();
         lofi.Play();
         gameOver = true;
-        GetComponent<Player>().enabled = false;
+
 
     }
 }

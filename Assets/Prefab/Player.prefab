@@ -211,6 +211,7 @@ MonoBehaviour:
   controllerInput: {x: 0, y: 0}
   playerRB: {fileID: 0}
   currentVelocity: 0
+  lofi: {fileID: 0}
   northTrickTimer: 0
   eastTrickTimer: 0
   southTrickTimer: 0
@@ -226,6 +227,7 @@ MonoBehaviour:
   xSlowDownRange: 9.8
   slowDownSpeed: 1900
   slowDownLerpSpeed: 300
+  gameOver: 0
   animator: {fileID: 8401585071384670820}
   jumpForce: 10000
   damageSFX: {fileID: 8300000, guid: 9598b7ca83a0b9b49bc22025a5cca576, type: 3}
@@ -309,7 +311,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 9d18b2a2c577b0c439b6e152a982a0a2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 21ec248d2dac66247854d71a46c95a99, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.154
   m_Pitch: 1
   Loop: 1
   Mute: 0
