@@ -74,6 +74,7 @@ MonoBehaviour:
   crashLeftSideX: 14
   crashRightSideX: -14
   crashSpeed: 25
+  boostSFX: {fileID: 8300000, guid: af4cd038588bee94a803093a2c8d1d61, type: 3}
 --- !u!54 &842052752886450798
 Rigidbody:
   m_ObjectHideFlags: 0

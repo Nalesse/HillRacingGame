@@ -27,6 +27,8 @@ public class ShityCar : MonoBehaviour, ICollidable
     private static readonly int CrashLeft = Animator.StringToHash("CrashLeft");
     private static readonly int CrashRight = Animator.StringToHash("CrashRight");
     private AudioSource audioSource;
+    private AudioSource sfxAudioSource;
+    [SerializeField] private AudioClip boostSFX;
 
 
     private void Awake()
@@ -43,6 +45,11 @@ public class ShityCar : MonoBehaviour, ICollidable
         // Unparents the game object from the road tile
         // so it doesn't get destroyed when the tile does 
         transform.parent = null;
+        sfxAudioSource = gameObject.AddComponent<AudioSource>();
+        sfxAudioSource.playOnAwake = false;
+        sfxAudioSource.clip = boostSFX;
+        sfxAudioSource.loop = false;
+        sfxAudioSource.volume = 0.2f;
     }
 
     // Update is called once per frame
@@ -63,7 +70,7 @@ public class ShityCar : MonoBehaviour, ICollidable
 
         if (distance >= minDestroyDistance)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, boostSFX.length);
         }
 
         
@@ -115,6 +122,7 @@ public class ShityCar : MonoBehaviour, ICollidable
         {
             Debug.Log("Near Miss");
             Player.Instance.speed = nearMissSpeed;
+            sfxAudioSource.Play();
         }
     }
 }
