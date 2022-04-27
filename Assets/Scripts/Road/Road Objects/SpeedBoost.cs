@@ -18,6 +18,8 @@ public class SpeedBoost : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (Player.Instance.gameOver) return;
+            
             Player.Instance.speed = speedBoost;
             audioSource.Play();
         }

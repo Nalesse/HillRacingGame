@@ -28,7 +28,6 @@ public class TrickSystem : MonoBehaviour
         if (isDoingTrick || Player.Instance.isGrounded) {return;}
 
         animatorBool = _animatorBool;
-        Debug.Log("Performing trick: " + animatorBool);
         isDoingTrick = true;
         isDoingTrickSmaller = true;
         animator.SetBool(animatorBool, true);
@@ -40,12 +39,10 @@ public class TrickSystem : MonoBehaviour
         if (_animatorBool != animatorBool || Player.Instance.isGrounded) yield break;
         
         stopCooldown = true;
-        Debug.Log("Cooling trick");
         animator.SetBool(animatorBool, false);
         isDoingTrickSmaller = false;
         yield return new WaitForSeconds(.5f);
         isDoingTrick = false;
-        Debug.Log(animatorBool + " Cooled");
         stopCooldown = false;
 
 

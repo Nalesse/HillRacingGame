@@ -105,7 +105,7 @@ public class ShityCar : MonoBehaviour, ICollidable
     {
         if (!other.CompareTag("Player")) return;
 
-        if (Player.Instance.isDamage == false)
+        if (Player.Instance.isDamage == false && !Player.Instance.gameOver)
         {
             Debug.Log("Near Miss");
             Player.Instance.speed = nearMissSpeed;
