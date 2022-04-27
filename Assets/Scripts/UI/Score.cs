@@ -62,7 +62,12 @@ namespace UI
             scoreValue.text = $"{(int)score:00000}";
             finalScoreValue.text = $"{(int)score}";
             tempScoreValue.text = $"{(int)tempScore:00000}";
-        
+
+            if (Player.Instance.gameOver)
+            {
+                tempScore = 0;
+                return;
+            }
 
             if (TrickSystem.isDoingTrick)
             {
