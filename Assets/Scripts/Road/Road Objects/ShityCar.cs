@@ -26,6 +26,7 @@ public class ShityCar : MonoBehaviour, ICollidable
     private bool doCrash;
     private static readonly int CrashLeft = Animator.StringToHash("CrashLeft");
     private static readonly int CrashRight = Animator.StringToHash("CrashRight");
+    private AudioSource audioSource;
 
 
     private void Awake()
@@ -33,6 +34,7 @@ public class ShityCar : MonoBehaviour, ICollidable
         _transform = GetComponent<Transform>();
         carRB = GetComponent<Rigidbody>();
         Animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     // Start is called before the first frame update
@@ -53,6 +55,10 @@ public class ShityCar : MonoBehaviour, ICollidable
         {
             var currentVelocity = carRB.velocity.y;
             carRB.velocity = new Vector3(0, currentVelocity, 1 * speed * Time.deltaTime);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
 
         if (distance >= minDestroyDistance)
