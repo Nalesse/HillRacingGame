@@ -8,12 +8,13 @@ public class PersonToBeHit : MonoBehaviour,ICollidable
     public Animator anim;
     public ParticleSystem particle;
     [SerializeField] private int pointValue;
-    [SerializeField] private Score scoreScript;
+    private Score scoreScript;
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
         particle = gameObject.GetComponent<ParticleSystem>();
+        scoreScript = GameObject.Find("PlayerScore").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -22,6 +23,8 @@ public class PersonToBeHit : MonoBehaviour,ICollidable
         if (other.CompareTag("Player"))
         {
             particle.Play();
+            Debug.Log("Score!");
+            scoreScript.PlayerScore += pointValue;
 
             if (other.transform.position.x > gameObject.transform.position.x)
             {
@@ -36,6 +39,6 @@ public class PersonToBeHit : MonoBehaviour,ICollidable
 
     public void CollisionAction()
     {
-        scoreScript.PlayerScore += pointValue;
+
     }
 }
