@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5101384, g: 0.4927181, b: 0.50744027, a: 1}
+  m_IndirectSpecularColor: {r: 0.5100789, g: 0.49270403, b: 0.5075242, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12782,7 +12782,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Earn points by doing tricks while in the air; you can go airborne by driving
-    off ramps. The more tricks you perform, the mor epoint you'll get upon landing.
+    off ramps. The more tricks you perform, the more points you'll get upon landing.
     Avoid obstacles on the road and in the air; if you hit an obstacle while airborne,
     you won't gain any points! Go through rings to gain extra height! Reach the point
     goal to keep playing. The game ends if you do not reach the point goal before
@@ -25556,8 +25556,16 @@ PrefabInstance:
       value: Your Name Here
       objectReference: {fileID: 0}
     - target: {fileID: 5235018022735712224, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -9182870121955077282, guid: 0792333cbf8b9814481161442b294b40, type: 2}
+    - target: {fileID: 5235018022735712224, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235018022735712224, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6495612064339084395, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -25568,8 +25576,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1913238855}
     - target: {fileID: 7497023110029766947, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -9182870121955077282, guid: 0792333cbf8b9814481161442b294b40, type: 2}
+    - target: {fileID: 7497023110029766947, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497023110029766947, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7975394589622344884, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_Navigation.m_Mode
