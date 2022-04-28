@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -49,10 +50,15 @@ namespace UI
             goalValue.text = "" + scoreRequirement;
             pointsIncreasing = 1f;
             TrickSystem = GameObject.Find("Player").GetComponent<TrickSystem>();
-            
-            if (!PlayerPrefs.HasKey("HighScore")) return;
 
-            highScore = PlayerPrefs.GetFloat("HighScore");
+            StartCoroutine(Setup());
+        }
+
+        IEnumerator Setup()
+        {
+            yield return LeaderboardController.Instance.LoginRoutine();
+            yield return LeaderboardController.Instance.GetHighScoreRoutine();
+            highScore = LeaderboardController.Instance.Score;
             highScoreValue.text = $"{(int)highScore:00000}";
         }
 
@@ -149,13 +155,16 @@ namespace UI
         }
         private void GameOver()
         {
-            if (!(score > highScore)) return;
-        
-            highScore = (int)score;
-            PlayerPrefs.SetFloat("HighScore", highScore);
-            PlayerPrefs.Save();
-            LeaderboardController.Instance.SubmitScore();
-            highScoreValue.text = $"{(int)highScore:00000}";
+            var scoreToSubmit = (int)score;
+            
+            if (score > highScore)
+            {
+                highScore = (int)score;
+                highScoreValue.text = $"{(int)highScore:00000}";
+                scoreToSubmit = (int)highScore;
+            }
+            LeaderboardController.Instance.SubmitScore(scoreToSubmit);
+            
         } 
     }
 }

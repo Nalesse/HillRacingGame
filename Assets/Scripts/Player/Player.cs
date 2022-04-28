@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         controls.Racing.Move.performed += ctx => controllerInput = ctx.ReadValue<Vector2>();
         controls.Racing.Move.canceled += ctx => controllerInput = Vector2.zero;
 
-        controls.Racing.DebugJump.performed += ctx => Jump();
+        // controls.Racing.DebugJump.performed += ctx => Jump();
 
         
         //stuff
@@ -392,10 +392,10 @@ public class Player : MonoBehaviour
     
     //Trick Debug 
     
-    void Jump()
-    {
-        transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
-    }
+    // void Jump()
+    // {
+    //     transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
+    // }
 
      IEnumerator Damage()
      {
