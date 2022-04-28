@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PersonToBeHit : MonoBehaviour,ICollidable
+public class PersonToBeHit : MonoBehaviour
 {
     public Animator anim;
     public ParticleSystem particle;
@@ -14,7 +15,11 @@ public class PersonToBeHit : MonoBehaviour,ICollidable
     {
         anim = gameObject.GetComponent<Animator>();
         particle = gameObject.GetComponent<ParticleSystem>();
-        scoreScript = GameObject.Find("PlayerScore").GetComponent<Score>();
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            scoreScript = GameObject.Find("PlayerScore").GetComponent<Score>();
+        }
+        
     }
 
     // Update is called once per frame
@@ -35,10 +40,5 @@ public class PersonToBeHit : MonoBehaviour,ICollidable
                 anim.SetBool("HitRight", true);
             }
         }
-    }
-
-    public void CollisionAction()
-    {
-
     }
 }
