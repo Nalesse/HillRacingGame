@@ -11,6 +11,10 @@ public class MainMenu : MonoBehaviour
     public GameObject keyboardControls;
     public GameObject gamepadControls;
 
+    public Button startButton;
+    public Button controlFirstButton;
+    public Slider optionsFirstButton;
+
     void Start()
     {
         
@@ -20,21 +24,25 @@ public class MainMenu : MonoBehaviour
     public void OpenControls()
     {
         controlScreen.SetActive(true);
+        controlFirstButton.Select();
     }
 
     public void CloseControls()
     {
         controlScreen.SetActive(false);
+        startButton.Select();
     }
 
     public void OpenOptions()
     {
         optionsScreen.SetActive(true);
+        optionsFirstButton.Select();
     }
 
     public void CloseOptions()
     {
         optionsScreen.SetActive(false);
+        startButton.Select();
     }
 
     public void ShowKeyboardControls()

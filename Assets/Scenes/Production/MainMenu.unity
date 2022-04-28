@@ -12354,10 +12354,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -12365,13 +12365,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Earn points by doing tricks while in the air; you can go airborne by driving
-    off ramps. Go through rings to gain extra height!
-
-
-    Reach the point goal
-    to keep playing. The game ends if you do not reach the point goal before the
-    timer hits zero. Try to go for a high score!'
+  m_Text: Earn points by doing tricks while in the air; you can go airborne by driving
+    off ramps. The more tricks you perform, the mor epoint you'll get upon landing.
+    Avoid obstacles on the road and in the air; if you hit an obstacle while airborne,
+    you won't gain any points! Go through rings to gain extra height! Reach the point
+    goal to keep playing. The game ends if you do not reach the point goal before
+    the timer hits zero. Try to go for a high score!
 --- !u!222 &1193215306
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13925,6 +13924,9 @@ MonoBehaviour:
   optionsScreen: {fileID: 1966616158}
   keyboardControls: {fileID: 1060888389}
   gamepadControls: {fileID: 1803460958}
+  startButton: {fileID: 1558651073}
+  controlFirstButton: {fileID: 236566634}
+  optionsFirstButton: {fileID: 1829833241}
 --- !u!82 &1451725191
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20235,6 +20237,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1451725188}
     m_Modifications:
+    - target: {fileID: 66103283107859321, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 66103283107859321, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a2f9840e0e29514cb3ab43f107e88b8, type: 3}
     - target: {fileID: 817272330510600059, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_Name
       value: EnterNameScreen
@@ -20251,6 +20261,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5167531903188964276, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: startButton
+      value: 
+      objectReference: {fileID: 1558651073}
     - target: {fileID: 5235018022735712224, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_text
       value: Your Name Here
@@ -20259,10 +20273,30 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6495612064339084395, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495612064339084395, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1913238855}
     - target: {fileID: 7497023110029766947, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7975394589622344884, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975394589622344884, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Colors.m_FadeDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975394589622344884, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1968076246}
     - target: {fileID: 7975394589622344884, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -22291,6 +22325,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3441861269106286662, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
   m_PrefabInstance: {fileID: 1670553811}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1913238855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7975394589622344884, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+  m_PrefabInstance: {fileID: 1670553811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913238853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1913238858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22560,7 +22605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1558651071}
+  m_FirstSelected: {fileID: 1968076244}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1945550949
@@ -22904,6 +22949,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966616158}
   m_CullTransparentMesh: 1
+--- !u!1 &1968076244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3209036726354162690, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+  m_PrefabInstance: {fileID: 1670553811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1968076246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6495612064339084395, guid: c65d343770e8ae14abd271a9debb1c87, type: 3}
+  m_PrefabInstance: {fileID: 1670553811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968076244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1986609386
 GameObject:
   m_ObjectHideFlags: 0
