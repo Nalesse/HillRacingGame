@@ -100,7 +100,8 @@ namespace UI
                 if (!response.success) return;
                 done = true;
                 LootLockerLeaderboardMember[] scores = response.items;
-               Score = scores[0].score;
+                Score = scores.Length != 0 ? scores[0].score : 0;
+               
 
             });
             yield return new WaitWhile(() => done == false);
