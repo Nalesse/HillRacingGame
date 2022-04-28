@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4001694118438329516}
   - component: {fileID: 1899584563}
   - component: {fileID: 1899584562}
+  - component: {fileID: 6001055735944532935}
   m_Layer: 0
   m_Name: PersonToBeHit
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 4001694118438329517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.247584, y: 0.74, z: 145}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 4001694119156743860}
   m_Father: {fileID: 0}
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   particle: {fileID: 0}
+  pointValue: 80
 --- !u!95 &4001694118438329516
 Animator:
   serializedVersion: 3
@@ -4937,6 +4939,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6001055735944532935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001694118438329517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effb26512c3820241a9518cf13ca14c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceToAppear: 10
 --- !u!1 &4001694119156743867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,16 +5050,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorPool:
-  - {r: 0.8490566, g: 0.6768423, b: 0.8490566, a: 1}
-  - {r: 0.9339623, g: 0.629984, b: 0.9339623, a: 1}
-  - {r: 0.745283, g: 0.6714578, b: 0.745283, a: 1}
-  - {r: 1, g: 0.5613208, b: 1, a: 1}
-  - {r: 0.8396226, g: 0.66140085, b: 0.8396226, a: 1}
-  - {r: 0.8396226, g: 0.29703632, b: 0.5323172, a: 1}
-  - {r: 0.8301887, g: 0.6304735, b: 0.7165576, a: 1}
-  - {r: 1, g: 0.504717, b: 0.7184706, a: 1}
-  - {r: 0.9584512, g: 0.28773582, b: 1, a: 1}
-  - {r: 0.61251134, g: 0.5304824, b: 0.8584906, a: 1}
+  - {r: 0.7735849, g: 0.38104036, b: 0.12041653, a: 1}
+  - {r: 0.5849056, g: 0.08001069, b: 0.5849056, a: 1}
+  - {r: 0.9339623, g: 0.8501323, b: 0.118948035, a: 1}
+  - {r: 0.4360529, g: 0.7830189, b: 0.1071111, a: 1}
+  - {r: 0.6981132, g: 0, b: 0.6981132, a: 1}
+  - {r: 0.735849, g: 0, b: 0.31875497, a: 1}
+  - {r: 1, g: 0.16834323, b: 0, a: 1}
+  - {r: 0, g: 0.67268014, b: 0.8396226, a: 1}
+  - {r: 0.8773585, g: 0.41631523, b: 0, a: 1}
+  - {r: 0.5563019, g: 0, b: 0.735849, a: 1}
   spriteRenderer: {fileID: 4001694119156743861}
 --- !u!114 &4001694119156743863
 MonoBehaviour:

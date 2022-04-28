@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public Rigidbody playerRB;
     public float currentVelocity;
     public AudioSource lofi;
+    public AudioSource landing;
 
     //Timers
     public bool northTrickTimer;
@@ -202,7 +203,7 @@ public class Player : MonoBehaviour
 
         if (TrickSystem.isDoingTrick)
         {
-            turnSpeed = 210f;
+            turnSpeed = 280f;
         }
         else
         {
@@ -431,7 +432,7 @@ public class Player : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                sfxAudioSource.PlayOneShot(landingSFX);
+                landing.Play();
             }
             
         }

@@ -7,7 +7,7 @@ namespace UI
     public class Score : MonoBehaviour
     {
         // Start is called before the first frame update
-        [SerializeField] private float score;
+        [field: SerializeField] public float PlayerScore { get; set; }
         [SerializeField] private float tempScore;
         private float highScore;
         [SerializeField] private TextMeshProUGUI scoreValue;
@@ -46,7 +46,7 @@ namespace UI
 
         private void Start()
         {
-            score = 0f;
+            PlayerScore = 0f;
             goalValue.text = "" + scoreRequirement;
             pointsIncreasing = 1f;
             TrickSystem = GameObject.Find("Player").GetComponent<TrickSystem>();
@@ -65,8 +65,8 @@ namespace UI
         // Update is called once per frame
         private void Update()
         {
-            scoreValue.text = $"{(int)score:00000}";
-            finalScoreValue.text = $"{(int)score}";
+            scoreValue.text = $"{(int)PlayerScore:00000}";
+            finalScoreValue.text = $"{(int)PlayerScore}";
             tempScoreValue.text = $"{(int)tempScore:00000}";
 
             if (Player.Instance.gameOver)
@@ -94,7 +94,7 @@ namespace UI
             if (Player.Instance.isGrounded)
             {
 
-                score += tempScore * pointMultiplier;
+                PlayerScore += tempScore * pointMultiplier;
                 tempScore = 0;
                 pointMultiplier = 0;
                 pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
@@ -128,7 +128,7 @@ namespace UI
 
         private void ScoreRequirement()
         {
-            if (score < (int)scoreRequirement)
+            if (PlayerScore < (int)scoreRequirement)
             {
                 if (enableGameOver)
                 {
@@ -155,11 +155,11 @@ namespace UI
         }
         private void GameOver()
         {
-            var scoreToSubmit = (int)score;
+            var scoreToSubmit = (int)PlayerScore;
             
-            if (score > highScore)
+            if (PlayerScore > highScore)
             {
-                highScore = (int)score;
+                highScore = (int)PlayerScore;
                 highScoreValue.text = $"{(int)highScore:00000}";
                 scoreToSubmit = (int)highScore;
             }
