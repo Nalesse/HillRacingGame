@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
-public class PersonToBeHit : MonoBehaviour
+public class PersonToBeHit : MonoBehaviour,ICollidable
 {
     public Animator anim;
     public ParticleSystem particle;
+    [SerializeField] private int pointValue;
+    [SerializeField] private Score scoreScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +32,10 @@ public class PersonToBeHit : MonoBehaviour
                 anim.SetBool("HitRight", true);
             }
         }
+    }
+
+    public void CollisionAction()
+    {
+        scoreScript.PlayerScore += pointValue;
     }
 }
