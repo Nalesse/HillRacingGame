@@ -163,7 +163,7 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < tilesToPreSpawn; i++)
         {
-            if (i != 0)
+            if (i >= 3)
             {
                 SpawnObjects();
             }

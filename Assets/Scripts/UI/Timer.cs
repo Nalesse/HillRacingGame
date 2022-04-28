@@ -40,6 +40,12 @@ public class Timer : MonoBehaviour
             // ? operator checks if the event is null  
             GameEvents.TimerCompleted?.Invoke();
             RoundCounter++;
+            
+            if (TimerLength < 5)
+            {
+                TimerLength = 5;
+            }
+            
             timeLeft = TimerLength;
         }
     }

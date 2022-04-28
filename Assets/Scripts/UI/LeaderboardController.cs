@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using LootLocker.Requests;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace UI
         [SerializeField] private GameObject leaderboardUI;
         [SerializeField] private GameObject gameOverUI;
         public static LeaderboardController Instance { get; private set; }
-        private int highScore;
+        public int Score { get; private set;}
         private int maxScores = 10;
         private string userName;
         
@@ -33,26 +34,44 @@ namespace UI
         {
             gameOverUI.SetActive(false);
             leaderboardUI.SetActive(false);
+
+        }
+
+        public IEnumerator LoginRoutine()
+        {
+            bool done = false;
             LootLockerSDKManager.StartGuestSession("Player", (response) =>
             {
-                Debug.Log(response.success ? "Success" : response.Error);
+                if (response.success)
+                {
+                    done = true;
+                }
             });
+
+            yield return new WaitWhile(() => done == false);
         }
 
-        public void SubmitScore()
+        IEnumerator SubmitScoreRoutine()
         {
-            LoadPrefs();
-            LootLockerSDKManager.SubmitScore(userName, highScore, id,(response) =>
+            bool done = false;
+            LootLockerSDKManager.SubmitScore(userName, Score, id,(response) =>
             {
-                Debug.Log(response.success ? "Score Submitted to Leaderboard" : response.Error);
+                if (response.success)
+                {
+                    done = true;
+                }
             });
+
+            yield return new WaitWhile(() => done == false);
         }
 
-        private void ShowScores()
+        IEnumerator ShowScoresRoutine()
         {
+            bool done = false;
             LootLockerSDKManager.GetScoreList(id, maxScores, (response) =>
             {
                 if (!response.success) return;
+                done = true;
                 LootLockerLeaderboardMember[] scores = response.items;
 
                 for (int i = 0; i < scores.Length; i++)
@@ -67,33 +86,37 @@ namespace UI
                         entries[i].text = "#" + (i + 1) + " No Data";
                     }
                 }
+
             });
+
+            yield return new WaitWhile(() => done == false);
         }
 
-        public int GetHighScore()
+        public IEnumerator GetHighScoreRoutine()
         {
-            int _highScore = 0;
+            bool done = false;
             LootLockerSDKManager.GetScoreList(id, 10, (response) =>
             {
                 if (!response.success) return;
-
+                done = true;
                 LootLockerLeaderboardMember[] scores = response.items;
-
-                for (int i = 0; i < scores.Length; i++)
-                {
-                    if (scores[i].member_id == PlayerPrefs.GetString("Username"))
-                    {
-                        _highScore = scores[i].score;
-                    }
-                }
+               Score = scores[0].score;
 
             });
-            return _highScore;
+            yield return new WaitWhile(() => done == false);
         }
+
+        public void SubmitScore(int score)
+        {
+            LoadPrefs();
+            Score = score;
+            StartCoroutine(SubmitScoreRoutine());
+        }
+        
 
         public void ShowLeaderboard()
         {
-            ShowScores();
+            StartCoroutine(ShowScoresRoutine());
             leaderboardUI.gameObject.SetActive(true);
             gameOverUI.gameObject.SetActive(false);
         
@@ -111,11 +134,6 @@ namespace UI
             if (PlayerPrefs.HasKey("Username"))
             {
                 userName = PlayerPrefs.GetString("Username");
-            }
-
-            if (PlayerPrefs.HasKey("HighScore"))
-            {
-                highScore = (int)PlayerPrefs.GetFloat("HighScore", highScore);
             }
         }
     }

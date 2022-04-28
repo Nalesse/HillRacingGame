@@ -22,12 +22,15 @@ public class RoadTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        
+        if (!Player.Instance.gameOver)
         {
             LevelGenerator.Instance.SpawnObjects();
-            Destroy(gameObject, 2);
         }
-        
+            
+        Destroy(gameObject, 2);
+
     }
 
     public void SpawnRoadObjects(SpawnableObject spawnableObjectData)
