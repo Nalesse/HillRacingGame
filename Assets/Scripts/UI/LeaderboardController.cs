@@ -76,7 +76,7 @@ namespace UI
 
                 for (int i = 0; i < scores.Length; i++)
                 {
-                    entries[i].text = "#" + scores[i].rank + " " + scores[i].member_id + " Score: " + scores[i].score;
+                    entries[i].text = "#" + scores[i].rank + " " + scores[i].member_id + ": " + scores[i].score;
                 }
 
                 if (scores.Length >= maxScores) return;
