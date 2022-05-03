@@ -212,6 +212,7 @@ MonoBehaviour:
   playerRB: {fileID: 0}
   currentVelocity: 0
   lofi: {fileID: 0}
+  landing: {fileID: 0}
   northTrickTimer: 0
   eastTrickTimer: 0
   southTrickTimer: 0
@@ -227,7 +228,6 @@ MonoBehaviour:
   xSlowDownRange: 9.8
   slowDownSpeed: 1900
   slowDownLerpSpeed: 300
-  gameOver: 0
   animator: {fileID: 8401585071384670820}
   jumpForce: 10000
   damageSFX: {fileID: 8300000, guid: 9598b7ca83a0b9b49bc22025a5cca576, type: 3}
@@ -260,9 +260,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.51776314
-  m_Height: 3.122679
+  m_Height: 3.094705
   m_Direction: 1
-  m_Center: {x: 0.18144506, y: 0.60935175, z: -0.62090373}
+  m_Center: {x: 0.18144506, y: 0.5953648, z: -0.62090373}
 --- !u!95 &8401585071384670820
 Animator:
   serializedVersion: 3
