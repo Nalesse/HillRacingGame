@@ -1,51 +1,52 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TrickSystem : MonoBehaviour
+namespace Player
 {
+    public class TrickSystem : MonoBehaviour
+    {
 
-    public bool isDoingTrick;
-    [SerializeField] private Animator animator;
+        public bool isDoingTrick;
+        [SerializeField] private Animator animator;
 
-    public string animatorBool;
-    public bool isDoingTrickSmaller;
+        public string animatorBool;
+        public bool isDoingTrickSmaller;
 
-    public bool stopCooldown;
+        public bool stopCooldown;
     
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
         
         
-    }
+        }
 
 
-    public void DoTrick(string _animatorBool)
-    {
+        public void DoTrick(string _animatorBool)
+        {
         
-        if (isDoingTrick || Player.Instance.isGrounded) {return;}
+            if (isDoingTrick || Player.Instance.isGrounded) {return;}
 
-        animatorBool = _animatorBool;
-        isDoingTrick = true;
-        isDoingTrickSmaller = true;
-        animator.SetBool(animatorBool, true);
+            animatorBool = _animatorBool;
+            isDoingTrick = true;
+            isDoingTrickSmaller = true;
+            animator.SetBool(animatorBool, true);
 
-    }
+        }
     
-    public IEnumerator CooldownTrick(string _animatorBool)
-    {
-        if (_animatorBool != animatorBool || Player.Instance.isGrounded) yield break;
+        public IEnumerator CooldownTrick(string _animatorBool)
+        {
+            if (_animatorBool != animatorBool || Player.Instance.isGrounded) yield break;
         
-        stopCooldown = true;
-        animator.SetBool(animatorBool, false);
-        isDoingTrickSmaller = false;
-        yield return new WaitForSeconds(.10f);
-        isDoingTrick = false;
-        stopCooldown = false;
+            stopCooldown = true;
+            animator.SetBool(animatorBool, false);
+            isDoingTrickSmaller = false;
+            yield return new WaitForSeconds(.10f);
+            isDoingTrick = false;
+            stopCooldown = false;
 
+
+        }
 
     }
-
 }

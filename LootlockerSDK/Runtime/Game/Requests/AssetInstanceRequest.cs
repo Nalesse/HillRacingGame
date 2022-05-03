@@ -1,13 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
-using Newtonsoft.Json;
-using System;
 using System.Linq;
+using Client;
+using Newtonsoft.Json;
+using UnityEngine;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     public class LootLockerGetAllKeyValuePairsResponse : LootLockerResponse
     {
@@ -74,10 +73,6 @@ namespace LootLocker.Requests
         public bool check_grant_notifications { get; set; }
     }
 
-}
-
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void GetAllKeyValuePairs(Action<LootLockerGetAllKeyValuePairsResponse> onComplete)

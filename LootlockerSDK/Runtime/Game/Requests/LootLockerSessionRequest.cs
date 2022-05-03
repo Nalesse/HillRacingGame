@@ -1,15 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
+using Newtonsoft.Json;
 using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
 
-
-namespace LootLocker.Requests
+namespace Game.Requests
 {
-
     [System.Serializable]
     public class LootLockerSessionRequest : LootLockerGetRequest
     {
@@ -102,10 +99,7 @@ namespace LootLocker.Requests
             this.xbox_user_token = xbox_user_token;
         }
     }
-}
 
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void Session(LootLockerGetRequest data, Action<LootLockerSessionResponse> onComplete)
@@ -116,21 +110,21 @@ namespace LootLocker
             if (data == null) return;
             else json = JsonConvert.SerializeObject(data);
             LootLockerServerRequest.CallAPI(endPoint.endPoint, endPoint.httpMethod, json, (serverResponse) =>
-             {
-                 LootLockerSessionResponse response = new LootLockerSessionResponse();
-                 if (string.IsNullOrEmpty(serverResponse.Error))
-                 {
-                     response = JsonConvert.DeserializeObject<LootLockerSessionResponse>(serverResponse.text);
-                     LootLockerConfig.current.UpdateToken(response.session_token, (data as LootLockerSessionRequest)?.player_identifier);
-                 }
+            {
+                LootLockerSessionResponse response = new LootLockerSessionResponse();
+                if (string.IsNullOrEmpty(serverResponse.Error))
+                {
+                    response = JsonConvert.DeserializeObject<LootLockerSessionResponse>(serverResponse.text);
+                    LootLockerConfig.current.UpdateToken(response.session_token, (data as LootLockerSessionRequest)?.player_identifier);
+                }
 
-                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
-                 response.text = serverResponse.text;
-                      response.success = serverResponse.success;
-             response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
-                 onComplete?.Invoke(response);
+                //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
+                response.text = serverResponse.text;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                onComplete?.Invoke(response);
 
-             }, false);
+            }, false);
         }
 
         public static void WhiteLabelSession(LootLockerGetRequest data, Action<LootLockerSessionResponse> onComplete)
@@ -256,12 +250,11 @@ namespace LootLocker
                 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
             }, true);
         }
 
     }
-
 }

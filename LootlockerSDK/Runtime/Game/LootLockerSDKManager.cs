@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker.Requests;
-using LootLocker;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Client;
+using Game.Requests;
 using Newtonsoft.Json;
-using LootLocker.LootLockerEnums;
-using static LootLocker.LootLockerConfig;
-using System.Linq;
+using UnityEngine;
+using static Client.LootLockerConfig;
 
-namespace LootLocker.Requests
+namespace Game
 {
     public partial class LootLockerSDKManager
     {
@@ -899,7 +897,7 @@ namespace LootLocker.Requests
             LootLockerAPIManager.GetContext(onComplete);
         }
 
-        public static void GetAssetsOriginal(int assetCount, Action<LootLockerAssetResponse> onComplete, int? idOfLastAsset = null, List<LootLocker.LootLockerEnums.AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
+        public static void GetAssetsOriginal(int assetCount, Action<LootLockerAssetResponse> onComplete, int? idOfLastAsset = null, List<AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
         {
             if (!CheckInitialized())
             {
@@ -909,7 +907,7 @@ namespace LootLocker.Requests
             LootLockerAPIManager.GetAssetsOriginal(onComplete, assetCount, idOfLastAsset, filter, includeUGC, assetFilters, UGCCreatorPlayerID);
         }
 
-        public static void GetAssetListWithCount(int assetCount, Action<LootLockerAssetResponse> onComplete, List<LootLocker.LootLockerEnums.AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
+        public static void GetAssetListWithCount(int assetCount, Action<LootLockerAssetResponse> onComplete, List<AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
         {
             if (!CheckInitialized())
             {
@@ -928,7 +926,7 @@ namespace LootLocker.Requests
             }, assetCount, null, filter, includeUGC, assetFilters, UGCCreatorPlayerID);
         }
 
-        public static void GetAssetNextList(int assetCount, Action<LootLockerAssetResponse> onComplete, List<LootLocker.LootLockerEnums.AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
+        public static void GetAssetNextList(int assetCount, Action<LootLockerAssetResponse> onComplete, List<AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
         {
             if (!CheckInitialized())
             {

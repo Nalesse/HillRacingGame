@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using LootLocker;
-using LootLocker.Requests;
-using UnityEngine;
+using Client;
+using Game.Requests;
 
-namespace LootLocker
+namespace Game
 {
     public class LootLockerGameServerAPI : LootLockerBaseServerAPI
     {
@@ -27,7 +25,7 @@ namespace LootLocker
         {
             string platform = LootLockerSDKManager.GetCurrentPlatform();
 
-            if (platform == Platforms.Steam)
+            if (platform == Platforms.Platforms.Steam)
             {
                 LootLockerSDKManager.DebugMessage("Token has expired and token refresh is not supported for Steam", true);
                 LootLockerResponse res = new LootLockerResponse();
@@ -38,7 +36,7 @@ namespace LootLocker
                 return;
             }
 
-            if (platform == Platforms.NintendoSwitch)
+            if (platform == Platforms.Platforms.NintendoSwitch)
             {
                 LootLockerSDKManager.DebugMessage("Token has expired and token refresh is not supported for Nintendo Switch", true);
                 LootLockerResponse res = new LootLockerResponse();
@@ -49,14 +47,14 @@ namespace LootLocker
                 return;
             }
 
-            if (platform == Platforms.Guest)
+            if (platform == Platforms.Platforms.Guest)
             {
                 LootLockerSDKManager.StartGuestSession(response =>
                 {
                     CompleteCall(cacheServerRequest, OnServerResponse, response);
                 });
                 return;
-            } else if (platform == Platforms.WhiteLabel)
+            } else if (platform == Platforms.Platforms.WhiteLabel)
             {
                 LootLockerSDKManager.StartWhiteLabelSession(response =>
                 {

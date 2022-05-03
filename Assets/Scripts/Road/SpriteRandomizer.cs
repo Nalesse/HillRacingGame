@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteRandomizer : MonoBehaviour
+namespace Road
 {
-    public Sprite[] spritePool;
-    public SpriteRenderer spriteRendererA;
-    public SpriteRenderer spriteRendererB;
-    // Start is called before the first frame update
-    void Start()
+    public class SpriteRandomizer : MonoBehaviour
     {
-        int spriteChosen = Random.Range(0, spritePool.Length);
-        spriteRendererA.sprite = spritePool[spriteChosen];
-        spriteRendererB.sprite = spritePool[spriteChosen];
-    }
+        public Sprite[] spritePool;
+        public SpriteRenderer spriteRendererA;
+        public SpriteRenderer spriteRendererB;
+        // Start is called before the first frame update
+        void Start()
+        {
+            int spriteChosen = Random.Range(0, spritePool.Length);
+            spriteRendererA.sprite = spritePool[spriteChosen];
+            spriteRendererB.sprite = spritePool[spriteChosen];
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

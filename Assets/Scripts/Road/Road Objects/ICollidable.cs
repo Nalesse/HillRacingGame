@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ICollidable
+namespace Road.Road_Objects
 {
-    public void CollisionAction();
+    public interface ICollidable
+    {
+        public void CollisionAction();
+    }
 }

@@ -1,16 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
-using Newtonsoft.Json;
-using System;
 using System.Linq;
+using Client;
+using Newtonsoft.Json;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
-
     #region GettingCollectable
 
     public class LootLockerGettingCollectablesResponse : LootLockerResponse
@@ -83,11 +81,6 @@ namespace LootLocker.Requests
 
     #endregion
 
-}
-
-namespace LootLocker
-{
-
     public partial class LootLockerAPIManager
     {
 
@@ -103,8 +96,8 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
             }, true);
         }
@@ -136,11 +129,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
             }, true);
         }
     }
-
 }

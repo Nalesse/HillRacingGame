@@ -1,9 +1,4 @@
-﻿using LootLocker;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace LootLocker
+﻿namespace Client
 {
     [System.Serializable]
     public class EndPointClass

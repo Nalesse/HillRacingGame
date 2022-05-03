@@ -1,12 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker.Requests;
-using LootLocker;
-using System;
+using Client;
 using Newtonsoft.Json;
+using UnityEngine;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     [Serializable]
     public class LootLockerMapsResponse : LootLockerResponse
@@ -40,11 +39,8 @@ namespace LootLocker.Requests
         public string position;
         public string rotation;
     }
-}
 
 
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void GettingAllMaps(Action<LootLockerMapsResponse> onComplete)
@@ -61,8 +57,8 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
             }, true);
         }

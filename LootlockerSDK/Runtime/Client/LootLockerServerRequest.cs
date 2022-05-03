@@ -1,16 +1,14 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System;
-using Newtonsoft.Json;
-using LootLocker.LootLockerEnums;
-using LootLocker.Requests;
+using System.Collections.Generic;
+using Game;
+using UnityEngine;
 
 
 // using LootLocker.Admin;
 // using LootLocker.Admin.Requests;
 
 //this is common between user and admin
-namespace LootLocker
+namespace Client
 {
     [System.Serializable]
     public enum LootLockerHTTPMethod
@@ -103,7 +101,7 @@ namespace LootLocker
         public byte[] upload;
         public string uploadName;
         public string uploadType;
-        public LootLocker.LootLockerEnums.LootLockerCallerRole adminCall;
+        public LootLockerCallerRole adminCall;
         public WWWForm form;
         /// <summary>
         /// Leave this null if you don't need custom headers
@@ -118,7 +116,7 @@ namespace LootLocker
 
         #region Make ServerRequest and call send (3 functions)
 
-        public static void CallAPI(string endPoint, LootLockerHTTPMethod httpMethod, string body = null, Action<LootLockerResponse> onComplete = null, bool useAuthToken = true, LootLocker.LootLockerEnums.LootLockerCallerRole callerRole = LootLocker.LootLockerEnums.LootLockerCallerRole.User)
+        public static void CallAPI(string endPoint, LootLockerHTTPMethod httpMethod, string body = null, Action<LootLockerResponse> onComplete = null, bool useAuthToken = true, LootLockerCallerRole callerRole = LootLockerCallerRole.User)
         {
 #if UNITY_EDITOR
             LootLockerSDKManager.DebugMessage("Caller Type: " + callerRole.ToString());
@@ -129,7 +127,7 @@ namespace LootLocker
             if (useAuthToken)
             {
                 headers = new Dictionary<string, string>();
-                headers.Add(callerRole == LootLocker.LootLockerEnums.LootLockerCallerRole.Admin ? "x-auth-token" : "x-session-token", callerRole == LootLocker.LootLockerEnums.LootLockerCallerRole.Admin ? LootLockerConfig.current.adminToken : LootLockerConfig.current.token);
+                headers.Add(callerRole == LootLockerCallerRole.Admin ? "x-auth-token" : "x-session-token", callerRole == LootLockerCallerRole.Admin ? LootLockerConfig.current.adminToken : LootLockerConfig.current.token);
             }
 
             if (LootLockerConfig.current != null)
@@ -171,7 +169,7 @@ namespace LootLocker
             });
         }
 
-        public static void UploadFile(string endPoint, LootLockerHTTPMethod httpMethod, byte[] file, string fileName = "file", string fileContentType = "text/plain", Dictionary<string, string> body = null, Action<LootLockerResponse> onComplete = null, bool useAuthToken = true, LootLocker.LootLockerEnums.LootLockerCallerRole callerRole = LootLocker.LootLockerEnums.LootLockerCallerRole.User)
+        public static void UploadFile(string endPoint, LootLockerHTTPMethod httpMethod, byte[] file, string fileName = "file", string fileContentType = "text/plain", Dictionary<string, string> body = null, Action<LootLockerResponse> onComplete = null, bool useAuthToken = true, LootLockerCallerRole callerRole = LootLockerCallerRole.User)
         {
             Dictionary<string, string> headers = new Dictionary<string, string>();
 
@@ -193,7 +191,7 @@ namespace LootLocker
         #endregion
 
         #region ServerRequest constructor
-        public LootLockerServerRequest(string endpoint, LootLockerHTTPMethod httpMethod = LootLockerHTTPMethod.GET, byte[] upload = null, string uploadName = null, string uploadType = null, Dictionary<string, string> body = null, Dictionary<string, string> extraHeaders = null, bool useAuthToken = true, LootLocker.LootLockerEnums.LootLockerCallerRole callerRole = LootLocker.LootLockerEnums.LootLockerCallerRole.User, bool isFileUpload = true)
+        public LootLockerServerRequest(string endpoint, LootLockerHTTPMethod httpMethod = LootLockerHTTPMethod.GET, byte[] upload = null, string uploadName = null, string uploadType = null, Dictionary<string, string> body = null, Dictionary<string, string> extraHeaders = null, bool useAuthToken = true, LootLockerCallerRole callerRole = LootLockerCallerRole.User, bool isFileUpload = true)
         {
             this.retryCount = 0;
             this.endpoint = endpoint;
@@ -223,7 +221,7 @@ namespace LootLocker
             }
         }
 
-        public LootLockerServerRequest(string endpoint, LootLockerHTTPMethod httpMethod = LootLockerHTTPMethod.GET, Dictionary<string, object> payload = null, Dictionary<string, string> extraHeaders = null, Dictionary<string, string> queryParams = null, bool useAuthToken = true, LootLocker.LootLockerEnums.LootLockerCallerRole callerRole = LootLocker.LootLockerEnums.LootLockerCallerRole.User)
+        public LootLockerServerRequest(string endpoint, LootLockerHTTPMethod httpMethod = LootLockerHTTPMethod.GET, Dictionary<string, object> payload = null, Dictionary<string, string> extraHeaders = null, Dictionary<string, string> queryParams = null, bool useAuthToken = true, LootLockerCallerRole callerRole = LootLockerCallerRole.User)
         {
             this.retryCount = 0;
             this.endpoint = endpoint;
@@ -243,7 +241,7 @@ namespace LootLocker
                 LootLockerSDKManager.DebugMessage("WARNING: Payloads should not be sent in GET, HEAD, OPTIONS, requests. Attempted to send a payload to: " + this.httpMethod.ToString() + " " + this.endpoint);
             }
         }
-        public LootLockerServerRequest(string endpoint, LootLockerHTTPMethod httpMethod = LootLockerHTTPMethod.GET, string payload = null, Dictionary<string, string> extraHeaders = null, Dictionary<string, string> queryParams = null, bool useAuthToken = true, LootLocker.LootLockerEnums.LootLockerCallerRole callerRole = LootLocker.LootLockerEnums.LootLockerCallerRole.User)
+        public LootLockerServerRequest(string endpoint, LootLockerHTTPMethod httpMethod = LootLockerHTTPMethod.GET, string payload = null, Dictionary<string, string> extraHeaders = null, Dictionary<string, string> queryParams = null, bool useAuthToken = true, LootLockerCallerRole callerRole = LootLockerCallerRole.User)
         {
             this.retryCount = 0;
             this.endpoint = endpoint;

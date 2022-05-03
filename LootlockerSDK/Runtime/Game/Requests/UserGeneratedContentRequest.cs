@@ -1,20 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
+using Newtonsoft.Json;
 using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
-using LootLocker.LootLockerEnums;
 
-namespace LootLocker.LootLockerEnums
+namespace Game.Requests
 {
     public enum FilePurpose { primary_thumbnail, thumbnail, file }
-}
 
-
-namespace LootLocker.Requests
-{
 
     #region Asset Candidate Properties
     public class LootLockerAssetKVPair
@@ -118,11 +112,7 @@ namespace LootLocker.Requests
         
         public LootLockerAsset_Candidates[] asset_candidates { get; set; }
     }
-}
 
-
-namespace LootLocker
-{
 
     public partial class LootLockerAPIManager
     {
@@ -142,10 +132,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, true, LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, true, LootLockerCallerRole.User);
         }
 
         public static void UpdatingAnAssetCandidate(LootLockerCreatingOrUpdatingAnAssetCandidateRequest data, LootLockerGetRequest getRequests, Action<LootLockerUserGenerateContentResponse> onComplete)
@@ -165,10 +155,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, true, LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, true, LootLockerCallerRole.User);
         }
 
         public static void GettingASingleAssetCandidate(LootLockerGetRequest getRequests, Action<LootLockerUserGenerateContentResponse> onComplete)
@@ -185,10 +175,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, true, LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, true, LootLockerCallerRole.User);
         }
 
         public static void DeletingAnAssetCandidate(LootLockerGetRequest data, Action<LootLockerUserGenerateContentResponse> onComplete)
@@ -205,10 +195,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, useAuthToken: true, callerRole: LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, useAuthToken: true, callerRole: LootLockerCallerRole.User);
         }
 
         public static void ListingAssetCandidates(Action<LootLockerListingAssetCandidatesResponse> onComplete)
@@ -223,10 +213,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, useAuthToken: true, callerRole: LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, useAuthToken: true, callerRole: LootLockerCallerRole.User);
         }
 
         public static void AddingFilesToAssetCandidates(LootLockerAddingFilesToAssetCandidatesRequest data, LootLockerGetRequest getRequests, Action<LootLockerUserGenerateContentResponse> onComplete)
@@ -254,18 +244,18 @@ namespace LootLocker
 
             LootLockerServerRequest.UploadFile(endPoint, requestEndPoint.httpMethod, fileData, data.fileName, data.fileContentType,
                 formData, (serverResponse) =>
-            {
-                LootLockerUserGenerateContentResponse response = new LootLockerUserGenerateContentResponse();
+                {
+                    LootLockerUserGenerateContentResponse response = new LootLockerUserGenerateContentResponse();
 
-                if (string.IsNullOrEmpty(serverResponse.Error))
-                    response = JsonConvert.DeserializeObject<LootLockerUserGenerateContentResponse>(serverResponse.text);
+                    if (string.IsNullOrEmpty(serverResponse.Error))
+                        response = JsonConvert.DeserializeObject<LootLockerUserGenerateContentResponse>(serverResponse.text);
 
-                //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
-                response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
-                onComplete?.Invoke(response);
-            }, useAuthToken: true, callerRole: LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+                    //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
+                    response.text = serverResponse.text;
+                    response.success = serverResponse.success;
+                    response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                    onComplete?.Invoke(response);
+                }, useAuthToken: true, callerRole: LootLockerCallerRole.User);
         }
 
         public static void RemovingFilesFromAssetCandidates(LootLockerGetRequest data, Action<LootLockerUserGenerateContentResponse> onComplete)
@@ -282,10 +272,10 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, useAuthToken: true, callerRole: LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, useAuthToken: true, callerRole: LootLockerCallerRole.User);
         }
     }
 }

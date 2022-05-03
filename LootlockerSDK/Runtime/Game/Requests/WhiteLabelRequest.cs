@@ -1,14 +1,12 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
-using LootLocker.LootLockerEnums;
+using Client;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using UnityEngine;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     public class LootLockerWhiteLabelUserRequest
     {
@@ -47,10 +45,7 @@ namespace LootLocker.Requests
     {
         public string SessionToken { get; set; }
     }
-}
 
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
 
