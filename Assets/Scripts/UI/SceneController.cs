@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+namespace UI
 {
-    public void LoadScene(string sceneName)
+    public class SceneController : MonoBehaviour
     {
-        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        }
+
+        //private IEnumerator Start()
+        //{
+        // yield return new WaitForSeconds(3.0f);
+        // SceneManager.LoadScene(1);
+        //}
+
     }
-
-    //private IEnumerator Start()
-    //{
-       // yield return new WaitForSeconds(3.0f);
-       // SceneManager.LoadScene(1);
-    //}
-
 }

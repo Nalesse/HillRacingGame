@@ -1,14 +1,11 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
+using Newtonsoft.Json;
 using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
-using LootLocker.LootLockerEnums;
 
-
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     public class ReportType
     {
@@ -87,10 +84,7 @@ namespace LootLocker.Requests
         public string text { get; set; }
         public int asset_id { get; set; }
     }
-}
 
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void GetReportTypes(Action<LootLockerReportsGetTypesResponse> onComplete)

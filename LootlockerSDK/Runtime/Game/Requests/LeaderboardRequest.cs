@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
+using Newtonsoft.Json;
 using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
-using LootLocker.LootLockerEnums;
 
-
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     public class LootLockerGetMemberRankResponse : LootLockerResponse
     {
@@ -127,10 +124,7 @@ namespace LootLocker.Requests
     {
         public string[] members { get; set; }
     }
-}
 
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void GetMemberRank(LootLockerGetMemberRankRequest data, Action<LootLockerGetMemberRankResponse> onComplete)

@@ -1,13 +1,12 @@
-using LootLocker.Requests;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
+using Newtonsoft.Json;
 using UnityEngine;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
-
     public class LootLockerComputeAndLockDropTableResponse : LootLockerResponse
     {
         
@@ -41,10 +40,6 @@ namespace LootLocker.Requests
         public int[] picks { get; set; }
     }
 
-}
-
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void ComputeAndLockDropTable(int tableInstanceId, Action<LootLockerComputeAndLockDropTableResponse> onComplete, bool AddAssetDetails = false, string tag = "")
@@ -70,7 +65,7 @@ namespace LootLocker
                 response.success = serverResponse.success;
                 response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, useAuthToken: true, callerRole: LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, useAuthToken: true, callerRole: LootLockerCallerRole.User);
         }
 
         public static void PickDropsFromDropTable(PickDropsFromDropTableRequest data, int tableInstanceId, Action<LootLockerPickDropsFromDropTableResponse> onComplete)
@@ -93,7 +88,7 @@ namespace LootLocker
                 response.success = serverResponse.success;
                 response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
-            }, useAuthToken: true, callerRole: LootLocker.LootLockerEnums.LootLockerCallerRole.User);
+            }, useAuthToken: true, callerRole: LootLockerCallerRole.User);
         }
     }
 }

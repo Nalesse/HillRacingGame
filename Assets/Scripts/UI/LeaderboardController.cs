@@ -1,15 +1,25 @@
 using System;
 using System.Collections;
-using LootLocker.Requests;
+using Game;
+using Game.Requests;
 using TMPro;
 using UnityEngine;
 
 namespace UI
 {
+
+    [Serializable]
+    public struct Entry
+    {
+        public TextMeshProUGUI rank;
+        public TextMeshProUGUI name;
+        public TextMeshProUGUI score;
+    }
+    
     public class LeaderboardController : MonoBehaviour
     {
         [SerializeField] private int id;
-        [SerializeField] private TextMeshProUGUI[] entries;
+        [SerializeField] private Entry[] entries;
         [SerializeField] private GameObject leaderboardUI;
         [SerializeField] private GameObject gameOverUI;
         public static LeaderboardController Instance { get; private set; }
@@ -76,14 +86,20 @@ namespace UI
 
                 for (int i = 0; i < scores.Length; i++)
                 {
-                    entries[i].text = "#" + scores[i].rank + " " + scores[i].member_id + ": " + scores[i].score;
+                    //entries[i].text = "#" + scores[i].rank + " " + scores[i].member_id + ": " + scores[i].score;
+                    entries[i].rank.text = "#" + scores[i].rank;
+                    entries[i].name.text = scores[i].member_id;
+                    entries[i].score.text = scores[i].score.ToString();
                 }
 
                 if (scores.Length >= maxScores) return;
                 {
                     for (int i = scores.Length; i < maxScores; i++)
                     {
-                        entries[i].text = "#" + (i + 1) + " No Data";
+                        //entries[i].text = "#" + (i + 1) + " No Data";
+                        entries[i].rank.text = "";
+                        entries[i].name.text = "No Data";
+                        entries[i].score.text = "";
                     }
                 }
 

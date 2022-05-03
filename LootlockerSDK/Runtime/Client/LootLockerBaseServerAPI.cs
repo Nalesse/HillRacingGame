@@ -1,22 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using Newtonsoft.Json;
-using System;
-using System.Text;
-using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 using System.Net;
-using LootLocker.Requests;
+using System.Text;
+using Game;
+using Newtonsoft.Json;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
-namespace LootLocker.LootLockerEnums
+namespace Client
 {
     public enum LootLockerCallerRole { User, Admin, Player, Base };
-}
 
-namespace LootLocker
-{
     public abstract class LootLockerBaseServerAPI
     {
         public static LootLockerBaseServerAPI I;
@@ -33,21 +30,21 @@ namespace LootLocker
         /// </summary>
         //public static string SERVER_URL = "http://localhost:5051/api";
         public static string SERVER_URL;
-        static LootLocker.LootLockerEnums.LootLockerCallerRole callerRole = LootLocker.LootLockerEnums.LootLockerCallerRole.User;
-        public void SwitchURL(LootLocker.LootLockerEnums.LootLockerCallerRole mainCallerRole)
+        static LootLockerCallerRole callerRole = LootLockerCallerRole.User;
+        public void SwitchURL(LootLockerCallerRole mainCallerRole)
         {
             switch (mainCallerRole)
             {
-                case LootLocker.LootLockerEnums.LootLockerCallerRole.Admin:
+                case LootLockerCallerRole.Admin:
                     SERVER_URL = LootLockerConfig.current.adminUrl;
                     break;
-                case LootLocker.LootLockerEnums.LootLockerCallerRole.User:
+                case LootLockerCallerRole.User:
                     SERVER_URL = LootLockerConfig.current.userUrl;
                     break;
-                case LootLocker.LootLockerEnums.LootLockerCallerRole.Player:
+                case LootLockerCallerRole.Player:
                     SERVER_URL = LootLockerConfig.current.playerUrl;
                     break;
-                case LootLocker.LootLockerEnums.LootLockerCallerRole.Base:
+                case LootLockerCallerRole.Base:
                     SERVER_URL = LootLockerConfig.current.baseUrl;
                     break;
                 default:
@@ -355,4 +352,3 @@ namespace LootLocker
         }
     }
 }
-

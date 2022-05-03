@@ -1,6 +1,4 @@
-using System;
-
-namespace LootLocker.Requests
+namespace Game.Platforms
 {
     public static class Platforms
     {

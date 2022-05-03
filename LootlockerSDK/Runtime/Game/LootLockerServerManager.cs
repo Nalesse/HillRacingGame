@@ -1,7 +1,6 @@
 using UnityEngine;
-using LootLocker;
 
-namespace LootLocker
+namespace Game
 {
     public class LootLockerServerManager : MonoBehaviour
     {

@@ -1,4 +1,6 @@
 using System.Collections;
+using Misc;
+using Player;
 using TMPro;
 using UnityEngine;
 
@@ -69,7 +71,7 @@ namespace UI
             finalScoreValue.text = $"{(int)PlayerScore}";
             tempScoreValue.text = $"{(int)tempScore:00000}";
 
-            if (Player.Instance.gameOver)
+            if (Player.Player.Instance.gameOver)
             {
                 tempScore = 0;
                 return;
@@ -85,13 +87,13 @@ namespace UI
                 pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
             }
 
-            if (Player.Instance.isDamage)
+            if (Player.Player.Instance.isDamage)
             {
                 //Debug.Log("TempScoreToZero");
                 tempScore = 0;
             }
 
-            if (Player.Instance.isGrounded)
+            if (Player.Player.Instance.isGrounded)
             {
 
                 PlayerScore += tempScore * pointMultiplier;

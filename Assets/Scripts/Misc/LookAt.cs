@@ -1,32 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAt : MonoBehaviour
+namespace Misc
 {
-    Vector3 playerPos;
-    public Vector3 offset;
+    public class LookAt : MonoBehaviour
+    {
+        Vector3 playerPos;
+        public Vector3 offset;
 
-    public GameObject lookAtPoint;
+        public GameObject lookAtPoint;
     
 
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        // Start is called before the first frame update
+        void Start()
+        {
       
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
 
-        playerPos = Player.Instance.transform.position;
+            playerPos = Player.Player.Instance.transform.position;
 
 
-        lookAtPoint.transform.position = playerPos + offset;
+            lookAtPoint.transform.position = playerPos + offset;
 
+        }
     }
 }

@@ -1,13 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
+using Newtonsoft.Json;
 using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
 
-
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     public class LootLockerSubmittingACrashLogRequest
     {
@@ -17,10 +15,7 @@ namespace LootLocker.Requests
         public string type_identifier { get; set; }
         public string local_crash_time { get; set; }
     }
-}
 
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void SubmittingACrashLog(LootLockerSubmittingACrashLogRequest data, Action<LootLockerResponse> onComplete)
@@ -42,21 +37,21 @@ namespace LootLocker
 
             LootLockerServerRequest.UploadFile(requestEndPoint.endPoint, requestEndPoint.httpMethod, System.IO.File.ReadAllBytes(data.logFilePath), 
                 data.logFileName, "application/zip", formData, onComplete: (serverResponse) =>
-            {
-                LootLockerResponse response = new LootLockerResponse();
-                if (string.IsNullOrEmpty(serverResponse.Error))
                 {
-                    LootLockerSDKManager.DebugMessage(serverResponse.text);
-                    response = JsonConvert.DeserializeObject<LootLockerResponse>(serverResponse.text);
-                    onComplete?.Invoke(response);
-                }
-                else
-                {
-                         response.success = serverResponse.success;
-                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
-                    onComplete?.Invoke(response);
-                }
-            }, useAuthToken: false);
+                    LootLockerResponse response = new LootLockerResponse();
+                    if (string.IsNullOrEmpty(serverResponse.Error))
+                    {
+                        LootLockerSDKManager.DebugMessage(serverResponse.text);
+                        response = JsonConvert.DeserializeObject<LootLockerResponse>(serverResponse.text);
+                        onComplete?.Invoke(response);
+                    }
+                    else
+                    {
+                        response.success = serverResponse.success;
+                        response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                        onComplete?.Invoke(response);
+                    }
+                }, useAuthToken: false);
         }
     }
 }

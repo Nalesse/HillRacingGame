@@ -1,29 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuCarMove : MonoBehaviour
+namespace Misc
 {
-    private int bound = 90;
-    public float speed = 40.0f;
-    // Start is called before the first frame update
-    void Start()
+    public class MenuCarMove : MonoBehaviour
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
-
-        if (transform.position.x > bound)
+        private int bound = 90;
+        public float speed = 40.0f;
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(gameObject);
+
         }
-        else if (transform.position.x < -bound)
+
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(gameObject);
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+
+            if (transform.position.x > bound)
+            {
+                Destroy(gameObject);
+            }
+            else if (transform.position.x < -bound)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

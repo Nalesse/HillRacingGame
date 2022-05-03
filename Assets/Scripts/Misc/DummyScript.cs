@@ -1,28 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Player;
 using TMPro;
+using UnityEngine;
 
-public class DummyScript : MonoBehaviour
+namespace Misc
 {
-    public TextMeshProUGUI textThing;
-    public int numbers;
-    private TrickSystem trickSys;
-    // Start is called before the first frame update
-    void Start()
+    public class DummyScript : MonoBehaviour
     {
-        trickSys = GameObject.Find("Player").GetComponent<TrickSystem>();
-        textThing = gameObject.GetComponent<TextMeshProUGUI>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        textThing.text = "" + numbers;
-        if (trickSys.isDoingTrick)
+        public TextMeshProUGUI textThing;
+        public int numbers;
+        private TrickSystem trickSys;
+        // Start is called before the first frame update
+        void Start()
         {
-            numbers += 1;
+            trickSys = GameObject.Find("Player").GetComponent<TrickSystem>();
+            textThing = gameObject.GetComponent<TextMeshProUGUI>();
         }
+
+        // Update is called once per frame
+        void Update()
+        {
+            textThing.text = "" + numbers;
+            if (trickSys.isDoingTrick)
+            {
+                numbers += 1;
+            }
         
+        }
     }
 }

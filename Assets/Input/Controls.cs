@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @Controls : IInputActionCollection, IDisposable
+namespace Input
 {
-    public InputActionAsset asset { get; }
-    public @Controls()
+    public class @Controls : IInputActionCollection, IDisposable
     {
-        asset = InputActionAsset.FromJson(@"{
+        public InputActionAsset asset { get; }
+        public @Controls()
+        {
+            asset = InputActionAsset.FromJson(@"{
     ""name"": ""Controls"",
     ""maps"": [
         {
@@ -375,159 +377,160 @@ public class @Controls : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Racing
-        m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
-        m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
-        m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
-        m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
-        m_Racing_WestTrick = m_Racing.FindAction("WestTrick", throwIfNotFound: true);
-        m_Racing_SouthTrick = m_Racing.FindAction("SouthTrick", throwIfNotFound: true);
-        m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
-        m_Racing_DebugFPS30 = m_Racing.FindAction("DebugFPS30", throwIfNotFound: true);
-        m_Racing_DebugFPS60 = m_Racing.FindAction("DebugFPS60", throwIfNotFound: true);
-    }
+            // Racing
+            m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
+            m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
+            m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
+            m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
+            m_Racing_WestTrick = m_Racing.FindAction("WestTrick", throwIfNotFound: true);
+            m_Racing_SouthTrick = m_Racing.FindAction("SouthTrick", throwIfNotFound: true);
+            m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
+            m_Racing_DebugFPS30 = m_Racing.FindAction("DebugFPS30", throwIfNotFound: true);
+            m_Racing_DebugFPS60 = m_Racing.FindAction("DebugFPS60", throwIfNotFound: true);
+        }
 
-    public void Dispose()
-    {
-        UnityEngine.Object.Destroy(asset);
-    }
-
-    public InputBinding? bindingMask
-    {
-        get => asset.bindingMask;
-        set => asset.bindingMask = value;
-    }
-
-    public ReadOnlyArray<InputDevice>? devices
-    {
-        get => asset.devices;
-        set => asset.devices = value;
-    }
-
-    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-    public bool Contains(InputAction action)
-    {
-        return asset.Contains(action);
-    }
-
-    public IEnumerator<InputAction> GetEnumerator()
-    {
-        return asset.GetEnumerator();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
-
-    public void Enable()
-    {
-        asset.Enable();
-    }
-
-    public void Disable()
-    {
-        asset.Disable();
-    }
-
-    // Racing
-    private readonly InputActionMap m_Racing;
-    private IRacingActions m_RacingActionsCallbackInterface;
-    private readonly InputAction m_Racing_Move;
-    private readonly InputAction m_Racing_NorthTrick;
-    private readonly InputAction m_Racing_EastTrick;
-    private readonly InputAction m_Racing_WestTrick;
-    private readonly InputAction m_Racing_SouthTrick;
-    private readonly InputAction m_Racing_DebugJump;
-    private readonly InputAction m_Racing_DebugFPS30;
-    private readonly InputAction m_Racing_DebugFPS60;
-    public struct RacingActions
-    {
-        private @Controls m_Wrapper;
-        public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Racing_Move;
-        public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
-        public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
-        public InputAction @WestTrick => m_Wrapper.m_Racing_WestTrick;
-        public InputAction @SouthTrick => m_Wrapper.m_Racing_SouthTrick;
-        public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
-        public InputAction @DebugFPS30 => m_Wrapper.m_Racing_DebugFPS30;
-        public InputAction @DebugFPS60 => m_Wrapper.m_Racing_DebugFPS60;
-        public InputActionMap Get() { return m_Wrapper.m_Racing; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(RacingActions set) { return set.Get(); }
-        public void SetCallbacks(IRacingActions instance)
+        public void Dispose()
         {
-            if (m_Wrapper.m_RacingActionsCallbackInterface != null)
+            UnityEngine.Object.Destroy(asset);
+        }
+
+        public InputBinding? bindingMask
+        {
+            get => asset.bindingMask;
+            set => asset.bindingMask = value;
+        }
+
+        public ReadOnlyArray<InputDevice>? devices
+        {
+            get => asset.devices;
+            set => asset.devices = value;
+        }
+
+        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+        public bool Contains(InputAction action)
+        {
+            return asset.Contains(action);
+        }
+
+        public IEnumerator<InputAction> GetEnumerator()
+        {
+            return asset.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Enable()
+        {
+            asset.Enable();
+        }
+
+        public void Disable()
+        {
+            asset.Disable();
+        }
+
+        // Racing
+        private readonly InputActionMap m_Racing;
+        private IRacingActions m_RacingActionsCallbackInterface;
+        private readonly InputAction m_Racing_Move;
+        private readonly InputAction m_Racing_NorthTrick;
+        private readonly InputAction m_Racing_EastTrick;
+        private readonly InputAction m_Racing_WestTrick;
+        private readonly InputAction m_Racing_SouthTrick;
+        private readonly InputAction m_Racing_DebugJump;
+        private readonly InputAction m_Racing_DebugFPS30;
+        private readonly InputAction m_Racing_DebugFPS60;
+        public struct RacingActions
+        {
+            private @Controls m_Wrapper;
+            public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_Racing_Move;
+            public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
+            public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
+            public InputAction @WestTrick => m_Wrapper.m_Racing_WestTrick;
+            public InputAction @SouthTrick => m_Wrapper.m_Racing_SouthTrick;
+            public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
+            public InputAction @DebugFPS30 => m_Wrapper.m_Racing_DebugFPS30;
+            public InputAction @DebugFPS60 => m_Wrapper.m_Racing_DebugFPS60;
+            public InputActionMap Get() { return m_Wrapper.m_Racing; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(RacingActions set) { return set.Get(); }
+            public void SetCallbacks(IRacingActions instance)
             {
-                @Move.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                @NorthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
-                @NorthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
-                @NorthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
-                @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
-                @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
-                @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
-                @WestTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
-                @WestTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
-                @WestTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
-                @SouthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
-                @SouthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
-                @SouthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
-                @DebugJump.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
-                @DebugJump.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
-                @DebugJump.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
-                @DebugFPS30.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
-                @DebugFPS30.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
-                @DebugFPS30.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
-                @DebugFPS60.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
-                @DebugFPS60.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
-                @DebugFPS60.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
-            }
-            m_Wrapper.m_RacingActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @NorthTrick.started += instance.OnNorthTrick;
-                @NorthTrick.performed += instance.OnNorthTrick;
-                @NorthTrick.canceled += instance.OnNorthTrick;
-                @EastTrick.started += instance.OnEastTrick;
-                @EastTrick.performed += instance.OnEastTrick;
-                @EastTrick.canceled += instance.OnEastTrick;
-                @WestTrick.started += instance.OnWestTrick;
-                @WestTrick.performed += instance.OnWestTrick;
-                @WestTrick.canceled += instance.OnWestTrick;
-                @SouthTrick.started += instance.OnSouthTrick;
-                @SouthTrick.performed += instance.OnSouthTrick;
-                @SouthTrick.canceled += instance.OnSouthTrick;
-                @DebugJump.started += instance.OnDebugJump;
-                @DebugJump.performed += instance.OnDebugJump;
-                @DebugJump.canceled += instance.OnDebugJump;
-                @DebugFPS30.started += instance.OnDebugFPS30;
-                @DebugFPS30.performed += instance.OnDebugFPS30;
-                @DebugFPS30.canceled += instance.OnDebugFPS30;
-                @DebugFPS60.started += instance.OnDebugFPS60;
-                @DebugFPS60.performed += instance.OnDebugFPS60;
-                @DebugFPS60.canceled += instance.OnDebugFPS60;
+                if (m_Wrapper.m_RacingActionsCallbackInterface != null)
+                {
+                    @Move.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                    @Move.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                    @Move.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                    @NorthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                    @NorthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                    @NorthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                    @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                    @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                    @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                    @WestTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                    @WestTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                    @WestTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                    @SouthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
+                    @SouthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
+                    @SouthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
+                    @DebugJump.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                    @DebugJump.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                    @DebugJump.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                    @DebugFPS30.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                    @DebugFPS30.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                    @DebugFPS30.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                    @DebugFPS60.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                    @DebugFPS60.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                    @DebugFPS60.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                }
+                m_Wrapper.m_RacingActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Move.started += instance.OnMove;
+                    @Move.performed += instance.OnMove;
+                    @Move.canceled += instance.OnMove;
+                    @NorthTrick.started += instance.OnNorthTrick;
+                    @NorthTrick.performed += instance.OnNorthTrick;
+                    @NorthTrick.canceled += instance.OnNorthTrick;
+                    @EastTrick.started += instance.OnEastTrick;
+                    @EastTrick.performed += instance.OnEastTrick;
+                    @EastTrick.canceled += instance.OnEastTrick;
+                    @WestTrick.started += instance.OnWestTrick;
+                    @WestTrick.performed += instance.OnWestTrick;
+                    @WestTrick.canceled += instance.OnWestTrick;
+                    @SouthTrick.started += instance.OnSouthTrick;
+                    @SouthTrick.performed += instance.OnSouthTrick;
+                    @SouthTrick.canceled += instance.OnSouthTrick;
+                    @DebugJump.started += instance.OnDebugJump;
+                    @DebugJump.performed += instance.OnDebugJump;
+                    @DebugJump.canceled += instance.OnDebugJump;
+                    @DebugFPS30.started += instance.OnDebugFPS30;
+                    @DebugFPS30.performed += instance.OnDebugFPS30;
+                    @DebugFPS30.canceled += instance.OnDebugFPS30;
+                    @DebugFPS60.started += instance.OnDebugFPS60;
+                    @DebugFPS60.performed += instance.OnDebugFPS60;
+                    @DebugFPS60.canceled += instance.OnDebugFPS60;
+                }
             }
         }
-    }
-    public RacingActions @Racing => new RacingActions(this);
-    public interface IRacingActions
-    {
-        void OnMove(InputAction.CallbackContext context);
-        void OnNorthTrick(InputAction.CallbackContext context);
-        void OnEastTrick(InputAction.CallbackContext context);
-        void OnWestTrick(InputAction.CallbackContext context);
-        void OnSouthTrick(InputAction.CallbackContext context);
-        void OnDebugJump(InputAction.CallbackContext context);
-        void OnDebugFPS30(InputAction.CallbackContext context);
-        void OnDebugFPS60(InputAction.CallbackContext context);
+        public RacingActions @Racing => new RacingActions(this);
+        public interface IRacingActions
+        {
+            void OnMove(InputAction.CallbackContext context);
+            void OnNorthTrick(InputAction.CallbackContext context);
+            void OnEastTrick(InputAction.CallbackContext context);
+            void OnWestTrick(InputAction.CallbackContext context);
+            void OnSouthTrick(InputAction.CallbackContext context);
+            void OnDebugJump(InputAction.CallbackContext context);
+            void OnDebugFPS30(InputAction.CallbackContext context);
+            void OnDebugFPS60(InputAction.CallbackContext context);
+        }
     }
 }

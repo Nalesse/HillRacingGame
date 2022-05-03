@@ -1,19 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
 using System.Linq;
+using Client;
+using Newtonsoft.Json;
+using UnityEngine;
 
-namespace LootLocker.LootLockerEnums
+namespace Game.Requests
 {
     public enum AssetFilter { purchasable, nonpurchasable, rentable, nonrentable, popular, nonpopular, none }
-}
 
-namespace LootLocker.Requests
-{
     public class LootLockerLinks
     {
         public string thumbnail { get; set; }
@@ -59,11 +55,11 @@ namespace LootLocker.Requests
         public object links { get; set; }
     }
 
-    //public class LootLockerStorage
-    //{
-    //    public string key;
-    //    public string value;
-    //}
+//public class LootLockerStorage
+//{
+//    public string key;
+//    public string value;
+//}
 
     public class LootLockerRarity
     {
@@ -162,10 +158,6 @@ namespace LootLocker.Requests
         public int[] favourites { get; set; }
     }
 
-}
-
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void GetContext(Action<LootLockerContextResponse> onComplete)
@@ -186,7 +178,7 @@ namespace LootLocker
             }, true);
         }
 
-        public static void GetAssetsOriginal(Action<LootLockerAssetResponse> onComplete, int assetCount, int? idOfLastAsset = null, List<LootLocker.LootLockerEnums.AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
+        public static void GetAssetsOriginal(Action<LootLockerAssetResponse> onComplete, int assetCount, int? idOfLastAsset = null, List<AssetFilter> filter = null, bool includeUGC = false, Dictionary<string, string> assetFilters = null, int UGCCreatorPlayerID = 0)
         {
             EndPointClass endPoint = LootLockerEndPoints.gettingAssetListWithCount;
             string getVariable = string.Format(endPoint.endPoint, assetCount);
@@ -249,27 +241,27 @@ namespace LootLocker
             }, true);
         }
 
-        public static string GetStringOfEnum(LootLocker.LootLockerEnums.AssetFilter filter)
+        public static string GetStringOfEnum(AssetFilter filter)
         {
             string filterString = "";
             switch (filter)
             {
-                case LootLocker.LootLockerEnums.AssetFilter.purchasable:
-                    filterString = LootLocker.LootLockerEnums.AssetFilter.purchasable.ToString();
+                case AssetFilter.purchasable:
+                    filterString = AssetFilter.purchasable.ToString();
                     break;
-                case LootLocker.LootLockerEnums.AssetFilter.nonpurchasable:
+                case AssetFilter.nonpurchasable:
                     filterString = "!purchasable";
                     break;
-                case LootLocker.LootLockerEnums.AssetFilter.rentable:
-                    filterString = LootLocker.LootLockerEnums.AssetFilter.rentable.ToString();
+                case AssetFilter.rentable:
+                    filterString = AssetFilter.rentable.ToString();
                     break;
-                case LootLocker.LootLockerEnums.AssetFilter.nonrentable:
+                case AssetFilter.nonrentable:
                     filterString = "!rentable";
                     break;
-                case LootLocker.LootLockerEnums.AssetFilter.popular:
-                    filterString = LootLocker.LootLockerEnums.AssetFilter.popular.ToString();
+                case AssetFilter.popular:
+                    filterString = AssetFilter.popular.ToString();
                     break;
-                case LootLocker.LootLockerEnums.AssetFilter.nonpopular:
+                case AssetFilter.nonpopular:
                     filterString = "!popular";
                     break;
             }
@@ -438,5 +430,4 @@ namespace LootLocker
         }
 
     }
-
 }

@@ -1,14 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using LootLocker;
-using LootLocker.Requests;
+using Client;
 using Newtonsoft.Json;
-using System;
+using UnityEngine;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
-
     #region GetMessages
 
     public class LootLockerGetMessagesResponse : LootLockerResponse
@@ -32,11 +30,6 @@ namespace LootLocker.Requests
 
     #endregion
 
-}
-
-namespace LootLocker
-{
-
     public partial class LootLockerAPIManager
     {
 
@@ -52,12 +45,11 @@ namespace LootLocker
 
                 //LootLockerSDKManager.DebugMessage(serverResponse.text, !string.IsNullOrEmpty(serverResponse.Error));
                 response.text = serverResponse.text;
-                     response.success = serverResponse.success;
-            response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
+                response.success = serverResponse.success;
+                response.Error = serverResponse.Error; response.statusCode = serverResponse.statusCode;
                 onComplete?.Invoke(response);
             }, true);
         }
 
     }
-
 }

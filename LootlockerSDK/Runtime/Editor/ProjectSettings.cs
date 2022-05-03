@@ -1,10 +1,11 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
+using Client;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace LootLocker.Admin
+namespace Editor
 {
     public class ProjectSettings : SettingsProvider
     {

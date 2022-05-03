@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AerialObject : MonoBehaviour,ICollidable
+namespace Road.Road_Objects
 {
-    
-    public void CollisionAction()
+    public class AerialObject : MonoBehaviour,ICollidable
     {
-        //Replace this with something better later
-        Destroy(gameObject);
+    
+        public void CollisionAction()
+        {
+            //Replace this with something better later
+            Destroy(gameObject);
+        }
     }
 }

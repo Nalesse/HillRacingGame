@@ -1,19 +1,15 @@
-using Newtonsoft.Json;
 using System;
-using LootLocker.Requests;
+using Client;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace LootLocker.Requests
+namespace Game.Requests
 {
     public class LootLockerPingResponse : LootLockerResponse
     {
         public string date { get; set; }
     }
 
-}
-
-namespace LootLocker
-{
     public partial class LootLockerAPIManager
     {
         public static void Ping(Action<LootLockerPingResponse> onComplete)
