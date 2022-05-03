@@ -41,7 +41,7 @@ public class TrickSystem : MonoBehaviour
         stopCooldown = true;
         animator.SetBool(animatorBool, false);
         isDoingTrickSmaller = false;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.10f);
         isDoingTrick = false;
         stopCooldown = false;
 

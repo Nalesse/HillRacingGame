@@ -423,6 +423,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6a774fa320c35904f818796cb8ebd14b, type: 2}
   - {fileID: 2100000, guid: d66e2ad00028250498be5ab440cbf666, type: 2}
   - {fileID: 2100000, guid: e356b1ff595640f4daf8779d6867a7d2, type: 2}
+  - {fileID: 2100000, guid: 003fd21d7f8d00f4090b6d150d92cec1, type: 2}
+  - {fileID: 2100000, guid: 06ff762ebede288468b48a61726db9da, type: 2}
   billboard: {fileID: 0}
 --- !u!1 &6117671078868982421
 GameObject:
