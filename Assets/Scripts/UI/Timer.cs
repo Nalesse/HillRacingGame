@@ -6,7 +6,7 @@ namespace UI
 {
     public class Timer : MonoBehaviour
     {
-        public float timeLeft;
+        public float timeLeft { get; set; }
         public TextMeshProUGUI timeValue; // used for showing countdown from 3, 2, 1 
         public static bool gamePaused;
         public GameObject pauseMenu;
