@@ -15,7 +15,7 @@ namespace Road
         {
             anim = gameObject.GetComponent<Animator>();
             particle = gameObject.GetComponent<ParticleSystem>();
-            if (SceneManager.GetActiveScene().buildIndex == 2)
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 scoreScript = GameObject.Find("PlayerScore").GetComponent<Score>();
             }
