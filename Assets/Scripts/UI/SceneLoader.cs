@@ -20,7 +20,7 @@ namespace UI
         IEnumerator LoadAsyncOperation()
         {
             //create async op.
-            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
+            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(3);
             while (gameLevel.progress < 1)
             {
                 //take progress bar fill = async op. progress
