@@ -2,11 +2,10 @@ using System.Collections;
 using Misc;
 using Player;
 using TMPro;
+using UI;
 using UnityEngine;
 
-namespace UI
-{
-    public class Score : MonoBehaviour
+public class Score : MonoBehaviour
     {
         // Start is called before the first frame update
         [field: SerializeField] public float PlayerScore { get; set; }
@@ -169,4 +168,3 @@ namespace UI
             
         } 
     }
-}
