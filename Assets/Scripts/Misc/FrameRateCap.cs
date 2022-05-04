@@ -20,8 +20,8 @@ namespace Misc
 
             //framerate locks
 
-            Application.targetFrameRate = 32;
-            //Application.targetFrameRate = 61;
+            // Application.targetFrameRate = 32;
+            Application.targetFrameRate = 61;
             //Application.targetFrameRate = 120;
         }
 
