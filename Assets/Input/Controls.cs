@@ -6,14 +6,12 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace Input
+public class @Controls : IInputActionCollection, IDisposable
 {
-    public class @Controls : IInputActionCollection, IDisposable
+    public InputActionAsset asset { get; }
+    public @Controls()
     {
-        public InputActionAsset asset { get; }
-        public @Controls()
-        {
-            asset = InputActionAsset.FromJson(@"{
+        asset = InputActionAsset.FromJson(@"{
     ""name"": ""Controls"",
     ""maps"": [
         {
@@ -373,164 +371,310 @@ namespace Input
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""54879011-aac9-48b2-91eb-20f6f9d501cf"",
+            ""actions"": [
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Value"",
+                    ""id"": ""281c8424-4ccd-4d32-9563-21b04e68d91a"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""51e78946-598e-47e2-98ed-6add4a294db7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad86d9b0-2059-49c6-a516-9806bf128a90"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""ee1a9d32-45ae-44de-863f-d12ec2b2dd25"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ae2412fe-cd58-4ee4-b6a4-2af45102fa5a"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7979f04c-2063-4d4d-b6b5-1df6f30eb515"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6f89703-02ce-4d37-881c-dc739f7b683e"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2263a39-0b5b-422a-8e3f-9057aef96926"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-            // Racing
-            m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
-            m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
-            m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
-            m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
-            m_Racing_WestTrick = m_Racing.FindAction("WestTrick", throwIfNotFound: true);
-            m_Racing_SouthTrick = m_Racing.FindAction("SouthTrick", throwIfNotFound: true);
-            m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
-            m_Racing_DebugFPS30 = m_Racing.FindAction("DebugFPS30", throwIfNotFound: true);
-            m_Racing_DebugFPS60 = m_Racing.FindAction("DebugFPS60", throwIfNotFound: true);
-        }
-
-        public void Dispose()
-        {
-            UnityEngine.Object.Destroy(asset);
-        }
-
-        public InputBinding? bindingMask
-        {
-            get => asset.bindingMask;
-            set => asset.bindingMask = value;
-        }
-
-        public ReadOnlyArray<InputDevice>? devices
-        {
-            get => asset.devices;
-            set => asset.devices = value;
-        }
-
-        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-        public bool Contains(InputAction action)
-        {
-            return asset.Contains(action);
-        }
-
-        public IEnumerator<InputAction> GetEnumerator()
-        {
-            return asset.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public void Enable()
-        {
-            asset.Enable();
-        }
-
-        public void Disable()
-        {
-            asset.Disable();
-        }
-
         // Racing
-        private readonly InputActionMap m_Racing;
-        private IRacingActions m_RacingActionsCallbackInterface;
-        private readonly InputAction m_Racing_Move;
-        private readonly InputAction m_Racing_NorthTrick;
-        private readonly InputAction m_Racing_EastTrick;
-        private readonly InputAction m_Racing_WestTrick;
-        private readonly InputAction m_Racing_SouthTrick;
-        private readonly InputAction m_Racing_DebugJump;
-        private readonly InputAction m_Racing_DebugFPS30;
-        private readonly InputAction m_Racing_DebugFPS60;
-        public struct RacingActions
+        m_Racing = asset.FindActionMap("Racing", throwIfNotFound: true);
+        m_Racing_Move = m_Racing.FindAction("Move", throwIfNotFound: true);
+        m_Racing_NorthTrick = m_Racing.FindAction("NorthTrick", throwIfNotFound: true);
+        m_Racing_EastTrick = m_Racing.FindAction("EastTrick", throwIfNotFound: true);
+        m_Racing_WestTrick = m_Racing.FindAction("WestTrick", throwIfNotFound: true);
+        m_Racing_SouthTrick = m_Racing.FindAction("SouthTrick", throwIfNotFound: true);
+        m_Racing_DebugJump = m_Racing.FindAction("DebugJump", throwIfNotFound: true);
+        m_Racing_DebugFPS30 = m_Racing.FindAction("DebugFPS30", throwIfNotFound: true);
+        m_Racing_DebugFPS60 = m_Racing.FindAction("DebugFPS60", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
+        m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
+        m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
+    }
+
+    public void Dispose()
+    {
+        UnityEngine.Object.Destroy(asset);
+    }
+
+    public InputBinding? bindingMask
+    {
+        get => asset.bindingMask;
+        set => asset.bindingMask = value;
+    }
+
+    public ReadOnlyArray<InputDevice>? devices
+    {
+        get => asset.devices;
+        set => asset.devices = value;
+    }
+
+    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+    public bool Contains(InputAction action)
+    {
+        return asset.Contains(action);
+    }
+
+    public IEnumerator<InputAction> GetEnumerator()
+    {
+        return asset.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public void Enable()
+    {
+        asset.Enable();
+    }
+
+    public void Disable()
+    {
+        asset.Disable();
+    }
+
+    // Racing
+    private readonly InputActionMap m_Racing;
+    private IRacingActions m_RacingActionsCallbackInterface;
+    private readonly InputAction m_Racing_Move;
+    private readonly InputAction m_Racing_NorthTrick;
+    private readonly InputAction m_Racing_EastTrick;
+    private readonly InputAction m_Racing_WestTrick;
+    private readonly InputAction m_Racing_SouthTrick;
+    private readonly InputAction m_Racing_DebugJump;
+    private readonly InputAction m_Racing_DebugFPS30;
+    private readonly InputAction m_Racing_DebugFPS60;
+    public struct RacingActions
+    {
+        private @Controls m_Wrapper;
+        public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Racing_Move;
+        public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
+        public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
+        public InputAction @WestTrick => m_Wrapper.m_Racing_WestTrick;
+        public InputAction @SouthTrick => m_Wrapper.m_Racing_SouthTrick;
+        public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
+        public InputAction @DebugFPS30 => m_Wrapper.m_Racing_DebugFPS30;
+        public InputAction @DebugFPS60 => m_Wrapper.m_Racing_DebugFPS60;
+        public InputActionMap Get() { return m_Wrapper.m_Racing; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RacingActions set) { return set.Get(); }
+        public void SetCallbacks(IRacingActions instance)
         {
-            private @Controls m_Wrapper;
-            public RacingActions(@Controls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_Racing_Move;
-            public InputAction @NorthTrick => m_Wrapper.m_Racing_NorthTrick;
-            public InputAction @EastTrick => m_Wrapper.m_Racing_EastTrick;
-            public InputAction @WestTrick => m_Wrapper.m_Racing_WestTrick;
-            public InputAction @SouthTrick => m_Wrapper.m_Racing_SouthTrick;
-            public InputAction @DebugJump => m_Wrapper.m_Racing_DebugJump;
-            public InputAction @DebugFPS30 => m_Wrapper.m_Racing_DebugFPS30;
-            public InputAction @DebugFPS60 => m_Wrapper.m_Racing_DebugFPS60;
-            public InputActionMap Get() { return m_Wrapper.m_Racing; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
-            public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(RacingActions set) { return set.Get(); }
-            public void SetCallbacks(IRacingActions instance)
+            if (m_Wrapper.m_RacingActionsCallbackInterface != null)
             {
-                if (m_Wrapper.m_RacingActionsCallbackInterface != null)
-                {
-                    @Move.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                    @Move.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                    @Move.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
-                    @NorthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
-                    @NorthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
-                    @NorthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
-                    @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
-                    @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
-                    @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
-                    @WestTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
-                    @WestTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
-                    @WestTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
-                    @SouthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
-                    @SouthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
-                    @SouthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
-                    @DebugJump.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
-                    @DebugJump.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
-                    @DebugJump.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
-                    @DebugFPS30.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
-                    @DebugFPS30.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
-                    @DebugFPS30.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
-                    @DebugFPS60.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
-                    @DebugFPS60.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
-                    @DebugFPS60.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
-                }
-                m_Wrapper.m_RacingActionsCallbackInterface = instance;
-                if (instance != null)
-                {
-                    @Move.started += instance.OnMove;
-                    @Move.performed += instance.OnMove;
-                    @Move.canceled += instance.OnMove;
-                    @NorthTrick.started += instance.OnNorthTrick;
-                    @NorthTrick.performed += instance.OnNorthTrick;
-                    @NorthTrick.canceled += instance.OnNorthTrick;
-                    @EastTrick.started += instance.OnEastTrick;
-                    @EastTrick.performed += instance.OnEastTrick;
-                    @EastTrick.canceled += instance.OnEastTrick;
-                    @WestTrick.started += instance.OnWestTrick;
-                    @WestTrick.performed += instance.OnWestTrick;
-                    @WestTrick.canceled += instance.OnWestTrick;
-                    @SouthTrick.started += instance.OnSouthTrick;
-                    @SouthTrick.performed += instance.OnSouthTrick;
-                    @SouthTrick.canceled += instance.OnSouthTrick;
-                    @DebugJump.started += instance.OnDebugJump;
-                    @DebugJump.performed += instance.OnDebugJump;
-                    @DebugJump.canceled += instance.OnDebugJump;
-                    @DebugFPS30.started += instance.OnDebugFPS30;
-                    @DebugFPS30.performed += instance.OnDebugFPS30;
-                    @DebugFPS30.canceled += instance.OnDebugFPS30;
-                    @DebugFPS60.started += instance.OnDebugFPS60;
-                    @DebugFPS60.performed += instance.OnDebugFPS60;
-                    @DebugFPS60.canceled += instance.OnDebugFPS60;
-                }
+                @Move.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnMove;
+                @NorthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                @NorthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                @NorthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnNorthTrick;
+                @EastTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @EastTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @EastTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnEastTrick;
+                @WestTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                @WestTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                @WestTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnWestTrick;
+                @SouthTrick.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
+                @SouthTrick.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
+                @SouthTrick.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnSouthTrick;
+                @DebugJump.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                @DebugJump.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                @DebugJump.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugJump;
+                @DebugFPS30.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                @DebugFPS30.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                @DebugFPS30.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS30;
+                @DebugFPS60.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                @DebugFPS60.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+                @DebugFPS60.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnDebugFPS60;
+            }
+            m_Wrapper.m_RacingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @NorthTrick.started += instance.OnNorthTrick;
+                @NorthTrick.performed += instance.OnNorthTrick;
+                @NorthTrick.canceled += instance.OnNorthTrick;
+                @EastTrick.started += instance.OnEastTrick;
+                @EastTrick.performed += instance.OnEastTrick;
+                @EastTrick.canceled += instance.OnEastTrick;
+                @WestTrick.started += instance.OnWestTrick;
+                @WestTrick.performed += instance.OnWestTrick;
+                @WestTrick.canceled += instance.OnWestTrick;
+                @SouthTrick.started += instance.OnSouthTrick;
+                @SouthTrick.performed += instance.OnSouthTrick;
+                @SouthTrick.canceled += instance.OnSouthTrick;
+                @DebugJump.started += instance.OnDebugJump;
+                @DebugJump.performed += instance.OnDebugJump;
+                @DebugJump.canceled += instance.OnDebugJump;
+                @DebugFPS30.started += instance.OnDebugFPS30;
+                @DebugFPS30.performed += instance.OnDebugFPS30;
+                @DebugFPS30.canceled += instance.OnDebugFPS30;
+                @DebugFPS60.started += instance.OnDebugFPS60;
+                @DebugFPS60.performed += instance.OnDebugFPS60;
+                @DebugFPS60.canceled += instance.OnDebugFPS60;
             }
         }
-        public RacingActions @Racing => new RacingActions(this);
-        public interface IRacingActions
+    }
+    public RacingActions @Racing => new RacingActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_Select;
+    private readonly InputAction m_UI_Confirm;
+    private readonly InputAction m_UI_Cancel;
+    public struct UIActions
+    {
+        private @Controls m_Wrapper;
+        public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Select => m_Wrapper.m_UI_Select;
+        public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
+        public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
         {
-            void OnMove(InputAction.CallbackContext context);
-            void OnNorthTrick(InputAction.CallbackContext context);
-            void OnEastTrick(InputAction.CallbackContext context);
-            void OnWestTrick(InputAction.CallbackContext context);
-            void OnSouthTrick(InputAction.CallbackContext context);
-            void OnDebugJump(InputAction.CallbackContext context);
-            void OnDebugFPS30(InputAction.CallbackContext context);
-            void OnDebugFPS60(InputAction.CallbackContext context);
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @Select.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
+                @Confirm.started -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
+                @Confirm.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
+                @Confirm.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
+                @Cancel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @Confirm.started += instance.OnConfirm;
+                @Confirm.performed += instance.OnConfirm;
+                @Confirm.canceled += instance.OnConfirm;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+            }
         }
+    }
+    public UIActions @UI => new UIActions(this);
+    public interface IRacingActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnNorthTrick(InputAction.CallbackContext context);
+        void OnEastTrick(InputAction.CallbackContext context);
+        void OnWestTrick(InputAction.CallbackContext context);
+        void OnSouthTrick(InputAction.CallbackContext context);
+        void OnDebugJump(InputAction.CallbackContext context);
+        void OnDebugFPS30(InputAction.CallbackContext context);
+        void OnDebugFPS60(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnSelect(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

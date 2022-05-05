@@ -16,13 +16,13 @@ public class Score : MonoBehaviour
         [SerializeField] private TextMeshProUGUI tempScoreValue;
         [SerializeField] private TextMeshProUGUI highScoreValue;
         [SerializeField] private TextMeshProUGUI pointMultValue;
+        [SerializeField] private AudioSource trickBufferFilled;
         private float pointsIncreasing;
         private int pointMultiplier;
         private TrickSystem TrickSystem;
-
         public float trickBuffer;
-    
         private bool isScoreMultiplying = true;
+        private bool soundPlayed;
 
         [Header("Score Requirement")]
         [SerializeField] private float scoreRequirement;
@@ -83,13 +83,13 @@ public class Score : MonoBehaviour
             }
             if (TrickSystem.isDoingTrickSmaller)
             {
-                pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
+                pointMultValue.text = "x" + $"{pointMultiplier + 1}";
             }
 
             if (Player.Player.Instance.isDamage)
             {
-                //Debug.Log("TempScoreToZero");
                 tempScore = 0;
+                pointMultiplier = 0;
             }
 
             if (Player.Player.Instance.isGrounded)
@@ -98,21 +98,19 @@ public class Score : MonoBehaviour
                 PlayerScore += tempScore * pointMultiplier;
                 tempScore = 0;
                 pointMultiplier = 0;
-                pointMultValue.text = "x" + $"{(int)pointMultiplier + 1}";
+                pointMultValue.text = "x" + $"{pointMultiplier + 1}";
             }
 
         
 
             if (!TrickSystem.isDoingTrickSmaller && tempScore > 0)
             {
-            
-                if (isScoreMultiplying == true && trickBuffer >= 10)
-                {
-                    trickBuffer = 0;
-                    //Debug.Log(pointMultiplier + " point multiplier");
-                    pointMultiplier += 1;
-                    isScoreMultiplying = false;
-                }
+                if (!isScoreMultiplying || !(trickBuffer >= 10)) return;
+                
+                trickBuffer = 0;
+                pointMultiplier += 1;
+                isScoreMultiplying = false;
+                soundPlayed = false;
             }
             else
             {
@@ -121,9 +119,13 @@ public class Score : MonoBehaviour
         }
         private void FixedUpdate()
         {
-            if (TrickSystem.isDoingTrick)
+            if (!TrickSystem.isDoingTrick) return;
+            
+            trickBuffer += 0.1f;
+            if (trickBuffer >= 10 && !soundPlayed)
             {
-                trickBuffer += 0.1f;
+                trickBufferFilled.Play();
+                soundPlayed = true;
             }
         }
 
