@@ -11,9 +11,8 @@ namespace Player
 
         public string animatorBool;
         public bool isDoingTrickSmaller;
-
         public bool stopCooldown;
-    
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
@@ -40,8 +39,8 @@ namespace Player
         
             stopCooldown = true;
             animator.SetBool(animatorBool, false);
-            isDoingTrickSmaller = false;
             yield return new WaitForSeconds(.10f);
+            isDoingTrickSmaller = false;
             isDoingTrick = false;
             stopCooldown = false;
 
