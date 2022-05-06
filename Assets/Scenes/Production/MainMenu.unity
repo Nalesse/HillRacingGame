@@ -7334,7 +7334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ver. 1.0.1
+  m_text: Ver. 1.0.2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18751,6 +18751,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   particle: {fileID: 0}
   pointValue: 80
+  shrieks: []
+  audioSource: {fileID: 0}
 --- !u!136 &1387310798
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -40874,6 +40876,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   particle: {fileID: 0}
   pointValue: 80
+  shrieks: []
+  audioSource: {fileID: 0}
 --- !u!136 &1545318436076312593
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -42184,6 +42188,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   particle: {fileID: 0}
   pointValue: 80
+  shrieks: []
+  audioSource: {fileID: 0}
 --- !u!136 &2245748801017082705
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -54494,6 +54500,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   particle: {fileID: 0}
   pointValue: 80
+  shrieks: []
+  audioSource: {fileID: 0}
 --- !u!136 &3935498808112558813
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -62302,6 +62310,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   particle: {fileID: 0}
   pointValue: 80
+  shrieks: []
+  audioSource: {fileID: 0}
 --- !u!114 &6331975749646014370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73502,6 +73512,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   particle: {fileID: 0}
   pointValue: 80
+  shrieks: []
+  audioSource: {fileID: 0}
 --- !u!212 &7587082672855859606
 SpriteRenderer:
   m_ObjectHideFlags: 0
