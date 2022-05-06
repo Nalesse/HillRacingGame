@@ -124,6 +124,7 @@ public class Score : MonoBehaviour
             trickBuffer = 0;
             pointMultiplier += 1;
             isScoreMultiplying = false;
+            trickBufferFilled.Play();
             soundPlayed = false;
         }
 
@@ -134,7 +135,6 @@ public class Score : MonoBehaviour
             trickBuffer += 0.1f;
             if (trickBuffer >= 10 && !soundPlayed)
             {
-                trickBufferFilled.Play();
                 soundPlayed = true;
             }
         }
