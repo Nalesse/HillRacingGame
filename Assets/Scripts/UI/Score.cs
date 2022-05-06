@@ -91,6 +91,7 @@ public class Score : MonoBehaviour
                 tempScore = 0;
                 pointMultiplier = 0;
                 trickBuffer = 0;
+                trickBufferFilled.pitch = 1;
             }
 
             if (Player.Player.Instance.isGrounded)
@@ -101,6 +102,7 @@ public class Score : MonoBehaviour
                 pointMultiplier = 0;
                 trickBuffer = 0;
                 pointMultValue.text = "x" + $"{pointMultiplier}";
+                trickBufferFilled.pitch = 1;
             }
             
         }
@@ -125,6 +127,7 @@ public class Score : MonoBehaviour
             pointMultiplier += 1;
             isScoreMultiplying = false;
             trickBufferFilled.Play();
+            trickBufferFilled.pitch += 0.5f;
             soundPlayed = false;
         }
 
