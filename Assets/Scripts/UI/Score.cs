@@ -83,7 +83,7 @@ public class Score : MonoBehaviour
             }
             if (TrickSystem.isDoingTrickSmaller)
             {
-                pointMultValue.text = "x" + $"{pointMultiplier + 1}";
+                pointMultValue.text = "x" + $"{pointMultiplier}";
             }
 
             if (Player.Player.Instance.isDamage)
@@ -100,25 +100,33 @@ public class Score : MonoBehaviour
                 tempScore = 0;
                 pointMultiplier = 0;
                 trickBuffer = 0;
-                pointMultValue.text = "x" + $"{pointMultiplier + 1}";
+                pointMultValue.text = "x" + $"{pointMultiplier}";
             }
-
-        
-
-            if (!TrickSystem.isDoingTrickSmaller && tempScore > 0)
-            {
-                if (!isScoreMultiplying || !(trickBuffer >= 10)) return;
-                
-                trickBuffer = 0;
-                pointMultiplier += 1;
-                isScoreMultiplying = false;
-                soundPlayed = false;
-            }
-            else
-            {
-                isScoreMultiplying = true;
-            }
+            
         }
+
+        public void IncreaseMultiplier()
+        {
+            // if (!TrickSystem.isDoingTrickSmaller && tempScore > 0)
+            // {
+            //     if (!isScoreMultiplying || !(trickBuffer >= 10)) return;
+            //
+            //     trickBuffer = 0;
+            //     pointMultiplier += 1;
+            //     isScoreMultiplying = false;
+            //     soundPlayed = false;
+            // }
+            // else
+            // {
+            //     isScoreMultiplying = true;
+            // }
+            
+            trickBuffer = 0;
+            pointMultiplier += 1;
+            isScoreMultiplying = false;
+            soundPlayed = false;
+        }
+
         private void FixedUpdate()
         {
             if (!TrickSystem.isDoingTrick) return;
