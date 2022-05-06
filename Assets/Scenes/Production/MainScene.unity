@@ -2735,46 +2735,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[0].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[0].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[1].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[1].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].zMax
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].zMin
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[3].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[3].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].zMax
       value: 0
       objectReference: {fileID: 0}
@@ -2789,22 +2749,6 @@ PrefabInstance:
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[5].zMax
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[0].Offset.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[1].Offset.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].Offset.y
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[3].Offset.y
-      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].prefab
@@ -2839,12 +2783,8 @@ PrefabInstance:
       value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: roadObjects.Array.data[1].chanceToSpawn
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: roadObjects.Array.data[2].chanceToSpawn
-      value: 0.334
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].chanceToSpawn
@@ -3352,15 +3292,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08693156
+      value: 0.086931534
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039208755
+      value: 0.003920841
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00034214577
+      value: -0.00034214265
       objectReference: {fileID: 0}
     - target: {fileID: 8993535832652988842, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3464,15 +3404,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08693156
+      value: 0.086931534
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039208755
+      value: 0.003920841
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00034214577
+      value: -0.00034214265
       objectReference: {fileID: 0}
     - target: {fileID: 8993535833877569094, guid: 9b745e3274a95e543b91cbabdaa2c44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
