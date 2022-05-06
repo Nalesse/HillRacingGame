@@ -10,9 +10,13 @@ namespace Road
         public ParticleSystem particle;
         [SerializeField] private int pointValue;
         private Score scoreScript;
+        public AudioClip[] shrieks;
+        public AudioSource audioSource;
+
         // Start is called before the first frame update
         void Start()
         {
+            audioSource = gameObject.GetComponent<AudioSource>();
             anim = gameObject.GetComponent<Animator>();
             particle = gameObject.GetComponent<ParticleSystem>();
             if (SceneManager.GetActiveScene().buildIndex == 3)
@@ -28,6 +32,7 @@ namespace Road
             if (other.CompareTag("Player"))
             {
                 particle.Play();
+                audioSource.PlayOneShot(shrieks[Random.Range(0, shrieks.Length)]);
                 Debug.Log("Score!");
                 scoreScript.PlayerScore += pointValue;
 
