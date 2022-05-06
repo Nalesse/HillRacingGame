@@ -3940,6 +3940,7 @@ MonoBehaviour:
   tempScoreValue: {fileID: 227672131}
   highScoreValue: {fileID: 3938421977346970973}
   pointMultValue: {fileID: 6054800397697985848}
+  trickBufferFilled: {fileID: 0}
   trickBuffer: 0
   scoreRequirement: 4000
   increaseAmount: 4500
@@ -4132,7 +4133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8bfa27c3b3d1f49ab938e76bd1251e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 60
   timeValue: {fileID: 3938421976421979814}
   pauseMenu: {fileID: 0}
 --- !u!1 &3938421976421979808

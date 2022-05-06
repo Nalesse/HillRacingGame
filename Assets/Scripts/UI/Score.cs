@@ -90,6 +90,7 @@ public class Score : MonoBehaviour
             {
                 tempScore = 0;
                 pointMultiplier = 0;
+                trickBuffer = 0;
             }
 
             if (Player.Player.Instance.isGrounded)
@@ -98,6 +99,7 @@ public class Score : MonoBehaviour
                 PlayerScore += tempScore * pointMultiplier;
                 tempScore = 0;
                 pointMultiplier = 0;
+                trickBuffer = 0;
                 pointMultValue.text = "x" + $"{pointMultiplier + 1}";
             }
 

@@ -104,10 +104,11 @@ namespace UI
 
         public void Submit()
         {
-            PlayerPrefs.SetString("Username", userName);
+            PlayerPrefs.SetString("Username", userNameField.text);
             PlayerPrefs.Save();
             gameObject.SetActive(false);
             startButton.Select();
+            Debug.Log(PlayerPrefs.GetString("Username"));
         }
 
         private void EnterName(InputAction.CallbackContext ctx)
