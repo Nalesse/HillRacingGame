@@ -18,7 +18,7 @@ public class SplashSceneTransition : MonoBehaviour
     }
     private IEnumerator SceneChanger() 
     {
-        yield return new WaitForSeconds(17.0f);
+        yield return new WaitForSeconds(16.0f);
         SceneManager.LoadScene(1);
     }
 }
