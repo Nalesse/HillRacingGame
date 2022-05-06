@@ -12,6 +12,7 @@ namespace UI
     public class EnterUsername : MonoBehaviour
     {
         [SerializeField] private TMP_InputField userNameField;
+        [SerializeField] private GameObject submitButton;
         public Button startButton;
         private string userName;
         private Controls controls;
@@ -91,6 +92,7 @@ namespace UI
             controls.UI.Select.performed += EnterName;
             controls.UI.Confirm.performed += ctx => Confirm();
             controls.UI.Cancel.performed += ctx => Cancel();
+            controls.UI.Submit.performed += ctx => Deselect();
         }
 
         private void Start()
@@ -151,6 +153,11 @@ namespace UI
         private void Cancel()
         {
             userNameField.readOnly = false;
+        }
+
+        private void Deselect()
+        {
+            EventSystem.current.SetSelectedGameObject(submitButton);
         }
 
     }
