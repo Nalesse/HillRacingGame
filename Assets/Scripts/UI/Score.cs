@@ -83,7 +83,7 @@ public class Score : MonoBehaviour
             }
             if (TrickSystem.isDoingTrickSmaller)
             {
-                pointMultValue.text = "x" + $"{pointMultiplier + 1}";
+                pointMultValue.text = "x" + $"{pointMultiplier}";
             }
 
             if (Player.Player.Instance.isDamage)
@@ -91,6 +91,7 @@ public class Score : MonoBehaviour
                 tempScore = 0;
                 pointMultiplier = 0;
                 trickBuffer = 0;
+                trickBufferFilled.pitch = 1;
             }
 
             if (Player.Player.Instance.isGrounded)
@@ -100,25 +101,36 @@ public class Score : MonoBehaviour
                 tempScore = 0;
                 pointMultiplier = 0;
                 trickBuffer = 0;
-                pointMultValue.text = "x" + $"{pointMultiplier + 1}";
+                pointMultValue.text = "x" + $"{pointMultiplier}";
+                trickBufferFilled.pitch = 1;
             }
-
-        
-
-            if (!TrickSystem.isDoingTrickSmaller && tempScore > 0)
-            {
-                if (!isScoreMultiplying || !(trickBuffer >= 10)) return;
-                
-                trickBuffer = 0;
-                pointMultiplier += 1;
-                isScoreMultiplying = false;
-                soundPlayed = false;
-            }
-            else
-            {
-                isScoreMultiplying = true;
-            }
+            
         }
+
+        public void IncreaseMultiplier()
+        {
+            // if (!TrickSystem.isDoingTrickSmaller && tempScore > 0)
+            // {
+            //     if (!isScoreMultiplying || !(trickBuffer >= 10)) return;
+            //
+            //     trickBuffer = 0;
+            //     pointMultiplier += 1;
+            //     isScoreMultiplying = false;
+            //     soundPlayed = false;
+            // }
+            // else
+            // {
+            //     isScoreMultiplying = true;
+            // }
+            Debug.Log("Increase multiplier called");
+            trickBuffer = 0;
+            pointMultiplier += 1;
+            isScoreMultiplying = false;
+            trickBufferFilled.Play();
+            trickBufferFilled.pitch += 0.5f;
+            soundPlayed = false;
+        }
+
         private void FixedUpdate()
         {
             if (!TrickSystem.isDoingTrick) return;
@@ -126,7 +138,6 @@ public class Score : MonoBehaviour
             trickBuffer += 0.1f;
             if (trickBuffer >= 10 && !soundPlayed)
             {
-                trickBufferFilled.Play();
                 soundPlayed = true;
             }
         }

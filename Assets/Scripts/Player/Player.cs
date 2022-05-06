@@ -40,6 +40,7 @@ namespace Player
         [Header("Tricks")]
         public bool isDamage;
         private TrickSystem TrickSystem;
+        [SerializeField] private Score scoreScript;
 
         //Player Boundaries
         [Header("Player Bounds")]
@@ -445,6 +446,11 @@ namespace Player
             gameOver = true;
 
 
+        }
+
+        public void TriggerPointMultiplier()
+        {
+            scoreScript.IncreaseMultiplier();
         }
     }
 }

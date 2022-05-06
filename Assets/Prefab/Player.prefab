@@ -226,6 +226,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isDamage: 0
+  scoreScript: {fileID: 0}
   xLimit: 16.6
   xSlowDownRange: 9.8
   slowDownSpeed: 1900
@@ -251,7 +252,6 @@ MonoBehaviour:
   animatorBool: 
   isDoingTrickSmaller: 0
   stopCooldown: 0
-  trickComplete: {fileID: 1062786426394386933}
 --- !u!136 &170975303
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -302,7 +302,6 @@ MonoBehaviour:
   animatorBool: 
   isDoingTrickSmaller: 0
   stopCooldown: 0
-  trickComplete: {fileID: 1062786426394386933}
 --- !u!82 &5235688708334009024
 AudioSource:
   m_ObjectHideFlags: 0
@@ -505,7 +504,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d125b8497cd05074babef777b8ce6721, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ea89a835d60ef774689b60d2550cefa8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
