@@ -120,7 +120,7 @@ public class Score : MonoBehaviour
             // {
             //     isScoreMultiplying = true;
             // }
-            
+            Debug.Log("Increase multiplier called");
             trickBuffer = 0;
             pointMultiplier += 1;
             isScoreMultiplying = false;
