@@ -57,6 +57,8 @@ MonoBehaviour:
     xMax: 8.609
     zMin: 0
     zMax: 0
+    yMin: 0
+    yMax: 0
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 5666359609849991738, guid: 00dc08094b30c5e43a97c8cabce0db68, type: 3}
@@ -66,6 +68,8 @@ MonoBehaviour:
     xMax: 8.609
     zMin: 0
     zMax: 0
+    yMin: 0
+    yMax: 0
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   aerialObjects:
@@ -76,33 +80,41 @@ MonoBehaviour:
     xMax: 7.51
     zMin: 0
     zMax: 0
+    yMin: -10
+    yMax: 10
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 857387940767069086, guid: 9dde86f77ac703f4aa841cb4a5044f56, type: 3}
-    Offset: {x: 0, y: 50, z: 0}
+    Offset: {x: 0, y: 60, z: 0}
     chanceToSpawn: 0.25
     xMin: -7.51
     xMax: 7.51
     zMin: 0
     zMax: 0
+    yMin: -10
+    yMax: 10
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 7456821533175039407, guid: 43e544dbbf18fe64ca1c4e5c6990e813, type: 3}
-    Offset: {x: 0, y: 25, z: 0}
+    Offset: {x: 0, y: 35, z: 0}
     chanceToSpawn: 0.25
     xMin: -7.51
     xMax: 7.51
     zMin: 0
     zMax: 0
+    yMin: -10
+    yMax: 10
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 8754621487087021102, guid: c709d09ea9d4a9f44bce2a84b6416e8c, type: 3}
-    Offset: {x: 0, y: 65, z: 0}
+    Offset: {x: 0, y: 75, z: 0}
     chanceToSpawn: 0.25
     xMin: -7.51
     xMax: 7.51
     zMin: 0
     zMax: 0
+    yMin: -10
+    yMax: 10
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   roadObjects:
@@ -113,23 +125,29 @@ MonoBehaviour:
     xMax: 8.3
     zMin: 0
     zMax: 0
+    yMin: 0
+    yMax: 0
     disallowedXMin: -1.92
     disallowedXMax: 1.92
   - prefab: {fileID: 8969806817061777670, guid: 5aa3497de69eebf4da040193337a8567, type: 3}
     Offset: {x: 0, y: 1, z: 0}
+    chanceToSpawn: 0.25
+    xMin: -7.51
+    xMax: 7.51
+    zMin: 0
+    zMax: 0
+    yMin: 0
+    yMax: 0
+    disallowedXMin: -1.92
+    disallowedXMax: 1.92
+  - prefab: {fileID: 1609861442778490765, guid: 523fca50b1229d344892f4760471412a, type: 3}
+    Offset: {x: 0, y: 28, z: 0}
     chanceToSpawn: 0.334
     xMin: -7.51
     xMax: 7.51
     zMin: 0
     zMax: 0
-    disallowedXMin: -1.92
-    disallowedXMax: 1.92
-  - prefab: {fileID: 1609861442778490765, guid: 523fca50b1229d344892f4760471412a, type: 3}
-    Offset: {x: 0, y: 28, z: 0}
-    chanceToSpawn: 0.2
-    xMin: -7.51
-    xMax: 7.51
-    zMin: 0
-    zMax: 0
+    yMin: 0
+    yMax: 0
     disallowedXMin: -1.92
     disallowedXMax: 1.92
