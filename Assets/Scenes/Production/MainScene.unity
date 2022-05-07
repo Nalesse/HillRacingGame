@@ -2735,46 +2735,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[0].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[0].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[1].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[1].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].zMax
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].zMin
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[3].yMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[3].yMin
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].zMax
       value: 0
       objectReference: {fileID: 0}
@@ -2789,22 +2749,6 @@ PrefabInstance:
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[5].zMax
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[0].Offset.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[1].Offset.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[2].Offset.y
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: aerialObjects.Array.data[3].Offset.y
-      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].prefab
@@ -2839,12 +2783,8 @@ PrefabInstance:
       value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
-      propertyPath: roadObjects.Array.data[1].chanceToSpawn
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: roadObjects.Array.data[2].chanceToSpawn
-      value: 0.334
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5345311641709041166, guid: 90b75392856061b4cb01693dac02706a, type: 3}
       propertyPath: SpawnableObjects.Array.data[2].chanceToSpawn
@@ -3034,10 +2974,14 @@ PrefabInstance:
       propertyPath: scoreScript
       value: 
       objectReference: {fileID: 1616226174}
-    - target: {fileID: 1062786426394386933, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
+    - target: {fileID: 3978055526584698168, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.374
       objectReference: {fileID: 0}
+    - target: {fileID: 3978055526584698168, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9d18b2a2c577b0c439b6e152a982a0a2, type: 2}
     m_RemovedComponents:
     - {fileID: 8614984909397080405, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6612ba37b25730a42a53aefe23d39924, type: 3}
