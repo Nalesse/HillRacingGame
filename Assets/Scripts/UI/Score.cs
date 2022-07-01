@@ -7,7 +7,10 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
     {
-        // Start is called before the first frame update
+        
+       
+        //This script needs to be completely rewritten
+       
         [field: SerializeField] public float PlayerScore { get; set; }
         [SerializeField] private float tempScore;
         private float highScore;

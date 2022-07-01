@@ -1,8 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -40,13 +36,13 @@ namespace Road
         public Vector3 GenerateRandomPosition()
         {
             // Generates a random position to start with
-            var randomPos = GetRandomVector3(xMin, xMax, zMin, zMax, yMin, yMax);
+            var randomPos = GetRandomVector3();
 
             // if the random position is in the disallowed spawn range then a new position is generated until it is
             // no longer is within the spawn range
             while (randomPos.x >= disallowedXMin && randomPos.x <= disallowedXMax)
             {
-                randomPos = GetRandomVector3(xMin, xMax, zMin, zMax, yMin, yMax);
+                randomPos = GetRandomVector3();
             }
 
             return randomPos;
@@ -54,13 +50,13 @@ namespace Road
         }
 
         // Helper function to avoid repeated code
-        private Vector3 GetRandomVector3(float _xMin, float _xMax, float _zMin, float _zMax, float _yMin, float _yMax)
+        private Vector3 GetRandomVector3()
         {
             var randomVector3 = new Vector3
             {
-                x = Random.Range(_xMin, _xMax),
-                z = Random.Range(_zMin, _zMax),
-                y = Random.Range(_yMin, _yMax)
+                x = Random.Range(xMin, xMax),
+                z = Random.Range(zMin, zMax),
+                y = Random.Range(yMin, yMax)
             };
 
             return randomVector3;
